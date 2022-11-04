@@ -11,6 +11,6 @@ class MainActivity : AppCompatActivity() {
 
         //HI HELLO
         //can you see
-        Log.d("ITM","jina test")
+        Log.d("ITM","jina test!!!!")
     }
 }
