@@ -16,6 +16,6 @@ class MainActivity : AppCompatActivity() {
         Log.d("ITM","HI")
         Log.d("ITM","07시14분")
         Log.d("ITM","수아바보")
-        Log.d("ITM","0726JINA SEE?")
+        Log.d("ITM","0727JINA SEE?")
     }
 }
