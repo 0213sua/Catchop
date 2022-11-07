@@ -12,5 +12,6 @@ class MainActivity : AppCompatActivity() {
         //HI HELLO
         //can you see
         Log.d("ITM","push right?")
+        Log.d("ITM","merge why?")
     }
 }
