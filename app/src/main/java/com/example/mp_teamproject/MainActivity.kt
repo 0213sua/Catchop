@@ -2,6 +2,7 @@ package com.example.mp_teamproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -10,5 +11,6 @@ class MainActivity : AppCompatActivity() {
 
         //HI HELLO
         //can you see
+        Log.d("ITM","HI")
     }
 }
