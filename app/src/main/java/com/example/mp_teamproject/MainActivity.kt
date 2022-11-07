@@ -15,5 +15,6 @@ class MainActivity : AppCompatActivity() {
         Log.d("ITM","merge why?")
 
         Log.d("ITM","0740JINA SEE?")
+        Log.d("ITM","0742 IM SUA ")
     }
 }
