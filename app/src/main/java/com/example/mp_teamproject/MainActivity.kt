@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         //can you see
         Log.d("ITM","push right?")
         Log.d("ITM","merge why???")
-        Log.d("ITM","I don't no!!???")
+        Log.d("ITM","0756 sua!!!!!!!!!!!!!!!")
         Log.d("ITM","0744 sua")
     }
 }
