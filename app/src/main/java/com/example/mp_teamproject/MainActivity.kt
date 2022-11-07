@@ -12,10 +12,5 @@ class MainActivity : AppCompatActivity() {
         //HI HELLO
         //can you see
         Log.d("ITM","jina test2!!!!")
-        Log.d("ITM","merge?")
-        Log.d("ITM","HI")
-        Log.d("ITM","07시14분")
-        Log.d("ITM","수아바보")
-        Log.d("ITM","0727JINA SEE?")
     }
 }
