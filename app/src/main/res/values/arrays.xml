@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="job">
+        <item> Student </item>
+        <item> Professor </item>
+        <item> Intern </item>
+        <item> Office </item>
+        <item> Unemployed </item>
+        <item> etc </item>
+
+    </string-array>
+</resources>
