@@ -26,193 +26,259 @@
         app:srcCompat="@drawable/arrow" />
 
     <ScrollView
-        android:layout_width="410dp"
-        android:layout_height="504dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="64dp">
+        android:layout_width="409dp"
+        android:layout_height="516dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="65dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:id="@+id/linearLayout"
+            android:layout_width="405dp"
+            android:layout_height="516dp"
+            android:layout_marginTop="72dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="3dp">
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="35dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/line" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/editTitle"
-                android:layout_width="253dp"
-                android:layout_height="38dp"
-                android:layout_marginLeft="80dp"
-                android:layout_marginTop="-30dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
+                <TextView
+                    android:id="@+id/Name"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:background="#EBF0F3"
+                    android:gravity="center"
+                    android:text="Name"
+                    android:textColor="#4C4C4C"
+                    android:textSize="20sp"
+                    android:textStyle="bold|italic" />
+                <!--                android:background="@drawable/line"-->
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="40dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="-40dp"
-                android:text="Title"
-                android:textSize="18dp" />
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="2dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/line"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <EditText
+                    android:id="@+id/editTextTextPersonName"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="35dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/line" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="40dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="-30dp"
-                android:text="Writer"
-                android:textSize="18dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="2dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/line"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/Sex"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:background="#EBF0F3"
+                    android:gravity="center"
+                    android:text="Sex"
+                    android:textColor="#4C4C4C"
+                    android:textSize="20sp"
+                    android:textStyle="bold|italic" />
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="35dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/line" />
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="40dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="-30dp"
-                android:text="Institution"
-                android:textSize="18dp" />
+                    <RadioButton
+                        android:id="@+id/Sex_male"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:text="Male" />
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="2dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/line"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                    <RadioButton
+                        android:id="@+id/Sex_female"
+                        android:layout_width="258dp"
+                        android:layout_height="wrap_content"
+                        android:text="Female" />
+                </RadioGroup>
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="35dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/line" />
 
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="40dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="-30dp"
-                android:text="Purpose"
-                android:textSize="18dp" />
+            </LinearLayout>
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="2dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/line"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="35dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/line" />
+                <TextView
+                    android:id="@+id/Birthdate"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:background="#EBF0F3"
+                    android:gravity="center"
+                    android:text="Birthdate"
+                    android:textColor="#4C4C4C"
+                    android:textSize="20sp"
+                    android:textStyle="bold|italic" />
 
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="40dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="-30dp"
-                android:text="Category"
-                android:textSize="18dp" />
+                <EditText
+                    android:id="@+id/editTextTextPersonBirthdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="text" />
+            </LinearLayout>
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="2dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/line"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="35dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/line" />
+                <TextView
+                    android:id="@+id/Email"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:background="#EBF0F3"
+                    android:gravity="center"
+                    android:text="E-mail"
+                    android:textColor="#4C4C4C"
+                    android:textSize="20sp"
+                    android:textStyle="bold|italic" />
 
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="40dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="-30dp"
-                android:text="Period"
-                android:textSize="18dp" />
+                <EditText
+                    android:id="@+id/editTextTextPersonEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textEmailAddress" />
+            </LinearLayout>
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="2dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/line"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="35dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/line" />
+                <TextView
+                    android:id="@+id/Password"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:background="#EBF0F3"
+                    android:gravity="center"
+                    android:text="Password"
+                    android:textColor="#4C4C4C"
+                    android:textSize="20sp"
+                    android:textStyle="bold|italic" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="40dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="-30dp"
-                android:text="SurveyorInforelease"
-                android:textSize="18dp" />
+                <EditText
+                    android:id="@+id/editTextTextPersonPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="text" />
+            </LinearLayout>
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="2dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/line"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/Phone"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:background="#EBF0F3"
+                    android:gravity="center"
+                    android:text="Phone"
+                    android:textColor="#4C4C4C"
+                    android:textSize="20sp"
+                    android:textStyle="bold|italic" />
+
+                <EditText
+                    android:id="@+id/editTextTextPersonPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/Job"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:background="#EBF0F3"
+                    android:gravity="center"
+                    android:text="Job"
+                    android:textColor="#4C4C4C"
+                    android:textSize="20sp"
+                    android:textStyle="bold|italic" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:entries="@array/job" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/Affiliation"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:background="#EBF0F3"
+                    android:gravity="center"
+                    android:text="Affiliation"
+                    android:textColor="#4C4C4C"
+                    android:textSize="20sp"
+                    android:textStyle="bold|italic" />
+
+                <EditText
+                    android:id="@+id/editTextTextPersonAffiliation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/Region"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:background="#EBF0F3"
+                    android:gravity="center"
+                    android:text="Region"
+                    android:textColor="#4C4C4C"
+                    android:textSize="20sp"
+                    android:textStyle="bold|italic" />
+
+                <EditText
+                    android:id="@+id/editTextTextPersonRegion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="text" />
+            </LinearLayout>
+
 
         </LinearLayout>
     </ScrollView>
@@ -224,6 +290,15 @@
         android:text="Register"
         tools:layout_editor_absoluteX="158dp"
         tools:layout_editor_absoluteY="582dp" />
+
+    <View
+        android:layout_width="7dp"
+        android:layout_height="35dp"
+        android:background="@color/line"
+        tools:layout_editor_absoluteX="84dp"
+        tools:layout_editor_absoluteY="634dp" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
