@@ -320,36 +320,38 @@
                         android:layout_height="match_parent">
 
                         <TableRow
+                            android:layout_marginStart="60dp"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" >
+                            android:layout_height="31dp">
 
                             <CheckBox
                                 android:id="@+id/checkBoxAge"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="80dp"
+                                android:layout_height="30dp"
                                 android:text="Age" />
 
                             <CheckBox
                                 android:id="@+id/checkBoxSex"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="80dp"
+                                android:layout_height="30dp"
                                 android:text="Sex" />
                         </TableRow>
 
                         <TableRow
+                            android:layout_marginStart="60dp"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent" >
 
                             <CheckBox
                                 android:id="@+id/checkBoxJob"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="80dp"
+                                android:layout_height="30dp"
                                 android:text="Job" />
 
                             <CheckBox
                                 android:id="@+id/checkBoxRegion"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="80dp"
+                                android:layout_height="30dp"
                                 android:text="Region" />
                         </TableRow>
 
@@ -372,7 +374,7 @@
                     <TextView
                         android:id="@+id/Content"
                         android:layout_width="100dp"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
                         android:background="#EBF0F3"
                         android:gravity="center"
                         android:text="Survey\nContent"
@@ -404,29 +406,9 @@
             </LinearLayout>
         </LinearLayout>
 
-
-
     </ScrollView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"></LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"></LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"></LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"></LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
