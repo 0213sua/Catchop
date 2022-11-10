@@ -35,4 +35,23 @@
         android:textSize="23dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ScrollView
+        android:layout_width="412dp"
+        android:layout_height="605dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="66dp"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:id="@+id/root_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"></LinearLayout>
+    </ScrollView>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
