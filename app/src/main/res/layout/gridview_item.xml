@@ -7,8 +7,8 @@
         android:id="@+id/gridview_img"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:src=""/>
+        android:layout_gravity="center" />
+<!--        android:src=""/>-->
 
     <TextView
         android:id="@+id/gridview_text"

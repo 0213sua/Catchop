@@ -10,16 +10,17 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val binding = ActivityLoginBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_login)
+        setContentView(binding.root)
 
-        binding.Login.setOnClickListener{
+        binding.LoginBtn.setOnClickListener{
             val intent = Intent(this,Main::class.java)
             startActivity(intent)
         }
 
-        binding.SignUp.setOnClickListener{
+        binding.SignUpBtn.setOnClickListener{
             val intent = Intent(this,SignUp::class.java)
             startActivity(intent)
         }
+
     }
 }
