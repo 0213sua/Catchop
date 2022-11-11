@@ -6,11 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".Main">
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:id="@+id/fragments_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/navigationview"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_weight="1" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigationview"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="This is main activity"
-        tools:layout_editor_absoluteX="159dp"
-        tools:layout_editor_absoluteY="322dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_weight="1"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:menu="@menu/menu"
+        tools:ignore="MissingConstraints"/>
+
+</RelativeLayout>
