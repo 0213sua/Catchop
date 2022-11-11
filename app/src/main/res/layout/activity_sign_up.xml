@@ -123,7 +123,7 @@
                 android:textStyle="bold|italic" />
 
             <EditText
-                android:id="@+id/editTextTextPersonEmail"
+                android:id="@+id/SignupID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -148,7 +148,7 @@
                 android:textStyle="bold|italic" />
 
             <EditText
-                android:id="@+id/editTextTextPersonPassword"
+                android:id="@+id/SignupPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
