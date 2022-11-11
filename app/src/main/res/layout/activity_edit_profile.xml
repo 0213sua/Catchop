@@ -263,7 +263,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/ModifyBtn"
+        android:id="@+id/SignupBtn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"

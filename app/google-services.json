@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "269730744361",
+    "project_id": "catchop-f9cdc",
+    "storage_bucket": "catchop-f9cdc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269730744361:android:6c0b39b9fba12fffbc7438",
+        "android_client_info": {
+          "package_name": "com.example.mp_teamproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "269730744361-kd7o8hc66135fv0f455957cpe3fe1uh7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mp_teamproject",
+            "certificate_hash": "772fe2c2394b2f76a83c815a9d044aa9008048cd"
+          }
+        },
+        {
+          "client_id": "269730744361-iaj4evq98ennl61gp7q128vjkelm152k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLWIrNl59u1dytUqYbQ-T3FScP9gB9Oaw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "269730744361-iaj4evq98ennl61gp7q128vjkelm152k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
