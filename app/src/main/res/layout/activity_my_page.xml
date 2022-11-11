@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#FFFFFF"
     tools:context=".MyPage">
 
 
     <LinearLayout
         android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         android:orientation="vertical"
@@ -23,15 +24,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@drawable/round_border">
+
 
             <ImageView
-                android:id="@+id/imageView13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/imageView12"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@tools:sample/avatars" />
+                android:layout_margin="20dp"
+                app:srcCompat="@drawable/user" />
 
             <TextView
                 android:id="@+id/NickNameTxt"
@@ -44,81 +47,197 @@
                 android:textColor="#3F51B5"
                 android:textSize="24sp"
                 android:textStyle="bold" />
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginTop="30dp">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/SurveyIposted"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:gravity="center_vertical"
-                android:text="Survey I posted"
-                android:textColor="#3A3A3A"
-                android:textSize="20sp"
-                android:layout_marginLeft="10dp"/>
-            <TextView
-                android:id="@+id/SurveyIanswered"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/SurveyIposted"
+                    android:layout_width="330dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Survey I posted"
+                    android:textColor="#3A3A3A"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/SIPbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:backgroundTint="#FEFEFE"
+                    android:text=">>"
+                    android:textColor="#818181"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:gravity="center_vertical"
-                android:text="Survey I answered"
-                android:textColor="#3A3A3A"
-                android:textSize="20sp"
-                android:layout_marginLeft="10dp"/>
-            <TextView
-                android:id="@+id/Bookmark"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/SurveyIanswered"
+                    android:layout_width="330dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Survey I answered"
+                    android:textColor="#3A3A3A"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/SIAbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:backgroundTint="#FEFEFE"
+                    android:text=">>"
+                    android:textColor="#818181"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:gravity="center_vertical"
-                android:text="Bookmark"
-                android:textColor="#3A3A3A"
-                android:textSize="20sp"
-                android:layout_marginLeft="10dp"/>
-            <TextView
-                android:id="@+id/mp_Bookmark"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/mp_Bookmark"
+                    android:layout_width="330dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Bookmark"
+                    android:textColor="#3A3A3A"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/BMbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:backgroundTint="#FEFEFE"
+                    android:text=">>"
+                    android:textColor="#818181"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:gravity="center_vertical"
-                android:text="Bookmark"
-                android:textColor="#3A3A3A"
-                android:textSize="20sp"
-                android:layout_marginLeft="10dp"/>
-            <TextView
-                android:id="@+id/EditProfile"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/EditProfile"
+                    android:layout_width="330dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Edit Profile"
+                    android:textColor="#3A3A3A"
+                    android:textSize="20sp"
+                    tools:ignore="DuplicateIds" />
+
+                <Button
+                    android:id="@+id/EPbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:backgroundTint="#FEFEFE"
+                    android:text=">>"
+                    android:textColor="#818181"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:gravity="center_vertical"
-                android:text="Edit Profile"
-                android:textColor="#3A3A3A"
-                android:textSize="20sp"
-                android:layout_marginLeft="10dp"
-                tools:ignore="DuplicateIds" />
-            <TextView
-                android:id="@+id/mp_Logout"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/mp_Logout"
+                    android:layout_width="330dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Logout Catchop"
+                    android:textColor="#3A3A3A"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/LAbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:backgroundTint="#FEFEFE"
+                    android:text=">>"
+                    android:textColor="#818181"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:gravity="center_vertical"
-                android:text="Logout Catchop"
-                android:textColor="#3A3A3A"
-                android:textSize="20sp"
-                android:layout_marginLeft="10dp"/>
-            <TextView
-                android:id="@+id/DeleteMyAccount"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:gravity="center_vertical"
-                android:text="Delete my account"
-                android:textColor="#3A3A3A"
-                android:textSize="20sp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/DeleteMyAccount"
+                    android:layout_width="330dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Delete my account"
+                    android:textColor="#3A3A3A"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/DMAbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:backgroundTint="#FEFEFE"
+                    android:text=">>"
+                    android:textColor="#818181"
+                    android:textSize="24sp" />
+            </LinearLayout>
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/Catchop"
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="176dp"
+            android:layout_marginTop="92dp"
+            android:layout_marginEnd="177dp"
+            android:fontFamily="cursive"
+            android:text="by Catchop"
+            android:textColor="#F81919"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
