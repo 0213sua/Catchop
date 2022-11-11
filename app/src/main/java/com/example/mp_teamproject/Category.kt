@@ -12,6 +12,7 @@ class Category : AppCompatActivity() {
         val binding = ActivityCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Log.d("ITM","this is cateogry activity")
+
+
     }
 }
