@@ -365,7 +365,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-a
+                a
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -393,16 +394,50 @@ a
                 </LinearLayout>
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-<!--                여기 survey 추가될 예정-->
-                <ImageButton
-                    android:id="@+id/imageButton"
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/URI"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:background="#EBF0F3"
+                        android:gravity="center"
+                        android:text="URI"
+                        android:textColor="#4C4C4C"
+                        android:textSize="20sp"
+                        android:textStyle="bold|italic" />
+
+                    <EditText
+                        android:id="@+id/editURI"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:text="uri" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    android:text="Button" />
             </LinearLayout>
         </LinearLayout>
 
