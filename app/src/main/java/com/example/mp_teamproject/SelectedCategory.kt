@@ -10,5 +10,6 @@ class SelectedCategory : AppCompatActivity() {
 
         val binding = ActivitySelectedCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        
     }
 }
