@@ -7,48 +7,43 @@ import android.widget.Toast
 import com.example.mp_teamproject.databinding.ActivityLoginBinding
 import com.example.mp_teamproject.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 
 
 class SignUp : AppCompatActivity() {
-    private var auth : FirebaseAuth? = null
+    private lateinit var auth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        auth = Firebase.auth
 
         val binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        auth = FirebaseAuth.getInstance()
+
         binding.SUSignupBtn.setOnClickListener {
-            createAccount(binding.SignupID.toString(),binding.SignupPassword.toString())
-
-        }
-
-
+            createAccount(binding.SignupID.text.toString().trim(),binding.SignupPassword.text.toString().trim())
+       }
     }
 
     private fun createAccount(email: String, password: String) {
+        auth.createUserWithEmailAndPassword(email,password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this,"회원가입 성공", Toast.LENGTH_SHORT).show()
+                    val user = auth.currentUser
 
-        if (email.isNotEmpty() && password.isNotEmpty()) {
-            auth?.createUserWithEmailAndPassword(email, password)
-                ?.addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        Toast.makeText(
-                            this, "계정 생성 완료.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        finish() // 가입창 종료
-                    } else {
-                        Toast.makeText(
-                            this, "계정 생성 실패",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                } else {
+                    Toast.makeText(this, "회원가입 실패", Toast.LENGTH_SHORT).show()
+
                 }
-        }
+            }
+            .addOnFailureListener {
+                Toast.makeText(this,"회원가입 실패", Toast.LENGTH_SHORT).show()
+            }
     }
 
 }

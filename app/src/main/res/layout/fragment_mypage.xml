@@ -3,13 +3,231 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MypageFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Mypage"
-        android:textSize="50dp"/>
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/round_border">
+
+
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:layout_margin="20dp"
+                app:srcCompat="@drawable/user" />
+
+            <TextView
+                android:id="@+id/NickNameTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="NickName, hello !"
+                android:textAlignment="center"
+                android:textColor="#3F51B5"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/layout_outline">
+
+                <TextView
+                    android:id="@+id/SurveyIposted"
+                    android:layout_width="330dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Survey I posted"
+                    android:textColor="#3A3A3A"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/SIPbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:backgroundTint="#FEFEFE"
+                    android:text=">>"
+                    android:textColor="#818181"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/layout_outline">
+
+                <TextView
+                    android:id="@+id/SurveyIanswered"
+                    android:layout_width="330dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Survey I answered"
+                    android:textColor="#3A3A3A"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/SIAbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:backgroundTint="#FEFEFE"
+                    android:text=">>"
+                    android:textColor="#818181"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/layout_outline">
+
+                <TextView
+                    android:id="@+id/mp_Bookmark"
+                    android:layout_width="330dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Bookmark"
+                    android:textColor="#3A3A3A"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/BMbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:backgroundTint="#FEFEFE"
+                    android:text=">>"
+                    android:textColor="#818181"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/layout_outline">
+
+                <TextView
+                    android:id="@+id/EditProfile"
+                    android:layout_width="330dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Edit Profile"
+                    android:textColor="#3A3A3A"
+                    android:textSize="20sp"
+                    tools:ignore="DuplicateIds" />
+
+                <Button
+                    android:id="@+id/EPbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:backgroundTint="#FEFEFE"
+                    android:text=">>"
+                    android:textColor="#818181"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/layout_outline">
+
+                <TextView
+                    android:id="@+id/mp_Logout"
+                    android:layout_width="330dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Logout Catchop"
+                    android:textColor="#3A3A3A"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/LObtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:backgroundTint="#FEFEFE"
+                    android:text=">>"
+                    android:textColor="#818181"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/layout_outline">
+
+                <TextView
+                    android:id="@+id/DeleteMyAccount"
+                    android:layout_width="330dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Delete my account"
+                    android:textColor="#3A3A3A"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/DMAbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:backgroundTint="#FEFEFE"
+                    android:text=">>"
+                    android:textColor="#818181"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 </FrameLayout>
