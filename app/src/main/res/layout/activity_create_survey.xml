@@ -71,13 +71,12 @@
                         android:textStyle="bold|italic" />
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName2"
+                        android:id="@+id/titleText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="Name" />
+                        android:inputType="textPersonName" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -109,13 +108,13 @@
                         android:orientation="horizontal">
 
                         <EditText
-                            android:id="@+id/editTextTextPersonName3"
+                            android:id="@+id/writerText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ems="10"
-                            android:inputType="textPersonName"
-                            android:text="Name" />
+                            android:hint="Name"
+                            android:inputType="textPersonName" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -170,13 +169,12 @@
                         android:textStyle="bold|italic" />
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName4"
+                        android:id="@+id/InstitutionText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="Name" />
+                        android:inputType="textPersonName" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -203,13 +201,12 @@
                         android:textStyle="bold|italic" />
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName5"
+                        android:id="@+id/purposeText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="Name" />
+                        android:inputType="textPersonName" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -236,10 +233,11 @@
                         android:textStyle="bold|italic" />
 
                     <Spinner
-                        android:id="@+id/spinner2"
+                        android:id="@+id/categorySpinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
+
                 </LinearLayout>
 
             </LinearLayout>
@@ -266,13 +264,13 @@
                         android:textStyle="bold|italic" />
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName6"
+                        android:id="@+id/startDate"
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="Name" />
+                        android:hint="2000.01.01"
+                        android:inputType="textPersonName" />
 
                     <TextView
                         android:id="@+id/textView5"
@@ -282,13 +280,13 @@
                         android:text="~" />
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName7"
+                        android:id="@+id/endDate"
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="Name" />
+                        android:hint="2000.01.01"
+                        android:inputType="textPersonName" />
 
                 </LinearLayout>
 
@@ -384,13 +382,12 @@
                         android:textStyle="bold|italic" />
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName8"
+                        android:id="@+id/contentText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="Name" />
+                        android:inputType="textPersonName" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -417,13 +414,12 @@
                         android:textStyle="bold|italic" />
 
                     <EditText
-                        android:id="@+id/editURI"
+                        android:id="@+id/uriText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="uri" />
+                        android:inputType="textPersonName" />
                 </LinearLayout>
 
             </LinearLayout>
