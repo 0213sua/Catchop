@@ -49,7 +49,7 @@ class CategoryFragment : Fragment() {
         }
         binding.imgv4.setOnClickListener {
             val intent = Intent(this@CategoryFragment.requireContext(),SelectedCategory::class.java)
-            intent.putExtra("category_name1", "Traffic")
+            intent.putExtra("category_name1", "Agri-Animal-Fish")
             startActivity(intent)
         }
         binding.imgv5.setOnClickListener {
@@ -59,22 +59,22 @@ class CategoryFragment : Fragment() {
         }
         binding.imgv6.setOnClickListener {
             val intent = Intent(this@CategoryFragment.requireContext(),SelectedCategory::class.java)
-            intent.putExtra("category_name1", "Agri-Animal-Fish")
+            intent.putExtra("category_name1", "Culture & Tourism")
             startActivity(intent)
         }
         binding.imgv7.setOnClickListener {
             val intent = Intent(this@CategoryFragment.requireContext(),SelectedCategory::class.java)
-            intent.putExtra("category_name1", "Culture & Tourism")
+            intent.putExtra("category_name1", "Health & Medical")
             startActivity(intent)
         }
         binding.imgv8.setOnClickListener {
             val intent = Intent(this@CategoryFragment.requireContext(),SelectedCategory::class.java)
-            intent.putExtra("category_name1", "Health & Medical")
+            intent.putExtra("category_name1", "Food")
             startActivity(intent)
         }
         binding.imgv9.setOnClickListener {
             val intent = Intent(this@CategoryFragment.requireContext(),SelectedCategory::class.java)
-            intent.putExtra("category_name1", "Food")
+            intent.putExtra("category_name1", "Logistics")
             startActivity(intent)
         }
 
