@@ -27,7 +27,7 @@
 
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/registerBtn"
         android:layout_width="117dp"
         android:layout_height="50dp"
         android:layout_marginStart="144dp"

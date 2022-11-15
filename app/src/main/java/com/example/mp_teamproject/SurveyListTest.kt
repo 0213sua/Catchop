@@ -1,5 +1,6 @@
 package com.example.mp_teamproject
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -23,6 +24,12 @@ class SurveyListTest : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        binding.floatingBtn.setOnClickListener {
+            //save explicit intent
+            val create = Intent(this, CreateSurvey::class.java)
+            startActivity(create)
+        }
 
         //값의 변경이 있는 경우의 이벤트 리스너 추가
         ref.addValueEventListener(object:ValueEventListener{
