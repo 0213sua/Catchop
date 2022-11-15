@@ -31,7 +31,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         // Inflate the layout for this fragment
         val binding = FragmentHomeBinding.inflate(inflater,container,false)
 
-        binding.addBtn.setOnClickListener {
+        binding.addBtn1.setOnClickListener {
             val intent = Intent(this@HomeFragment.requireContext(),CreateSurvey::class.java)
             startActivity(intent)
         }

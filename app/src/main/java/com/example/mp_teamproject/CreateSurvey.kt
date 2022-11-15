@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.example.mp_teamproject.databinding.ActivityCreateSurveyBinding
-import com.google.firebase.ktx.Firebase
+//import com.google.firebase.ktx.Firebase
 
 
 class CreateSurvey : AppCompatActivity() {
