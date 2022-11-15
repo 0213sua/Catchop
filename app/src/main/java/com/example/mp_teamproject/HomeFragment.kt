@@ -1,12 +1,14 @@
 package com.example.mp_teamproject
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mp_teamproject.databinding.FragmentCategoryBinding
 import com.example.mp_teamproject.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -29,18 +31,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         // Inflate the layout for this fragment
         val binding = FragmentHomeBinding.inflate(inflater,container,false)
 
-        /**
-
-        val data = mutableListOf<String>()
-        for(i in 1..9){
-            data.add("Item $i")
+        binding.addBtn.setOnClickListener {
+            val intent = Intent(this@HomeFragment.requireContext(),CreateSurvey::class.java)
+            startActivity(intent)
         }
-        val adapter = MyAdapter(data)
-        val layoutManager = LinearLayoutManager(activity)
-        binding.recyclerview.layoutManager = layoutManager
-        binding.recyclerview.adapter = adapter
-         *
-         */
         return binding.root
 
     }
