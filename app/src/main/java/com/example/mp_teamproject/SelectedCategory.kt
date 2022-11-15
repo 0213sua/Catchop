@@ -1,5 +1,6 @@
 package com.example.mp_teamproject
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -18,6 +19,12 @@ class SelectedCategory : AppCompatActivity() {
         }else{
             Toast.makeText(this, "Error!", Toast.LENGTH_SHORT).show()
         }
+
+        binding.addBtn2.setOnClickListener {
+            val intent = Intent(this, CreateSurvey::class.java)
+            startActivity(intent)
+        }
+        //해당 카테고리의 설문지 생성 페이지로 set 해야 할 지
         
     }
 }
