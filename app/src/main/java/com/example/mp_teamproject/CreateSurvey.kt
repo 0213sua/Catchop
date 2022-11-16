@@ -11,6 +11,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mp_teamproject.databinding.ActivityCreateSurveyBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -144,4 +145,9 @@ class CreateSurvey : AppCompatActivity() {
             finish()
         }
     }
+
+    // recycler view 에서 사용하는 view 홀더 클래스
+//    inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+//        val imageView = itemView.imageView
+//    }
 }
