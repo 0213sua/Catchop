@@ -36,7 +36,7 @@
 
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/SU_nameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:ems="10"
@@ -63,13 +63,15 @@
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:id= "@+id/SU_sexRadio">
 
                 <RadioButton
                     android:id="@+id/Sex_male"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:text="Male" />
+                    android:text="Male"
+                    android:checked="true"/>
 
                 <RadioButton
                     android:id="@+id/Sex_female"
@@ -122,7 +124,7 @@
                 android:textStyle="bold|italic" />
 
             <EditText
-                android:id="@+id/SignupID"
+                android:id="@+id/SU_emailEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

@@ -4,11 +4,13 @@ import android.R
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
 import android.text.Editable
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.get
 import com.example.mp_teamproject.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -25,8 +27,13 @@ class SignUp : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         binding.SUSignupBtn.setOnClickListener {
+            if (TextUtils.isEmpty(binding.SUNameEditText.getText())) { binding.SUSignupBtn.isEnabled = false }
+            if (TextUtils.isEmpty(binding.SUEmailEditText.getText())) { binding.SUSignupBtn.isEnabled = false }
+            if (TextUtils.isEmpty(binding.SUPhoneEditText.getText())) { binding.SUSignupBtn.isEnabled = false }
+
+
             createAccount(
-                binding.SignupID.text.toString().trim(),
+                binding.SUEmailEditText.text.toString().trim(),
                 binding.SUPwcheckEditText.text.toString().trim()
             )
         }
@@ -52,6 +59,8 @@ class SignUp : AppCompatActivity() {
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
         })
+
+
     }
 
 
@@ -64,7 +73,6 @@ class SignUp : AppCompatActivity() {
 
                 } else {
                     Toast.makeText(this, "회원가입 실패", Toast.LENGTH_SHORT).show()
-
                 }
             }
             .addOnFailureListener {
