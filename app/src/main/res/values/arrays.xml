@@ -2,10 +2,12 @@
 <resources>
     <string-array name="job">
         <item> Student </item>
+        <item> College Student </item>
+        <item> Graduate Student </item>
         <item> Professor </item>
         <item> Intern </item>
-        <item> Office </item>
-        <item> Unemployed </item>
+        <item> Office Worker</item>
+        <item> Freelancer </item>
         <item> etc </item>
 
     </string-array>
