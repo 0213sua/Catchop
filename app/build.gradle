@@ -6,19 +6,16 @@ plugins {
 
 android {
     namespace 'com.example.mp_teamproject'
-    compileSdk 32
+    compileSdk 33//32
 
     defaultConfig {
         applicationId "com.example.mp_teamproject"
         minSdk 21
-        targetSdk 32
+        targetSdk 33 //33
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-    buildFeatures{
-        viewBinding true
     }
 
     buildTypes {
@@ -40,31 +37,30 @@ android {
 }
 
 dependencies {
-    //add
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    //
-    implementation 'androidx.core:core-ktx:1.7.0'
+
+    implementation 'androidx.core:core-ktx:1.9.0' //1.7.0
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.annotation:annotation:1.3.0'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
-    //firebase
-    implementation 'com.google.firebase:firebase-auth-ktx:21.0.3'
-    implementation 'com.google.firebase:firebase-core:20.0.4'
-    implementation 'com.google.firebase:firebase-database:20.0.4'
-    implementation 'com.google.firebase:firebase-database-ktx:20.0.4'
     testImplementation 'junit:junit:4.13.2'
-    implementation 'com.google.android.material:material:1.7.0'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4' //1.1.3
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0' //3.4.5
+
+    //add
+    implementation 'androidx.annotation:annotation:1.5.0' //1.3.0
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1' //2.4.1
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1' //2.4.1
+
+    //firebase
+    implementation 'com.google.firebase:firebase-auth-ktx:21.1.0' //21.0.3
+    implementation 'com.google.firebase:firebase-core:21.1.1' //20.0.4
+    implementation 'com.google.firebase:firebase-database:20.1.0' //20.0.4
+//    implementation 'com.google.firebase:firebase-database-ktx'
+
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     //material design implementation
-    implementation 'com.google.android.material:material:1.2.1'
-    implementation 'androidx.recyclerview:recyclerview-selection:1.1.0'
+//    implementation 'com.google.android.material:material:1.2.1'
     implementation platform('com.google.firebase:firebase-bom:31.0.2')
     implementation 'com.google.firebase:firebase-analytics-ktx'
 }
