@@ -313,47 +313,24 @@
                         android:textSize="20sp"
                         android:textStyle="bold|italic" />
 
-                    <TableLayout
+                    <RadioGroup
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
 
-                        <TableRow
-                            android:layout_marginStart="60dp"
+                        <RadioButton
+                            android:id="@+id/CS_yesRadio"
+                            android:layout_marginStart="50dp"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:text="YES" />
+
+                        <RadioButton
+                            android:id="@+id/CS_noRadio"
                             android:layout_width="match_parent"
-                            android:layout_height="31dp">
-
-                            <CheckBox
-                                android:id="@+id/checkBoxAge"
-                                android:layout_width="80dp"
-                                android:layout_height="30dp"
-                                android:text="Age" />
-
-                            <CheckBox
-                                android:id="@+id/checkBoxSex"
-                                android:layout_width="80dp"
-                                android:layout_height="30dp"
-                                android:text="Sex" />
-                        </TableRow>
-
-                        <TableRow
-                            android:layout_marginStart="60dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" >
-
-                            <CheckBox
-                                android:id="@+id/checkBoxJob"
-                                android:layout_width="80dp"
-                                android:layout_height="30dp"
-                                android:text="Job" />
-
-                            <CheckBox
-                                android:id="@+id/checkBoxRegion"
-                                android:layout_width="80dp"
-                                android:layout_height="30dp"
-                                android:text="Region" />
-                        </TableRow>
-
-                    </TableLayout>
+                            android:layout_height="match_parent"
+                            android:text="NO" />
+                    </RadioGroup>
 
                 </LinearLayout>
 

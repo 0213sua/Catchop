@@ -15,6 +15,15 @@
         android:layout_height="match_parent">
 
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="402dp"
+            android:layout_height="142dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/background"
+            tools:layout_editor_absoluteX="2dp"
+            tools:layout_editor_absoluteY="0dp" />
+
         <TextView
             android:id="@+id/titleText"
             android:layout_width="wrap_content"
