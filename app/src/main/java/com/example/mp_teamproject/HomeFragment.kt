@@ -68,7 +68,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val adapter = MyAdapter(datas)
         binding.recyclerView1.adapter = adapter
 
-        binding.addBtn1.setOnClickListener {
+        binding.floatingBtn1.setOnClickListener {
             val intent = Intent(this@HomeFragment.requireContext(),CreateSurvey::class.java)
             startActivity(intent)
         }

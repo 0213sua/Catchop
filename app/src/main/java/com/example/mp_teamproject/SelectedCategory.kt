@@ -20,7 +20,7 @@ class SelectedCategory : AppCompatActivity() {
             Toast.makeText(this, "Error!", Toast.LENGTH_SHORT).show()
         }
 
-        binding.addBtn2.setOnClickListener {
+        binding.floatingBtn2.setOnClickListener {
             val intent = Intent(this, CreateSurvey::class.java)
             startActivity(intent)
         }
