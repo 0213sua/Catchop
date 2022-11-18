@@ -26,7 +26,6 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:layout_weight="12"
-            android:background="@drawable/edittext_rounded_corner_rectangle"
 
             android:text=""
             android:textSize="30dp"
