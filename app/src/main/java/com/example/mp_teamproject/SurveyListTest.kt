@@ -1,22 +1,18 @@
 package com.example.mp_teamproject
 
 import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mp_teamproject.databinding.ActivitySelectedCategoryBinding
 import com.example.mp_teamproject.databinding.ActivitySurveyListTestBinding
+import com.example.mp_teamproject.databinding.SurveyPostBinding
 import com.google.firebase.database.*
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.database.ChildEventListener
 
 import com.google.firebase.database.DataSnapshot
@@ -26,6 +22,37 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_survey_list_test.*
 import kotlinx.android.synthetic.main.survey_post.view.*
 import java.util.*
+// recycler view에서 사용하는 view 홀더 클래스
+class MyViewHolder(val binding: SurveyPostBinding): RecyclerView.ViewHolder(binding.root)
+
+class MyAdapter(val surveys: MutableList<SurveyData>):
+    RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+    // 뷰 홀더 준비 위해 자동 호출
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
+            RecyclerView.ViewHolder = MyViewHolder(SurveyPostBinding.inflate(LayoutInflater.from(parent.context),parent, false))
+
+    // 각 항목 구성 위해 호출
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+
+        val binding = (holder as MyViewHolder).binding
+
+        val survey = surveys[position]
+
+        // 카드에 제목을 세팅
+        binding.titleText.text = survey.title
+        // 설문조사 기간
+        binding.dateText.text = survey.startDate+" ~ "+survey.endDate
+
+        // 뷰에 이벤트 추가 -> survey detail로 넘어가야 함 + 북마크 선택시 이미지 변경
+//        binding.itemRoot.setOnClickListener {
+//
+//        }
+
+    }
+    // 항목 개수 판단 위해 자동 호출
+    override fun getItemCount(): Int = surveys.size
+
+}
 
 class SurveyListTest : AppCompatActivity() {
     val binding by lazy { ActivitySurveyListTestBinding.inflate(layoutInflater)}
@@ -52,7 +79,8 @@ class SurveyListTest : AppCompatActivity() {
         layoutManager.stackFromEnd = true
 
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = MyAdapter()
+        val adapter = MyAdapter(surveys)
+        binding.recyclerView.adapter = adapter
 
         //firebase에서 survey 데이터를 가져온 후 surveys 변수에 저장
         FirebaseDatabase.getInstance().getReference("/Surveys")
@@ -83,11 +111,11 @@ class SurveyListTest : AppCompatActivity() {
             override fun onChildChanged(snapshot: DataSnapshot, prevChildKey: String?) {
                 snapshot?.let { snapshot ->
                     // snapshop 의 데이터를 Post 객체로 가져옴
-                    val post = snapshot.getValue(SurveyData::class.java)
-                    post?.let { post ->
+                    val survey = snapshot.getValue(SurveyData::class.java)
+                    survey?.let { survey ->
                         // 글이 변경된 경우 글의 앞의 데이터 인덱스에 데이터를 변경한다.
                         val prevIndex = surveys.map { it.surveyId }.indexOf(prevChildKey)
-                        surveys[prevIndex + 1] = post
+                        surveys[prevIndex + 1] = survey
                         recyclerView.adapter?.notifyItemChanged(prevIndex + 1)
                     }
                 }
@@ -95,7 +123,7 @@ class SurveyListTest : AppCompatActivity() {
 
             override fun onChildRemoved(snapshot: DataSnapshot) {
                 snapshot?.let {
-                    // snapshot 의 데이터를 Post 객체로 가져옴
+                    // snapshot 의 데이터를 surveyData 객체로 가져옴
                     val survey = snapshot.getValue(SurveyData::class.java)
                     //
                     survey?.let { survey ->
@@ -137,38 +165,5 @@ class SurveyListTest : AppCompatActivity() {
             }
         })
     }
-    // recycler view에서 사용하는 view 홀더 클래스
-    inner class MyViewHolder(itemVeiw: View) : RecyclerView.ViewHolder(binding.root){
-        // 글의 배경 이미지뷰
-        val imageView : ImageView = itemView.imageView
-        //설문지 제목 텍스트 뷰
-        val titleText : TextView = itemView.titleText
-        //설문지 기간 텍스트 뷰
-        val dateText : TextView = itemView.dateText
-        // 북마크 이미지뷰
-        val bookmarkView : ImageView = itemView.bookmarkView
-    }
 
-    //recycler view의 어댑터 클래스
-    inner class MyAdapter : RecyclerView.Adapter<MyViewHolder>(){
-        // recyclerview에서 각 row에서 그릴 viewHolder를 생성할 때 불리는 메소드
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-            return MyViewHolder(LayoutInflater.from(this@SurveyListTest).inflate(R.layout.survey_post,parent,false))
-        }
-
-        //recycler view에서 몇개의 행을 그릴지 기준이 되는 메소드
-        override fun getItemCount(): Int {
-            return surveys.size
-        }
-
-        //각 행의 포지션에서 그려야할 ViewHolder UI에 데이터를 적용하는 메소드
-        override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-            val survey = surveys[position]
-            // 카드에 제목을 세팅
-            holder.titleText.text = survey.title
-            // 설문조사 기간
-            holder.dateText.text = survey.startDate+" ~ "+survey.endDate
-            // 북마크 -> 설문지 만들때 하는게 아니니까 여기서 x
-        }
-    }
 }
