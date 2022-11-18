@@ -34,30 +34,26 @@ class MypageFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentMypageBinding.inflate(layoutInflater)
 
-        binding.LObtn.setOnClickListener {
+        binding.MPLogoutBtn.setOnClickListener {
             val intent = Intent(this@MypageFragment.requireContext(),Login::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             auth?.signOut()
-            Toast.makeText( this.context, "로그아웃 성공", Toast.LENGTH_SHORT
+            Toast.makeText( this.context, "로그아웃되었습니다.", Toast.LENGTH_SHORT
             ).show()
         }
 
-        binding.DMAbtn.setOnClickListener {
+        binding.MPDeleteABtn.setOnClickListener {
             val intent = Intent(this@MypageFragment.requireContext(),Login::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
-            auth?.signOut()
-            Toast.makeText( this.context, "로그아웃 성공", Toast.LENGTH_SHORT
+            auth?.currentUser?.delete()
+            Toast.makeText( this.context, "회원 탈퇴가 완료되었습니다.", Toast.LENGTH_SHORT
             ).show()
         }
 
         return binding.root
     }
 
-    companion object {
-        fun newInstance():MypageFragment{
-            return MypageFragment()
-        }
-    }
+
 }

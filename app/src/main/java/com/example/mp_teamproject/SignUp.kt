@@ -1,16 +1,13 @@
 package com.example.mp_teamproject
 
-import android.R
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
-import android.view.View
-import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.get
 import com.example.mp_teamproject.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -24,12 +21,28 @@ class SignUp : AppCompatActivity() {
         val binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val actionBar: ActionBar? = supportActionBar
+
+        actionBar?.setTitle("Create Account")
+
+
+        actionBar?.setDisplayHomeAsUpEnabled(true) //뒤로가기버튼
+
+        actionBar?.setDisplayShowHomeEnabled(true)
+
         auth = FirebaseAuth.getInstance()
 
+
         binding.SUSignupBtn.setOnClickListener {
-            if (TextUtils.isEmpty(binding.SUNameEditText.getText())) { binding.SUSignupBtn.isEnabled = false }
-            if (TextUtils.isEmpty(binding.SUEmailEditText.getText())) { binding.SUSignupBtn.isEnabled = false }
-            if (TextUtils.isEmpty(binding.SUPhoneEditText.getText())) { binding.SUSignupBtn.isEnabled = false }
+            if (TextUtils.isEmpty(binding.SUNameEditText.getText())) {
+                Toast.makeText(this,"Plz put your name", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener }
+            if (TextUtils.isEmpty(binding.SUEmailEditText.getText())) {
+                Toast.makeText(this,"Plz put your email", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener }
+            if (TextUtils.isEmpty(binding.SUPhoneEditText.getText())) {
+                Toast.makeText(this,"Plz put your phone number", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener }
 
 
             createAccount(
@@ -68,15 +81,22 @@ class SignUp : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(email,password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(this,"회원가입 성공", Toast.LENGTH_SHORT).show()
-                    val user = auth.currentUser
+                    Toast.makeText(this,"Member registration Successful !", Toast.LENGTH_SHORT).show()
+                    //val firebaseUser: FirebaseUser? = auth.currentUser
+
+//                    val user = auth.currentUser
+//                    val hashMap: HashMap<String, Any> = HashMap()
+//                    hashMap["email"] = email
+//                    hashMap["pw"] = password
+//                    hashMap["name"] = name
+
 
                 } else {
-                    Toast.makeText(this, "회원가입 실패", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Member registration Failed !", Toast.LENGTH_SHORT).show()
                 }
             }
             .addOnFailureListener {
-                Toast.makeText(this,"회원가입 실패", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Member registration Failed !", Toast.LENGTH_SHORT).show()
             }
     }
 
