@@ -8,45 +8,78 @@
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Home"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- TODO: Update blank fragment layout -->
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/fin_btn"
+    <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="#252D70"
-        android:text="Finished Survey"
-        android:textColor="@color/white"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/on_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginEnd="20dp"
-        android:background="#5564E8"
-        android:text="ONGOING SURVEY"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/fin_btn"
-        app:layout_constraintHorizontal_bias="0.804"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/textView8"
+            android:layout_width="283dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="12"
+            android:background="@drawable/edittext_rounded_corner_rectangle"
+
+            android:text=""
+            android:textSize="30dp"
+
+            />
+
+        <ImageView
+            android:id="@+id/home_search_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:src="@android:drawable/ic_search_category_default" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_gravity="right"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/fin_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:layout_gravity="right"
+            android:background="#252D70"
+            android:text="Finished"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            tools:layout_editor_absoluteX="137dp"
+            tools:layout_editor_absoluteY="58dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/on_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginEnd="20dp"
+            android:background="#5564E8"
+            android:text="ONGOING"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            tools:layout_editor_absoluteY="58dp" />
+    </LinearLayout>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingBtn1"
@@ -65,13 +98,14 @@
         android:id="@+id/recyclerView1"
         android:layout_width="match_parent"
         android:layout_height="550dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="1dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/on_btn"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
         tools:listitem="@layout/item_main" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
