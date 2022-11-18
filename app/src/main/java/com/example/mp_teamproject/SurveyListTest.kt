@@ -32,7 +32,6 @@ class SurveyListTest : AppCompatActivity() {
 
     val surveys: MutableList<SurveyData> = mutableListOf()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -52,12 +51,12 @@ class SurveyListTest : AppCompatActivity() {
         // recyclerview의 아이템을 쌓는 순서를 끝부터 쌓게 함
         layoutManager.stackFromEnd = true
 
-        binding.recyclerView.layoutManager = layoutManager //binding 추가
+        binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.adapter = MyAdapter()
 
         //firebase에서 survey 데이터를 가져온 후 surveys 변수에 저장
-        FirebaseDatabase.getInstance().getReference("/Surveys").orderByChild("startDate").addChildEventListener(object :
-            ChildEventListener {
+        FirebaseDatabase.getInstance().getReference("/Surveys")
+            .orderByChild("startDate").addChildEventListener(object : ChildEventListener {
             //설문이 추가된 경우
             override fun onChildAdded(snapshot: DataSnapshot, prevChildKey: String?) {
                 snapshot?.let {snapshot->
@@ -77,6 +76,33 @@ class SurveyListTest : AppCompatActivity() {
                             //recycler view의 adapter에 글이 추가된 것을 알림
                             binding.recyclerView.adapter?.notifyItemInserted(prevIndex+1)
                         }
+                    }
+                }
+            }
+            // 설문지가 변경된 경우
+            override fun onChildChanged(snapshot: DataSnapshot, prevChildKey: String?) {
+                snapshot?.let { snapshot ->
+                    // snapshop 의 데이터를 Post 객체로 가져옴
+                    val post = snapshot.getValue(SurveyData::class.java)
+                    post?.let { post ->
+                        // 글이 변경된 경우 글의 앞의 데이터 인덱스에 데이터를 변경한다.
+                        val prevIndex = surveys.map { it.surveyId }.indexOf(prevChildKey)
+                        surveys[prevIndex + 1] = post
+                        recyclerView.adapter?.notifyItemChanged(prevIndex + 1)
+                    }
+                }
+            }
+
+            override fun onChildRemoved(snapshot: DataSnapshot) {
+                snapshot?.let {
+                    // snapshot 의 데이터를 Post 객체로 가져옴
+                    val survey = snapshot.getValue(SurveyData::class.java)
+                    //
+                    survey?.let { survey ->
+                        // 기존에 저장된 인덱스를 찾아서 해당 인덱스의 데이터를 삭제한다.
+                        val existIndex = surveys.map { it.surveyId }.indexOf(survey.surveyId)
+                        surveys.removeAt(existIndex)
+                        recyclerView.adapter?.notifyItemRemoved(existIndex)
                     }
                 }
             }
@@ -105,10 +131,10 @@ class SurveyListTest : AppCompatActivity() {
                     }
                 }
             }
-
-            //설문지가 삭제된 경우 (x)
-            //설문지 작성이 취소된 경우(x)
-
+            // 취소된 경우
+            override fun onCancelled(error: DatabaseError) {
+                error?.toException()?.printStackTrace()
+            }
         })
     }
     // recycler view에서 사용하는 view 홀더 클래스
