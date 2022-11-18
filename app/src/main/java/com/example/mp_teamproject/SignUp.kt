@@ -82,6 +82,7 @@ class SignUp : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this,"Member registration Successful !", Toast.LENGTH_SHORT).show()
+                    finish()
                     //val firebaseUser: FirebaseUser? = auth.currentUser
 
 //                    val user = auth.currentUser
