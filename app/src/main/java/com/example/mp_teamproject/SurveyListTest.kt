@@ -157,7 +157,7 @@ class SurveyListTest : AppCompatActivity() {
             return surveys.size
         }
 
-        // 각 행의 포지션에서 그려야할 ViewHolder UI 에 데이터를 적용하는 메소드
+        // 각 행의 포지션에서 그려야할 ViewHolder UI에 데이터를 적용하는 메소드
         override fun onBindViewHolder(holder: MyViewHodler, position: Int) {
             val survey = surveys[position]
             // 카드에 글을 세팅
