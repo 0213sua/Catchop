@@ -44,9 +44,9 @@ class MyAdapter(val surveys: MutableList<SurveyData>):
         binding.dateText.text = survey.startDate+" ~ "+survey.endDate
 
         // 뷰에 이벤트 추가 -> survey detail로 넘어가야 함 + 북마크 선택시 이미지 변경
-//        binding.itemRoot.setOnClickListener {
-//
-//        }
+        binding.imageView.setOnClickListener {
+            val intent = Intent()
+        }
 
     }
     // 항목 개수 판단 위해 자동 호출
