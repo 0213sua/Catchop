@@ -1,58 +1,29 @@
 package com.example.mp_teamproject
 
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mp_teamproject.databinding.ActivitySurveyListTestBinding
 import com.example.mp_teamproject.databinding.SurveyPostBinding
 import com.google.firebase.database.*
 import com.google.firebase.database.ChildEventListener
-
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-
 import kotlinx.android.synthetic.main.activity_survey_list_test.*
 import kotlinx.android.synthetic.main.survey_post.view.*
 import java.util.*
+
 // recycler view에서 사용하는 view 홀더 클래스
-class MyViewHolder(val binding: SurveyPostBinding): RecyclerView.ViewHolder(binding.root)
-
-class MyAdapter(val surveys: MutableList<SurveyData>):
-    RecyclerView.Adapter<RecyclerView.ViewHolder>(){
-    // 뷰 홀더 준비 위해 자동 호출
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
-            RecyclerView.ViewHolder = MyViewHolder(SurveyPostBinding.inflate(LayoutInflater.from(parent.context),parent, false))
-
-    // 각 항목 구성 위해 호출
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
-        val binding = (holder as MyViewHolder).binding
-
-        val survey = surveys[position]
-
-        // 카드에 제목을 세팅
-        binding.titleText.text = survey.title
-        // 설문조사 기간
-        binding.dateText.text = survey.startDate+" ~ "+survey.endDate
-
-        // 뷰에 이벤트 추가 -> survey detail로 넘어가야 함 + 북마크 선택시 이미지 변경
-        binding.imageView.setOnClickListener {
-            val intent = Intent()
-        }
-
-    }
-    // 항목 개수 판단 위해 자동 호출
-    override fun getItemCount(): Int = surveys.size
-
-}
 
 class SurveyListTest : AppCompatActivity() {
     val binding by lazy { ActivitySurveyListTestBinding.inflate(layoutInflater)}
@@ -79,8 +50,7 @@ class SurveyListTest : AppCompatActivity() {
         layoutManager.stackFromEnd = true
 
         binding.recyclerView.layoutManager = layoutManager
-        val adapter = MyAdapter(surveys)
-        binding.recyclerView.adapter = adapter
+        binding.recyclerView.adapter = MyAdapter()
 
         //firebase에서 survey 데이터를 가져온 후 surveys 변수에 저장
         FirebaseDatabase.getInstance().getReference("/Surveys")
@@ -164,6 +134,47 @@ class SurveyListTest : AppCompatActivity() {
                 error?.toException()?.printStackTrace()
             }
         })
+    }
+    inner class MyViewHodler(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        //설문지 제목 텍스트 뷰
+        val titleText : TextView = itemView.titleText
+        //설문지 기간 텍스트 뷰
+        val dateText : TextView = itemView.dateText
+        // 북마크 이미지뷰
+        val bookmarkView : ImageView = itemView.bookmarkView
+    }
+
+    // RecyclerView 의 어댑터 클래스
+    inner class MyAdapter : RecyclerView.Adapter<MyViewHodler>() {
+        // RecyclerView 에서 각 Row(행)에서 그릴 ViewHolder 를 생성할때 불리는 메소드
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHodler {
+            return MyViewHodler(LayoutInflater.from(this@SurveyListTest).inflate(R.layout.survey_post,
+                parent, false))
+        }
+
+        // RecyclerView 에서 몇개의 행을 그릴지 기준이 되는 메소드
+        override fun getItemCount(): Int {
+            return surveys.size
+        }
+
+        // 각 행의 포지션에서 그려야할 ViewHolder UI 에 데이터를 적용하는 메소드
+        override fun onBindViewHolder(holder: MyViewHodler, position: Int) {
+            val survey = surveys[position]
+            // 카드에 글을 세팅
+            holder.titleText.text = survey.title
+            // 글이 쓰여진 시간
+            holder.dateText.text = survey.startDate+" ~ "+survey.endDate
+
+            // 카드가 클릭되는 경우 DetailActivity 를 실행한다.
+            holder.itemView.setOnClickListener {
+                // 상세화면을 호출할 Intent 를 생성한다.
+                val intent = Intent(this@SurveyListTest, SurveyInfo::class.java)
+                // 선택된 카드의 ID 정보를 intent 에 추가한다.
+                intent.putExtra("surveyId", survey.surveyId)
+                // intent 로 상세화면을 시작한다.
+                startActivity(intent)
+            }
+        }
     }
 
 }
