@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.mp_teamproject.databinding.FragmentHomeBinding
+import com.example.mp_teamproject.databinding.FragmentMytreeBinding
 
 class MytreeFragment : Fragment() {
 
@@ -21,8 +23,16 @@ class MytreeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mytree, container, false)
+        var num_of_survey:Int = 1
+
+        val binding = FragmentMytreeBinding.inflate(inflater,container,false)
+        if(num_of_survey < 10){
+            binding.imageview1.setImageResource(R.drawable.mini_tree)
+        }else{
+            binding.imageview1.setImageResource(R.drawable.tree)
+        }
+
+        return binding.root
     }
 
     companion object {
