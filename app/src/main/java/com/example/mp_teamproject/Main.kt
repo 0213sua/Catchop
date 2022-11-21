@@ -17,9 +17,11 @@ class Main : AppCompatActivity() {
         //val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        getSupportFragmentManager().beginTransaction().add(R.id.fragments_container, homeFragment).commit()
+
         binding.navigationview.setOnItemSelectedListener {
             //change fragment
-                MenuItem -> when(MenuItem.itemId){
+            MenuItem -> when(MenuItem.itemId){
             R.id.home_menu -> changeFragment(homeFragment)
             R.id.mytree_menu -> changeFragment(mytreeFragment)
             R.id.category_menu -> changeFragment(categoryFragment)
