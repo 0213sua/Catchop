@@ -1,15 +1,10 @@
 package com.example.mp_teamproject
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.example.mp_teamproject.databinding.ActivityCreateSurveyBinding
+import com.example.mp_teamproject.databinding.ActivitySurveyInfoBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -20,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_survey_list_test.*
 import kotlinx.android.synthetic.main.survey_post.view.*
 
 class SurveyInfo : AppCompatActivity() {
-    val binding by lazy{ ActivityCreateSurveyBinding.inflate(layoutInflater)}
+    val binding by lazy{ ActivitySurveyInfoBinding.inflate(layoutInflater)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,24 +26,56 @@ class SurveyInfo : AppCompatActivity() {
         //statistic btn
 
         val surveyId = intent.getStringExtra("surveyId")
+        Log.d("ITM","1")
 
         FirebaseDatabase.getInstance().getReference("/Surveys/$surveyId")
             .addValueEventListener(object:ValueEventListener{
 
                 override fun onCancelled(error: DatabaseError) {
-                    error?.toException()?.printStackTrace()
+                }
+                // data 읽기
+                /*
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    val survey = dataSnapshot.getValue(SurveyData::class.java)
+                    if (survey != null) {
+                        si_titleText.setText(survey.title)
+                    }
+                    if (survey != null) {
+                        si_instText.setText(survey.institution)
+                    }
+                    if (survey != null) {
+                        si_sdateText.setText(survey.startDate)
+                    }
+                    if (survey != null) {
+                        si_edateText.setText(survey.endDate)
+                    }
+                    if (survey != null) {
+                        si_purposeText.setText(survey.purpose)
+                    }
+                    if (survey != null) {
+                        si_contentText.setText(survey.surveyContent)
+                    }
                 }
 
+                 */
+
+
                 override fun onDataChange(snapshot: DataSnapshot) {
+                    Log.d("ITM","2")
                     snapshot?.let{
                         val survey = it.getValue(SurveyData::class.java)
+                        Log.d("ITM","3")
                         survey?.let{
-                            si_titleText.setText(survey.title)
-                            si_instText.setText(survey.institution)
-                            si_sdateText.setText(survey.startDate)
-                            si_edateText.setText(survey.endDate)
-                            si_purposeText.setText(survey.purpose)
-                            si_contentText.setText(survey.surveyContent)
+                            Log.d("ITM","4")
+
+                            binding.siTitleText.text = survey.title
+                            binding.siInstText.text = survey.institution
+                            binding.siSdateText.text = survey.startDate
+                            binding.siEdateText.text = survey.endDate
+                            binding.siPurposeText.text = survey.purpose
+                            binding.siContentText.text = survey.surveyContent
+                            Log.d("ITM","5")
+
                         }
                     }
                 }

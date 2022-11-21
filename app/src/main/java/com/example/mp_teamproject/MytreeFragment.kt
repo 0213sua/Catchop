@@ -27,7 +27,7 @@ class MytreeFragment : Fragment() {
 
         val binding = FragmentMytreeBinding.inflate(inflater,container,false)
         if(num_of_survey < 10){
-            binding.imageview1.setImageResource(R.drawable.mini_tree)
+//            binding.imageview1.setImageResource(R.drawable.mini_tree)
         }else{
             binding.imageview1.setImageResource(R.drawable.tree)
         }
