@@ -11,7 +11,7 @@
     tools:context=".Login">
 
     <EditText
-        android:id="@+id/ID_editText"
+        android:id="@+id/LI_IdEditText"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
@@ -27,7 +27,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ID" />
 
     <EditText
-        android:id="@+id/PW_editText"
+        android:id="@+id/LI_PwEditText"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
@@ -57,7 +57,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.03"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ID_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/LI_IdEditText" />
 
     <TextView
         android:id="@+id/ID"
@@ -90,7 +90,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PW_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/LI_PwEditText" />
 
     <ImageView
         android:id="@+id/imageView3"

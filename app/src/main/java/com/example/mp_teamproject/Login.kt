@@ -29,7 +29,7 @@ class Login : AppCompatActivity() {
 //            startActivity(intent)
 //        }
         binding.LoginBtn.setOnClickListener{
-            logIn(binding.IDEditText.text.toString().trim(),binding.PWEditText.text.toString().trim())
+            logIn(binding.LIIdEditText.text.toString().trim(),binding.LIPwEditText.text.toString().trim())
         }
 
         binding.LISignUpBtn.setOnClickListener{
@@ -42,10 +42,10 @@ class Login : AppCompatActivity() {
             auth?.signInWithEmailAndPassword(email, password)
                 ?.addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                            Toast.makeText(
-                                baseContext, "로그인에 성공 하였습니다.",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                        Toast.makeText(
+                            baseContext, "로그인에 성공 하였습니다.",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         moveMainPage(auth?.currentUser)
                     } else {
                         Toast.makeText(
@@ -60,7 +60,7 @@ class Login : AppCompatActivity() {
     fun moveMainPage(user: FirebaseUser?) {
         if (user!= null) {
 //            val intent = Intent(this,Main::class.java)
-            val intent = Intent(this,SurveyListTest::class.java)
+            val intent = Intent(this,Main::class.java)
             startActivity(intent)
             finish()
         }

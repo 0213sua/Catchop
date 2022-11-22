@@ -24,8 +24,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@drawable/round_border">
-
+            android:background="@drawable/round_border"
+            android:layout_marginHorizontal="10dp">
 
             <ImageView
                 android:id="@+id/imageView12"
@@ -55,34 +55,43 @@
             android:layout_marginTop="50dp"
             android:orientation="vertical">
 
+
             <Button
                 android:id="@+id/MP_SIPBtn"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="70dp"
                 android:background="#00ff0000"
                 android:backgroundTint="#FEFEFE"
                 android:gravity="left|center"
-                android:text="Survey I posted"
+                android:text="Survey I posted                            >>"
                 android:textColor="#2B2B2B"
                 android:textSize="18sp" />
+
+
+
 
             <Button
                 android:id="@+id/MP_SIABtn"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="70dp"
                 android:background="#00ff0000"
                 android:backgroundTint="#FEFEFE"
-                android:text="Survey I answered"
+                android:text="Survey I answered                       >>"
                 android:textColor="#2B2B2B"
                 android:textSize="18sp"
                 android:gravity="left|center"/>
+
+
+
+
+
             <Button
                 android:id="@+id/MP_BookmarkBtn"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="70dp"
                 android:background="#00ff0000"
                 android:backgroundTint="#FEFEFE"
-                android:text="Bookmark"
+                android:text="Bookmark                                      >>"
                 android:textColor="#2B2B2B"
                 android:textSize="18sp"
                 android:gravity="left|center"/>
@@ -91,10 +100,10 @@
             <Button
                 android:id="@+id/MP_EditprofileBtn"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="70dp"
                 android:background="#00ff0000"
                 android:backgroundTint="#FEFEFE"
-                android:text="Edit Profile"
+                android:text="Edit Profile                                   >>"
                 android:textColor="#2B2B2B"
                 android:textSize="18sp"
                 android:gravity="left|center"/>
@@ -103,10 +112,10 @@
             <Button
                 android:id="@+id/MP_LogoutBtn"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="70dp"
                 android:background="#00ff0000"
                 android:backgroundTint="#FEFEFE"
-                android:text="Logout Catchop"
+                android:text="Logout Catchop                           >>"
                 android:textColor="#2B2B2B"
                 android:textSize="18sp"
                 android:gravity="left|center"/>
@@ -114,10 +123,10 @@
             <Button
                 android:id="@+id/MP_DeleteABtn"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="70dp"
                 android:background="#00ff0000"
                 android:backgroundTint="#FEFEFE"
-                android:text="Delete my account"
+                android:text="Delete my account                      >>"
                 android:textColor="#2B2B2B"
                 android:textSize="18sp"
                 android:gravity="left|center"/>

@@ -13,9 +13,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayout5"
+        android:background="#CBD1EC"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="212dp"
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="horizontal"
@@ -23,12 +24,15 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-        
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
+            android:backgroundTint="#FFFFFF"
+            android:foregroundTint="#FFFFFF"
             android:orientation="vertical">
+
             <ImageView
                 android:id="@+id/imgv1"
                 android:layout_width="60dp"
@@ -42,17 +46,17 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
-                android:text="Administration"
-                android:textStyle="bold"
+                android:text="행정관리"
                 android:textColor="@color/black"
-                android:textSize="11dp" />
-            
+                android:textSize="11dp"
+                android:textStyle="bold" />
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
             android:orientation="vertical">
 
             <ImageView
@@ -69,16 +73,17 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
-                android:text="Technology"
-                android:textStyle="bold"
+                android:text="산업/ 기술"
                 android:textColor="@color/black"
-                android:textSize="11dp" />
+                android:textSize="11dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
             android:orientation="vertical">
 
             <ImageView
@@ -94,10 +99,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
-                android:text="Education"
-                android:textStyle="bold"
+                android:text="교육"
                 android:textColor="@color/black"
-                android:textSize="11dp" />
+                android:textSize="11dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
     </LinearLayout>
@@ -117,7 +122,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
             android:orientation="vertical">
 
             <ImageView
@@ -133,17 +138,17 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
-                android:text="Agri-Animal-Fish"
-                android:textStyle="bold"
+                android:text="농업-축산업-어업"
                 android:textColor="@color/black"
-                android:textSize="10dp" />
+                android:textSize="10dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
             android:orientation="vertical">
 
             <ImageView
@@ -160,17 +165,17 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
-                android:textStyle="bold"
-                android:text="Land Managing"
+                android:text="국토 관리"
                 android:textColor="@color/black"
-                android:textSize="11dp" />
+                android:textSize="11dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
             android:orientation="vertical">
 
             <ImageView
@@ -186,10 +191,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
-                android:text="Culture,Tourism"
-                android:textStyle="bold"
+                android:text="문화 / 여행"
                 android:textColor="@color/black"
-                android:textSize="10dp" />
+                android:textSize="10dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -210,7 +215,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
             android:orientation="vertical">
 
             <ImageView
@@ -226,17 +231,17 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
-                android:text="Health"
-                android:textStyle="bold"
+                android:text="건강"
                 android:textColor="@color/black"
-                android:textSize="11dp" />
+                android:textSize="11dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
             android:orientation="vertical">
 
             <ImageView
@@ -253,17 +258,17 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
-                android:text="Food"
-                android:textStyle="bold"
+                android:text="음식"
                 android:textColor="@color/black"
-                android:textSize="11dp" />
+                android:textSize="11dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
             android:orientation="vertical">
 
             <ImageView
@@ -279,10 +284,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
-                android:text="Traffic"
-                android:textStyle="bold"
+                android:text="교통"
                 android:textColor="@color/black"
-                android:textSize="11dp" />
+                android:textSize="11dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -291,7 +296,36 @@
 
 
     </LinearLayout>
-    
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="원하는 카테고리를 선택해주세요 ! \n관심있는 카테고리 별로 설문을 보여드릴게요 :)"
+        android:textColor="#3F51B5"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout8"
+        app:layout_constraintVertical_bias="0.848" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="34dp"
+            android:layout_height="49dp"
+            android:src="@drawable/arrow"
+            android:tint="#5A5A5A" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
