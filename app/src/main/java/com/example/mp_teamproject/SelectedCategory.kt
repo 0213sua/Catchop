@@ -3,6 +3,7 @@ package com.example.mp_teamproject
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,16 +23,16 @@ import kotlinx.android.synthetic.main.survey_post.view.*
 
 class SelectedCategory : AppCompatActivity() {
     val binding = ActivitySelectedCategoryBinding.inflate(layoutInflater)
-    var key = intent.hasExtra("category_name1")
+
     val surveys: MutableList<SurveyData> = mutableListOf()
     val categoryName = intent.getStringExtra("category_name1")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(binding.root)
-
-
+        surveys.clear()
+        var key = intent.hasExtra("category_name1")
+        Log.d("cate","categoryname : $categoryName")
         if (intent.hasExtra("category_name1")) {
 
             binding.categoryName.text = intent.getStringExtra("category_name1")
@@ -59,6 +60,7 @@ class SelectedCategory : AppCompatActivity() {
         binding.crecyclerView.adapter = MyAdapter()
 
         //firebase에서 survey 데이터를 가져온 후 surveys 변수에 저장
+
         FirebaseDatabase.getInstance().getReference("/Surveys")
             .orderByChild("category").equalTo(categoryName).addChildEventListener(object : ChildEventListener {
                 //설문이 추가된 경우
