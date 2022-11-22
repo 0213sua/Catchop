@@ -60,7 +60,7 @@ class Login : AppCompatActivity() {
     fun moveMainPage(user: FirebaseUser?) {
         if (user!= null) {
 //            val intent = Intent(this,Main::class.java)
-            val intent = Intent(this,SurveyListTest::class.java)
+            val intent = Intent(this,Main::class.java)
             startActivity(intent)
             finish()
         }
