@@ -25,18 +25,13 @@ class SurveyInfo : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        //participate btn
-
-        //statistic btn
-
-        val surveyId = intent.getStringExtra("surveyId")
-        Log.d("ITM","1")
-
         binding.siImg2.setOnClickListener {
             val intent = Intent(this,Main::class.java)
             startActivity(intent)
         }
 
+        val surveyId = intent.getStringExtra("surveyId")
+        Log.d("ITM","1")
 
         FirebaseDatabase.getInstance().getReference("/Surveys/$surveyId")
             .addValueEventListener(object:ValueEventListener{
@@ -44,32 +39,6 @@ class SurveyInfo : AppCompatActivity() {
                 override fun onCancelled(error: DatabaseError) {
                 }
                 // data 읽기
-                /*
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    val survey = dataSnapshot.getValue(SurveyData::class.java)
-                    if (survey != null) {
-                        si_titleText.setText(survey.title)
-                    }
-                    if (survey != null) {
-                        si_instText.setText(survey.institution)
-                    }
-                    if (survey != null) {
-                        si_sdateText.setText(survey.startDate)
-                    }
-                    if (survey != null) {
-                        si_edateText.setText(survey.endDate)
-                    }
-                    if (survey != null) {
-                        si_purposeText.setText(survey.purpose)
-                    }
-                    if (survey != null) {
-                        si_contentText.setText(survey.surveyContent)
-                    }
-                }
-
-                 */
-
-
                 override fun onDataChange(snapshot: DataSnapshot) {
                     Log.d("ITM","2")
                     snapshot?.let{
