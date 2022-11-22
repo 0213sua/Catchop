@@ -40,6 +40,13 @@ class CreateSurvey : AppCompatActivity() {
         //provide views for an AdapterView
         val myAdapter = ArrayAdapter<String>(this, R.layout.simple_list_item_1, myList)
 
+        // connect to google form page
+        binding.csAddBtn.setOnClickListener {
+            // save implict intent(ACTION_VIEW) & pass uri string(github address)
+            val add = Intent(Intent.ACTION_VIEW, Uri.parse("https://docs.google.com/forms/u/0/?tgif=d"))
+            startActivity(add)
+        }
+
         // connect myAdapter to the Spinner
         binding.categorySpinner.adapter = myAdapter
         binding.categorySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -147,8 +154,4 @@ class CreateSurvey : AppCompatActivity() {
         }
     }
 
-    // recycler view 에서 사용하는 view 홀더 클래스
-//    inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-//        val imageView = itemView.imageView
-//    }
 }
