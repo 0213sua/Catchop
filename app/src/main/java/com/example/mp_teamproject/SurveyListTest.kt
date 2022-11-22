@@ -135,6 +135,7 @@ class SurveyListTest : AppCompatActivity() {
             }
         })
     }
+
     inner class MyViewHodler(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //설문지 제목 텍스트 뷰
         val titleText : TextView = itemView.titleText

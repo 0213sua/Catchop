@@ -1,5 +1,6 @@
 package com.example.mp_teamproject
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +28,12 @@ class SurveyInfo : AppCompatActivity() {
 
         val surveyId = intent.getStringExtra("surveyId")
         Log.d("ITM","1")
+
+        binding.siImg2.setOnClickListener {
+            val intent = Intent(this,Main::class.java)
+            startActivity(intent)
+        }
+
 
         FirebaseDatabase.getInstance().getReference("/Surveys/$surveyId")
             .addValueEventListener(object:ValueEventListener{
