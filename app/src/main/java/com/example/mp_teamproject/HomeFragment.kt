@@ -58,40 +58,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             startActivity(intent)
         }
 
-        //for on, end survey
-        val onSurveyList: ArrayList<SurveyData> = ArrayList()
-
-        //databaseReference = FirebaseDatabase.getInstance().getReference("students")
-
-        /*
-        // 데이터 받아오기 : "gu_num"이 "중구"인 데이터 가져오기
-        Log.d("home","1")
-        val onSurvey = FirebaseDatabase.getInstance().getReference("/Surveys")
-        Log.d("home","2")
-        val onSurveysQuery = onSurvey.orderByChild("endDate").endAt(today)
-        Log.d("home","3")
-        onSurveysQuery.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                onSurveyList.clear()
-                Log.d("home","4")
-                for (dataSnapshot in snapshot.children) {
-                    val onSurveyListData: SurveyData? = dataSnapshot.getValue(SurveyData::class.java)
-                    Log.d("home","5")
-                    if (onSurveyListData != null) {
-                        onSurveyList.add(onSurveyListData)
-                        Log.d("home","6")
-                    }
-                }
-                Log.w("home", "onSurveyList = $onSurveyList")
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.e("home", "onCancelled")
-            }
-        })
-
-         */
-
 
         //리사이클러 뷰에 LayoutManager, Adapter, (ItemDecoration 적용)
         val layoutManager = LinearLayoutManager(activity)
