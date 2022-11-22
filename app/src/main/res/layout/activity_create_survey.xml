@@ -407,10 +407,10 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/cs_addBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Button" />
+                    android:text="+ADD" />
             </LinearLayout>
         </LinearLayout>
 
