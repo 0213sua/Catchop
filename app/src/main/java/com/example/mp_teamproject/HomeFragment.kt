@@ -53,9 +53,77 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         Log.d("home","today : $today")
         val binding = FragmentHomeBinding.inflate(inflater,container,false)
 
-        binding.floatingBtn1.setOnClickListener {
-            val intent = Intent(this@HomeFragment.requireContext(),CreateSurvey::class.java)
-            startActivity(intent)
+                    override fun onChildRemoved(snapshot: DataSnapshot) {
+                        snapshot?.let {
+                            // snapshot 의 데이터를 surveyData 객체로 가져옴
+                            val survey = snapshot.getValue(SurveyData::class.java)
+                            //
+                            survey?.let { survey ->
+                                // 기존에 저장된 인덱스를 찾아서 해당 인덱스의 데이터를 삭제한다.
+                                val existIndex = surveys.map { it.surveyId }.indexOf(survey.surveyId)
+                                surveys.removeAt(existIndex)
+                                notifyItemRemoved(existIndex) //체크
+                            }
+                        }
+                    }
+                    // 설문지의 순서가 이동한 경우
+                    override fun onChildMoved(snapshot: DataSnapshot, prevChildKey: String?) {
+                        // snapshot
+                        snapshot?.let{
+                            //snapshot의 데이터를 survey 객체로 가져옴
+                            val survey = snapshot.getValue(SurveyData::class.java)
+                            survey?.let{survey->
+                                //기존의 인덱스를 구한다
+                                val existIndex = surveys.map{it.surveyId}.indexOf(survey.surveyId)
+                                //기존의 데이터를 지운다
+                                surveys.removeAt(existIndex)
+                                notifyItemRemoved(existIndex)
+                                //prevChildKey가 없는 경우 맨마지막으로 이동 된 것
+                                if (prevChildKey == null){
+                                    surveys.add(survey)
+                                    notifyItemChanged(surveys.size-1)
+                                }else{
+                                    //prevChildKey 다음 글로 추가
+                                    val prevIndex = surveys.map{it.surveyId}.indexOf(prevChildKey)
+                                    surveys.add(prevIndex + 1, survey)
+                                    notifyItemChanged(prevIndex+1)
+                                }
+                            }
+                        }
+                    }
+                    // 취소된 경우
+                    override fun onCancelled(error: DatabaseError) {
+                        //error?.toException()?.printStackTrace()
+                    }
+                })
+
+        }
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+            return MyViewHolder(ItemMainBinding.inflate(LayoutInflater.from(context),parent, false))
+        }
+
+        // RecyclerView 에서 몇개의 행을 그릴지 기준이 되는 메소드
+        override fun getItemCount(): Int {
+            return surveys.size
+        }
+        override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+
+            val binding = (holder as MyViewHolder).binding
+            val survey = surveys[position]
+            // 카드에 글을 세팅
+            binding.titleText.text = survey.title
+            // 글이 쓰여진 시간
+            binding.dateText.text = survey.startDate+" ~ "+survey.endDate
+
+            // 카드가 클릭되는 경우 DetailActivity 를 실행한다.
+            binding.itemRoot.setOnClickListener {
+                // 상세화면을 호출할 Intent 를 생성한다.
+                val intent = Intent(context, SurveyInfo::class.java)
+                // 선택된 카드의 ID 정보를 intent 에 추가한다.
+                intent.putExtra("surveyId", survey.surveyId)
+                // intent 로 상세화면을 시작한다.
+                startActivity(intent)
+            }
         }
 
 

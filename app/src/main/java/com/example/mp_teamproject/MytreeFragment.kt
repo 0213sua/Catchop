@@ -29,7 +29,7 @@ class MytreeFragment : Fragment() {
         if(num_of_survey < 10){
 //            binding.imageview1.setImageResource(R.drawable.mini_tree)
         }else{
-            binding.imageview1.setImageResource(R.drawable.tree)
+            binding.imageView.setImageResource(R.drawable.tree)
         }
 
         return binding.root

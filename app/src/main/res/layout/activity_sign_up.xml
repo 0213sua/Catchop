@@ -100,7 +100,7 @@
                 android:textStyle="bold|italic" />
 
             <DatePicker
-                android:id="@+id/dpSpinner"
+                android:id="@+id/SU_birthdateSpinner"
                 android:datePickerMode="spinner"
                 android:calendarViewShown="false"
                 android:layout_width="match_parent"
@@ -237,7 +237,7 @@
                 android:textStyle="bold|italic" />
 
             <Spinner
-                android:id="@+id/spinner"
+                android:id="@+id/SU_jobSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
