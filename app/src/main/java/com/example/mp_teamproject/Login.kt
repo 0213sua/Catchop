@@ -29,7 +29,7 @@ class Login : AppCompatActivity() {
 //            startActivity(intent)
 //        }
         binding.LoginBtn.setOnClickListener{
-            logIn(binding.IDEditText.text.toString().trim(),binding.PWEditText.text.toString().trim())
+            logIn(binding.LIIdEditText.text.toString().trim(),binding.LIPwEditText.text.toString().trim())
         }
 
         binding.LISignUpBtn.setOnClickListener{

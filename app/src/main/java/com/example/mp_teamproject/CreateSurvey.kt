@@ -6,6 +6,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -24,10 +25,15 @@ import com.google.firebase.ktx.Firebase
 
 class CreateSurvey : AppCompatActivity() {
     val binding by lazy{ ActivityCreateSurveyBinding.inflate(layoutInflater)}
+    private var auth : FirebaseAuth? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        //유저 id
+        auth = FirebaseAuth.getInstance()
+        val userid = auth!!.currentUser?.uid
 
         // surveyData 객체 생성
         val survey = SurveyData()
@@ -143,7 +149,11 @@ class CreateSurvey : AppCompatActivity() {
 
             survey.startDate = binding.startDate.text.toString()
             survey.endDate = binding.endDate.text.toString()
-            survey.surveyorInfo //아니 이건.. 어케 받아야함? checkbox정보는 어떻게 받아오는거지?
+            //안되면 이거 hashmap으로 저장해보기
+//            val surveyor = HashMap<Any, Any>()
+//            surveyor["surveyorId"] = userid.toString()
+            survey.surveyorInfo  = userid.toString()//아니 이건.. 어케 받아야함? checkbox정보는 어떻게 받아오는거지?
+            Log.d("ITM","SUA, PLEASE STORE,, surveyorInfo $userid")
             survey.surveyContent = binding.contentText.text.toString()
             survey.uri = binding.uriText.text.toString()
             // surveyData 객체를 새로 생성한 참조에 저장
