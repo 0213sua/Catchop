@@ -42,10 +42,10 @@ class Login : AppCompatActivity() {
             auth?.signInWithEmailAndPassword(email, password)
                 ?.addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                            Toast.makeText(
-                                baseContext, "로그인에 성공 하였습니다.",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                        Toast.makeText(
+                            baseContext, "로그인에 성공 하였습니다.",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         moveMainPage(auth?.currentUser)
                     } else {
                         Toast.makeText(
