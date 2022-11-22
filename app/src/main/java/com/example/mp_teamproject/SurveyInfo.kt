@@ -33,6 +33,12 @@ class SurveyInfo : AppCompatActivity() {
         val surveyId = intent.getStringExtra("surveyId")
         Log.d("ITM","1")
 
+        binding.siImg2.setOnClickListener {
+            val intent = Intent(this,Main::class.java)
+            startActivity(intent)
+        }
+
+
         FirebaseDatabase.getInstance().getReference("/Surveys/$surveyId")
             .addValueEventListener(object:ValueEventListener{
 

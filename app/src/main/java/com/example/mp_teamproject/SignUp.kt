@@ -15,7 +15,7 @@ import com.google.firebase.ktx.Firebase
 
 
 class SignUp : AppCompatActivity() {
-    private var auth : FirebaseAuth? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +32,15 @@ class SignUp : AppCompatActivity() {
 
         actionBar?.setDisplayShowHomeEnabled(true)
 
-        auth = Firebase.auth
+
+
+        val name = binding.SUNameEditText.text.toString()
+        val email = binding.SUEmailEditText.text.toString()
+        val pw = binding.SUPwEditText.text.toString()
+        val phone = binding.SUPhoneEditText.text.toString()
+
+        val auth = FirebaseAuth.getInstance()
+
 
 
         binding.SUSignupBtn.setOnClickListener {
