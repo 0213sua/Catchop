@@ -1,5 +1,7 @@
 package com.example.mp_teamproject
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +18,8 @@ import kotlinx.android.synthetic.main.survey_post.view.*
 
 class SurveyInfo : AppCompatActivity() {
     val binding by lazy{ ActivitySurveyInfoBinding.inflate(layoutInflater)}
+    var partiUri =""
+    var staticUri = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +31,12 @@ class SurveyInfo : AppCompatActivity() {
 
         val surveyId = intent.getStringExtra("surveyId")
         Log.d("ITM","1")
+
+        binding.siImg2.setOnClickListener {
+            val intent = Intent(this,Main::class.java)
+            startActivity(intent)
+        }
+
 
         FirebaseDatabase.getInstance().getReference("/Surveys/$surveyId")
             .addValueEventListener(object:ValueEventListener{
@@ -74,11 +84,28 @@ class SurveyInfo : AppCompatActivity() {
                             binding.siEdateText.text = survey.endDate
                             binding.siPurposeText.text = survey.purpose
                             binding.siContentText.text = survey.surveyContent
-                            Log.d("ITM","5")
-
+                            partiUri = survey.uri
+                            var strList: List<String> = survey.uri.split("/")
+                            Log.d("ITM","strList : $strList")
+                            staticUri = "https://docs.google.com/forms/d/e/"+strList[6]+"/viewanalytics"
+                            Log.d("ITM","$staticUri")
                         }
                     }
                 }
             })
+        //participate btn
+        binding.siPartiBtn.setOnClickListener {
+            // save implict intent(ACTION_VIEW) & pass uri string(github address)
+            val parti = Intent(Intent.ACTION_VIEW, Uri.parse("$partiUri"))
+            startActivity(parti)
+        }
+
+        //statistic btn
+
+        binding.siStaticBtn.setOnClickListener {
+            // save implict intent(ACTION_VIEW) & pass uri string(github address)
+            val static = Intent(Intent.ACTION_VIEW, Uri.parse("$staticUri"))
+            startActivity(static)
+        }
     }
 }
