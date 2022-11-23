@@ -17,8 +17,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <EditText
-            android:id="@+id/textView8"
+            android:id="@+id/edit_search"
             android:layout_width="283dp"
             android:layout_height="38dp"
             android:layout_gravity="center"
@@ -28,7 +29,7 @@
             android:layout_weight="12"
 
             android:text=""
-            android:textSize="30dp"
+            android:textSize="15dp"
 
             />
 
