@@ -70,7 +70,7 @@ class ParticipatedSurvey : AppCompatActivity() {
 //            binding.recyclerView1.adapter = onAdapter(surveys)
 //        }
         FirebaseDatabase.getInstance().getReference("/Surveys")
-            .orderByChild("surveyorInfo").addChildEventListener(object : ChildEventListener {
+            .orderByChild("surveyorInfo").equalTo(userid).addChildEventListener(object : ChildEventListener {
                 override fun onChildAdded(snapshot: DataSnapshot, prevChildKey: String?) {
                     snapshot.let { snapshot ->
                         val survey = snapshot.getValue(SurveyData::class.java)
