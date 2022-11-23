@@ -3,19 +3,23 @@ package com.example.mp_teamproject
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mp_teamproject.databinding.FragmentCategoryBinding
 import com.example.mp_teamproject.databinding.FragmentHomeBinding
 import com.example.mp_teamproject.databinding.ItemMainBinding
 import com.google.firebase.database.*
-import com.google.firebase.ktx.Firebase
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
     companion object {
@@ -23,8 +27,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             return HomeFragment()
         }
     }
-    private lateinit var database: DatabaseReference
+    private lateinit var databaseReference: DatabaseReference
     val surveys : MutableList<SurveyData> = mutableListOf()
+    @RequiresApi(Build.VERSION_CODES.O)
+    val current = LocalDate.now()
+    @RequiresApi(Build.VERSION_CODES.O)
+    val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd")
+    @RequiresApi(Build.VERSION_CODES.O)
+    val today = current.format(formatter)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,12 +42,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onAttach(context: Context) {
         super.onAttach(context)
     }
-    @SuppressLint("UseRequireInsteadOfGet")
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        Log.d("home","today : $today")
         val binding = FragmentHomeBinding.inflate(inflater,container,false)
 
         binding.floatingBtn1.setOnClickListener {
@@ -161,6 +174,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     override fun onCancelled(error: DatabaseError) {
                         //error?.toException()?.printStackTrace()
                     }
+
+
                 })
 
         }
@@ -172,6 +187,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         override fun getItemCount(): Int {
             return surveys.size
         }
+
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
             val binding = (holder as MyViewHolder).binding
@@ -191,31 +207,33 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 startActivity(intent)
             }
         }
+        inner class MyViewHolder(val binding: ItemMainBinding): RecyclerView.ViewHolder(binding.root){
+            //설문지 제목 텍스트 뷰
+            val titleText : TextView = binding.titleText
+            //설문지 기간 텍스트 뷰
+            val dateText : TextView = binding.dateText
+            // 북마크 이미지뷰
+            //val bookmarkView : ImageView = itemView.bookmarkView
+        }
+        // 각 행의 포지션에서 그려야할 ViewHolder UI에 데이터를 적용하는 메소드
 
-        //리사이클러 뷰에 LayoutManager, Adapter, (ItemDecoration 적용)
-        val layoutManager = LinearLayoutManager(activity)
-        // recyclerview의 아이템을 역순으로 정렬
-        //layoutManager.reverseLayout = true
-        // recyclerview의 아이템을 쌓는 순서를 끝부터 쌓게 함
-        //layoutManager.stackFromEnd = true
-        binding.recyclerView1.layoutManager = layoutManager
-        binding.recyclerView1.adapter = MyAdapter(surveys)
+        // end, on survey
 
-        return binding.root
 
     }
-
-    // RecyclerView 의 어댑터 클래스
-    inner class MyAdapter(val surveys: MutableList<SurveyData>): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+    // 저장된 endDate의 값보다 현재날짜가 클 때
+    @RequiresApi(Build.VERSION_CODES.O)
+    inner class finAdapter(val surveys: MutableList<SurveyData>): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         init{
             //firebase에서 survey 데이터를 가져온 후 surveys 변수에 저장
             FirebaseDatabase.getInstance().getReference("/Surveys")
-                .orderByChild("startDate").addChildEventListener(object : ChildEventListener {
+                .orderByChild("endDate").endAt(today).addChildEventListener(object : ChildEventListener {
                     //설문이 추가된 경우
                     override fun onChildAdded(snapshot: DataSnapshot, prevChildKey: String?) {
                         snapshot?.let{snapshot->
                             //snapshot의 데이터를 survey 객체로 가져옴
                             val survey = snapshot.getValue(SurveyData::class.java)
+
                             survey?.let{
                                 //새 글이 마지막 부분에 추가된 경우
                                 if (prevChildKey == null){
@@ -290,6 +308,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     override fun onCancelled(error: DatabaseError) {
                         //error?.toException()?.printStackTrace()
                     }
+
+
                 })
 
         }
@@ -301,6 +321,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         override fun getItemCount(): Int {
             return surveys.size
         }
+
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
             val binding = (holder as MyViewHolder).binding
@@ -330,9 +351,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
         // 각 행의 포지션에서 그려야할 ViewHolder UI에 데이터를 적용하는 메소드
 
+        // end, on survey
+
 
     }
-
 
 
 }
