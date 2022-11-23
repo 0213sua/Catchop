@@ -35,7 +35,7 @@ class CreateSurvey : AppCompatActivity() {
         val newRef = FirebaseDatabase.getInstance().getReference("Surveys").push()
 
         // spinner
-        val myList = listOf("","Administration","Technology","Education","Traffic","Land managing","Agriculture","Culture","Health","Food")
+        val myList = listOf("","Administration","Technology","Education","Logistics","Land managing","Agri-Animal-Fish","Culture & Tourism","Health & Medical","Food")
 
         //provide views for an AdapterView
         val myAdapter = ArrayAdapter<String>(this, R.layout.simple_list_item_1, myList)
