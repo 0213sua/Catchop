@@ -146,9 +146,7 @@ class SelectedCategory : AppCompatActivity() {
                     }
                 })
 
-            binding.finBtn.setOnClickListener{
 
-            }
 
     }
 

@@ -6,23 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".StartSurvey">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="413dp"
-        android:layout_height="64dp"
-        android:scaleType="centerCrop"
+    <LinearLayout
+        android:id="@+id/upperBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#F74A5E"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/upper" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="56dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/arrow" />
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            app:tint="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/arrow" />
+
+        <ImageView
+            android:id="@+id/home"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="280dp"
+            app:tint="#FFF8F8"
+            app:srcCompat="@drawable/ic_baseline_home_24" />
+
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView"
@@ -32,7 +47,7 @@
         android:layout_marginTop="30dp"
         android:text="title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/upperBar" />
 
     <ScrollView
         android:layout_width="409dp"

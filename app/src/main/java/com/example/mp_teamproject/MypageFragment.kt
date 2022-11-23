@@ -88,7 +88,7 @@ class MypageFragment : Fragment() {
 
         }
 
-        binding.MPDeleteABtn.setOnClickListener {
+        binding.MPDeleteAbtn.setOnClickListener {
             val builder = AlertDialog.Builder(this.requireContext())
             builder.setTitle("Membership Withdrawal")
                 .setMessage("Do you want withdraw from Catchop?")

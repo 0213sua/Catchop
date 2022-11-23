@@ -7,10 +7,43 @@
     tools:context=".EditProfile">
 
     <LinearLayout
+        android:id="@+id/upperBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#F74A5E"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/arrow"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/home"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="280dp"
+            app:srcCompat="@drawable/ic_baseline_home_24"
+            app:tint="#FFF8F8" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="405dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="150dp"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="3dp"
@@ -27,7 +60,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="Name"
+                android:text="이름"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -38,6 +71,7 @@
                 android:id="@+id/editTextTextPersonName"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:text="김마요"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
@@ -54,7 +88,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="Sex"
+                android:text="성별"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -68,13 +102,14 @@
                     android:id="@+id/Sex_male"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:text="Male" />
+                    android:text="남자"
+                    android:checked="true"/>
 
                 <RadioButton
                     android:id="@+id/Sex_female"
                     android:layout_width="258dp"
                     android:layout_height="wrap_content"
-                    android:text="Female" />
+                    android:text="여자" />
             </RadioGroup>
 
 
@@ -91,7 +126,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="Birthdate"
+                android:text="생년월일"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -102,7 +137,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="2002-02-13 "
+                android:text="2002-11-25 "
                 android:textAlignment="center"
                 android:textColor="#474747"
                 android:textStyle="bold" />
@@ -131,6 +166,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:text="mayo1125@gmail.com"
                 android:inputType="textEmailAddress" />
         </LinearLayout>
 
@@ -145,7 +181,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="Password"
+                android:text="비밀번호"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -156,7 +192,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="text" />
+                android:text="mayokim1125"
+                android:inputType="textPassword" />
         </LinearLayout>
 
 
@@ -171,7 +208,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="Phone"
+                android:text="전화번호"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -182,7 +219,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="text" />
+                android:text="010-2568-3498"
+                android:inputType="phone" />
         </LinearLayout>
 
         <LinearLayout
@@ -196,7 +234,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="Job"
+                android:text="직업"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -223,8 +261,8 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="50dp"
-        android:backgroundTint="#5564E8"
-        android:text="Modify Information !"
+        android:backgroundTint="#DA182E"
+        android:text="정보 수정하기"
         android:textSize="16sp"
         app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"

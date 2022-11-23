@@ -7,43 +7,60 @@
     android:backgroundTint="@color/btn1"
     tools:context=".CreateSurvey">
 
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="413dp"
-        android:layout_height="64dp"
-        android:scaleType="centerCrop"
+    <LinearLayout
+        android:id="@+id/upperBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#F74A5E"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/upper" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="56dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/arrow" />
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/arrow"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/home"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="280dp"
+            app:srcCompat="@drawable/ic_baseline_home_24"
+            app:tint="#FFF8F8" />
+
+
+    </LinearLayout>
 
 
     <Button
         android:id="@+id/registerBtn"
-        android:layout_width="117dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginStart="144dp"
-        android:layout_marginBottom="30dp"
-        android:text="Register"
+        android:backgroundTint="#DA182E"
+        android:gravity="center"
+        android:text="설문지 등록하기"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
         android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/upperBar"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="65dp">
+        tools:layout_editor_absoluteX="1dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -59,7 +76,7 @@
                     android:id="@+id/Title"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
-                    android:background="#EBF0F3"
+                    android:background="#EDF3F6"
                     android:gravity="center"
                     android:text="Title"
                     android:textColor="#4C4C4C"
@@ -377,7 +394,9 @@
         android:id="@+id/cs_addBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="+ADD"
+        android:text="구글폼 생성하러 가기"
+        android:textColor="@color/black"
+        android:backgroundTint="#EBF0F3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout8" />
 

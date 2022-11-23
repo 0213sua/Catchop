@@ -69,6 +69,18 @@ class ParticipatedSurvey : AppCompatActivity() {
 //            surveys.clear()
 //            binding.recyclerView1.adapter = onAdapter(surveys)
 //        }
+        binding.arrow.setOnClickListener {
+            val intent = Intent(this@ParticipatedSurvey,MypageFragment::class.java)
+            startActivity(intent)
+        }
+        binding.home.setOnClickListener {
+            val intent = Intent(this@ParticipatedSurvey,HomeFragment::class.java)
+            startActivity(intent)
+        }
+
+
+
+
         FirebaseDatabase.getInstance().getReference("/Surveys")
             .orderByChild("surveyorInfo").equalTo(userid).addChildEventListener(object : ChildEventListener {
                 override fun onChildAdded(snapshot: DataSnapshot, prevChildKey: String?) {

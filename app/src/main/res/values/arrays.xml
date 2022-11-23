@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="job">
-        <item> Student </item>
-        <item> College Student </item>
-        <item> Graduate Student </item>
-        <item> Professor </item>
-        <item> Intern </item>
-        <item> Office Worker</item>
-        <item> Freelancer </item>
-        <item> etc </item>
+        <item> 학생 </item>
+        <item> 대학생</item>
+<!--        <item> College Student </item>-->
+<!--        <item> Graduate Student </item>-->
+<!--        <item> Office Worker </item>-->
+        <item> 교수 </item>
+        <item> 인턴 </item>
+        <item> 직장인</item>
+        <item> 프리랜서 </item>
+        <item> 기타 </item>
 
     </string-array>
 </resources>

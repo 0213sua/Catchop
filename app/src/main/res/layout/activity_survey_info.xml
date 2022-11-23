@@ -6,23 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".SurveyInfo">
 
-    <ImageView
-        android:id="@+id/si_img1"
-        android:layout_width="413dp"
-        android:layout_height="64dp"
-        android:scaleType="centerCrop"
+    <LinearLayout
+        android:id="@+id/upperBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#F74A5E"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/upper" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/si_img2"
-        android:layout_width="56dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/arrow" />
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            app:tint="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/arrow" />
+
+        <ImageView
+            android:id="@+id/home"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="280dp"
+            app:tint="#FFF8F8"
+            app:srcCompat="@drawable/ic_baseline_home_24" />
+
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/si_staticBtn"
@@ -30,8 +45,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="108dp"
-        android:backgroundTint="@color/btn2"
-        android:text="Statistic"
+        android:backgroundTint="#DA182E"
+        android:text="설문 통계 보기"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -41,8 +57,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:layout_marginBottom="108dp"
-        android:backgroundTint="@color/btn1"
-        android:text="Participate"
+        android:backgroundTint="#DA182E"
+        android:text="설문에 참여하기"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -50,7 +67,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="405dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="150dp"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="3dp"
@@ -67,7 +84,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="Title"
+                android:text="제목"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -93,7 +110,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="Institution"
+                android:text="기관"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -119,7 +136,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="Period"
+                android:text="응답 기간"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -161,7 +178,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="Purpose"
+                android:text="목적"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -188,7 +205,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="Content"
+                android:text="설문 내용"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />

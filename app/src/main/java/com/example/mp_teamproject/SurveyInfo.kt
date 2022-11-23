@@ -25,7 +25,7 @@ class SurveyInfo : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        binding.siImg2.setOnClickListener {
+        binding.arrow.setOnClickListener {
             val intent = Intent(this,Main::class.java)
             startActivity(intent)
         }
@@ -33,10 +33,6 @@ class SurveyInfo : AppCompatActivity() {
         var surveyId = intent.getStringExtra("surveyId")
         Log.d("ITM","1")
 
-        binding.siImg2.setOnClickListener {
-            val intent = Intent(this,Main::class.java)
-            startActivity(intent)
-        }
 
 
         FirebaseDatabase.getInstance().getReference("/Surveys/$surveyId")
