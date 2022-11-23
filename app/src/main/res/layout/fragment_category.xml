@@ -1,48 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_gravity="center"
     tools:context=".CategoryFragment">
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1.4">
+        <TextView
+            android:layout_gravity="bottom"
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="원하는 카테고리를 선택해주세요 ! \n관심있는 카테고리 별로 설문을 보여드릴게요 :)"
+            android:textColor="#3F51B5" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout5"
-        android:background="#CBD1EC"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="212dp"
-        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:layout_weight="1.2"
+        android:background="#CBD1EC"
         android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:backgroundTint="#FFFFFF"
             android:foregroundTint="#FFFFFF"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imgv1"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_margin="10dp"
                 android:contentDescription="Administration"
                 android:src="@drawable/ch" />
 
             <TextView
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
@@ -56,24 +66,25 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
+            android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imgv2"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:contentDescription="Technology"
                 android:src="@drawable/technology" />
 
             <TextView
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
-                android:text="산업/ 기술"
+                android:text="과학기술"
                 android:textColor="@color/black"
                 android:textSize="11dp"
                 android:textStyle="bold" />
@@ -83,19 +94,19 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imgv3"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_margin="10dp"
                 android:contentDescription="Education"
                 android:src="@drawable/education" />
 
             <TextView
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
@@ -111,36 +122,34 @@
         android:id="@+id/linearLayout7"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.2"
         android:gravity="center"
+        android:layout_gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+        >
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imgv4"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_margin="10dp"
                 android:contentDescription="Agri-Animal-Fish"
                 android:src="@drawable/anim" />
 
             <TextView
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
-                android:text="농업-축산업-어업"
+                android:text="농축산"
                 android:textColor="@color/black"
-                android:textSize="10dp"
+                android:textSize="11dp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -148,20 +157,21 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
+            android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imgv5"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:contentDescription="Land Managing"
                 android:src="@drawable/management" />
 
             <TextView
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
@@ -175,19 +185,19 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imgv6"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_margin="11dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
                 android:contentDescription="Culture,Tourism"
                 android:src="@drawable/culture" />
 
             <TextView
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
@@ -204,30 +214,29 @@
         android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.2"
+        android:layout_gravity="center"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
+        android:background="#CBD1EC"
+        >
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imgv7"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_margin="10dp"
                 android:contentDescription="Health"
                 android:src="@drawable/medicine" />
 
             <TextView
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
@@ -241,13 +250,14 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
+            android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imgv8"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:contentDescription="Food"
@@ -268,19 +278,19 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imgv9"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_margin="10dp"
                 android:contentDescription="Traffic"
                 android:src="@drawable/logistics" />
 
             <TextView
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
@@ -290,34 +300,16 @@
                 android:textStyle="bold" />
 
         </LinearLayout>
-
-
-
-
-
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="원하는 카테고리를 선택해주세요 ! \n관심있는 카테고리 별로 설문을 보여드릴게요 :)"
-        android:textColor="#3F51B5"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout8"
-        app:layout_constraintVertical_bias="0.848" />
-
     <LinearLayout
-        android:id="@+id/linearLayout8"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="horizontal"
-        tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="1dp"/>
+        android:layout_weight="1"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</LinearLayout>
