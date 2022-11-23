@@ -317,15 +317,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="1dp">
-
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="34dp"
-            android:layout_height="49dp"
-            android:src="@drawable/arrow"
-            android:tint="#5A5A5A" />
-    </LinearLayout>
+        tools:layout_editor_absoluteY="1dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

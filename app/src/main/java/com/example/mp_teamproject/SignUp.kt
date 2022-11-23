@@ -9,18 +9,12 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mp_teamproject.databinding.ActivitySignUpBinding
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
 
 class SignUp : AppCompatActivity() {
-    private var auth : FirebaseAuth? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,8 +22,6 @@ class SignUp : AppCompatActivity() {
 
         val binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        auth = Firebase.auth
 
         val actionBar: ActionBar? = supportActionBar
 
@@ -42,11 +34,11 @@ class SignUp : AppCompatActivity() {
 
 
 
-//        val name = binding.SUNameEditText.text.toString()
-//        val email = binding.SUEmailEditText.text.toString()
-//        val pw = binding.SUPwEditText.text.toString()
-//        val phone = binding.SUPhoneEditText.text.toString()
-//
+        val name = binding.SUNameEditText.text.toString()
+        val email = binding.SUEmailEditText.text.toString()
+        val pw = binding.SUPwEditText.text.toString()
+        val phone = binding.SUPhoneEditText.text.toString()
+
         val auth = FirebaseAuth.getInstance()
 
 
@@ -134,8 +126,8 @@ class SignUp : AppCompatActivity() {
                         ).show()
                     }
                 }
-        } else {
-            Toast.makeText(this, "Member registration Failed !", Toast.LENGTH_SHORT).show() }
+                } else {
+                    Toast.makeText(this, "Member registration Failed !", Toast.LENGTH_SHORT).show() }
     }
 
 }

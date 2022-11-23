@@ -1,13 +1,26 @@
 package com.example.mp_teamproject
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.mp_teamproject.databinding.ActivityMySurveyBinding
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.auth.FirebaseAuth
+
 
 class MySurvey : AppCompatActivity() {
-    //val binding by lazy { ActivityMySurveyBinding.inflate(layoutInflater)}
+    private var auth : FirebaseAuth? = null
+    val binding by lazy { ActivityMySurveyBinding.inflate(layoutInflater)}
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_my_survey)
+        setContentView(binding.root)
+
+        auth = FirebaseAuth.getInstance()
+        //유저 아이디 가져옴
+        val userid = auth!!.currentUser?.uid
+
+
     }
 }

@@ -5,8 +5,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.mp_teamproject.databinding.ActivityCreateSurveyBinding
 import com.example.mp_teamproject.databinding.ActivitySurveyInfoBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -30,7 +30,7 @@ class SurveyInfo : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val surveyId = intent.getStringExtra("surveyId")
+        var surveyId = intent.getStringExtra("surveyId")
         Log.d("ITM","1")
 
         binding.siImg2.setOnClickListener {
@@ -73,6 +73,7 @@ class SurveyInfo : AppCompatActivity() {
             // save implict intent(ACTION_VIEW) & pass uri string(github address)
             val parti = Intent(Intent.ACTION_VIEW, Uri.parse("$partiUri"))
             startActivity(parti)
+
         }
 
         //statistic btn

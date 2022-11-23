@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import com.example.mp_teamproject.databinding.FragmentMypageBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
 
@@ -23,7 +24,13 @@ class MypageFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        auth = Firebase.auth
+
+        auth = FirebaseAuth.getInstance()
+
+
+        val userid = auth!!.currentUser?.uid
+        //val reference = FirebaseDatabase.getInstance().reference.child("Users").child(userid!!)
+        Log.d("ITM","THIS ! $userid ")
     }
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -35,6 +42,21 @@ class MypageFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentMypageBinding.inflate(layoutInflater)
+
+        binding.MPSIPBtn.setOnClickListener {
+            //내가 만든 설문지 화면으로 넘어감
+
+            val intent = Intent(this@MypageFragment.requireContext(),MySurvey::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+
+        }
+        binding.MPSIABtn.setOnClickListener {
+            //내가 참여한 설문지 화면
+            val intent = Intent(this@MypageFragment.requireContext(),ParticipatedSurvey::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+        }
 
         binding.MPEditprofileBtn.setOnClickListener {
             val intent = Intent(this@MypageFragment.requireContext(),EditProfile::class.java)
