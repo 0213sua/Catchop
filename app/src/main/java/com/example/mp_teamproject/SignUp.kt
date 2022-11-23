@@ -42,11 +42,11 @@ class SignUp : AppCompatActivity() {
 
 
 
-//        val name = binding.SUNameEditText.text.toString()
-//        val email = binding.SUEmailEditText.text.toString()
-//        val pw = binding.SUPwEditText.text.toString()
-//        val phone = binding.SUPhoneEditText.text.toString()
-//
+        val name = binding.SUNameEditText.text.toString()
+        val email = binding.SUEmailEditText.text.toString()
+        val pw = binding.SUPwEditText.text.toString()
+        val phone = binding.SUPhoneEditText.text.toString()
+
         val auth = FirebaseAuth.getInstance()
 
 
@@ -134,8 +134,8 @@ class SignUp : AppCompatActivity() {
                         ).show()
                     }
                 }
-        } else {
-            Toast.makeText(this, "Member registration Failed !", Toast.LENGTH_SHORT).show() }
+                } else {
+                    Toast.makeText(this, "Member registration Failed !", Toast.LENGTH_SHORT).show() }
     }
 
 }

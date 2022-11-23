@@ -27,6 +27,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             return HomeFragment()
         }
     }
+    private val binding by lazy{ FragmentHomeBinding.inflate(layoutInflater)}
     private lateinit var databaseReference: DatabaseReference
     val surveys : MutableList<SurveyData> = mutableListOf()
     @RequiresApi(Build.VERSION_CODES.O)
@@ -77,6 +78,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.onBtn.setOnClickListener{
             surveys.clear()
             binding.recyclerView1.adapter = onAdapter(surveys)
+        }
+        binding.homeSearchImg.setOnClickListener {
+
+            Log.d("MP","text: "+binding.editSearch.text)
+            (binding.recyclerView1.adapter as onAdapter).search(binding.editSearch.text.toString())
         }
 
         surveys.clear()
@@ -186,6 +192,31 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         // RecyclerView 에서 몇개의 행을 그릴지 기준이 되는 메소드
         override fun getItemCount(): Int {
             return surveys.size
+        }
+        fun search(serachWord : String) {
+            FirebaseDatabase.getInstance().reference.child("/Surveys").orderByChild("title")
+            //.startAt(serachWord).endAt(serachWord+"\uf8ff")
+                .addValueEventListener(object :ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        //val value = snapshot.getValue<SurveyData>()
+                        Log.d("MP","surveys 초기화")
+                        surveys.clear()
+                        for(snapshot in snapshot!!.children){
+                            Log.d("MP","snapshot: "+snapshot.value)
+                            val survey : SurveyData? = snapshot.getValue(SurveyData::class.java)
+                            Log.d("MP","snapshot.title: "+survey?.title)
+                            if((survey!!.title).contains(serachWord)){
+                                surveys.add(survey)
+                                Log.d("MP","surveys: "+surveys)
+                            }
+                        }
+                        notifyDataSetChanged()
+                        //notifyDataSetChanged()를 선언함으로써 변경사항이 저장된다..ㅠㅠㅠ
+                    }
+                    override fun onCancelled(error: DatabaseError) {
+                    }
+                })
+
         }
 
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
