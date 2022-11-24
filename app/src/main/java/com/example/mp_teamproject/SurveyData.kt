@@ -10,9 +10,6 @@ class SurveyData{
     //설문지 작성자 id == registerBtn을 누른 사람
     var writerId = ""
 
-    //설문지 참여자 id == submitBtn을 누른 사람
-    var participantId = ""
-
     //
     var title = ""
     var writer = ""

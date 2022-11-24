@@ -21,6 +21,7 @@ class SurveyInfo : AppCompatActivity() {
     var partiUri =""
     var staticUri = ""
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -69,6 +70,7 @@ class SurveyInfo : AppCompatActivity() {
             // save implict intent(ACTION_VIEW) & pass uri string(github address)
             val parti = Intent(Intent.ACTION_VIEW, Uri.parse("$partiUri"))
             startActivity(parti)
+
 
         }
 
