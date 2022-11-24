@@ -16,10 +16,17 @@ import kotlinx.android.synthetic.main.activity_survey_info.*
 import kotlinx.android.synthetic.main.activity_survey_list_test.*
 import kotlinx.android.synthetic.main.survey_post.view.*
 
+
 class SurveyInfo : AppCompatActivity() {
     val binding by lazy{ ActivitySurveyInfoBinding.inflate(layoutInflater)}
+    private var auth : FirebaseAuth? = null
     var partiUri =""
     var staticUri = ""
+    val surveys: MutableList<SurveyData> = mutableListOf()
+    private val firebaseDatabase = FirebaseDatabase.getInstance()
+    private val databaseReference = firebaseDatabase.getReference("/Surveys")
+    private var surveyId = " "
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,8 +37,11 @@ class SurveyInfo : AppCompatActivity() {
             startActivity(intent)
         }
 
-        var surveyId = intent.getStringExtra("surveyId")
+        surveyId = intent.getStringExtra("surveyId").toString()
         Log.d("ITM","1")
+        auth = FirebaseAuth.getInstance()
+        val userid = auth!!.currentUser?.uid
+
 
 
 
@@ -55,6 +65,7 @@ class SurveyInfo : AppCompatActivity() {
                             binding.siEdateText.text = survey.endDate
                             binding.siPurposeText.text = survey.purpose
                             binding.siContentText.text = survey.surveyContent
+
                             partiUri = survey.uri
                             var strList: List<String> = survey.uri.split("/")
                             Log.d("ITM","strList : $strList")
@@ -66,9 +77,12 @@ class SurveyInfo : AppCompatActivity() {
             })
         //participate btn
         binding.siPartiBtn.setOnClickListener {
+            databaseReference.child(surveyId).child("surveyorInfo").setValue(userid)
+
             // save implict intent(ACTION_VIEW) & pass uri string(github address)
             val parti = Intent(Intent.ACTION_VIEW, Uri.parse("$partiUri"))
             startActivity(parti)
+
 
         }
 

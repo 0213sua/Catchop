@@ -78,7 +78,7 @@
                     android:layout_height="50dp"
                     android:background="#EDF3F6"
                     android:gravity="center"
-                    android:text="Title"
+                    android:text="제목"
                     android:textColor="#4C4C4C"
                     android:textSize="20sp"
                     android:textStyle="bold|italic" />
@@ -110,7 +110,7 @@
                     android:layout_height="50dp"
                     android:background="#EBF0F3"
                     android:gravity="center"
-                    android:text="Writer"
+                    android:text="작성자"
                     android:textColor="#4C4C4C"
                     android:textSize="20sp"
                     android:textStyle="bold|italic" />
@@ -150,7 +150,7 @@
                     android:layout_height="50dp"
                     android:background="#EBF0F3"
                     android:gravity="center"
-                    android:text="Institution"
+                    android:text="기관"
                     android:textColor="#4C4C4C"
                     android:textSize="20sp"
                     android:textStyle="bold|italic" />
@@ -182,7 +182,7 @@
                     android:layout_height="50dp"
                     android:background="#EBF0F3"
                     android:gravity="center"
-                    android:text="Purpose"
+                    android:text="목적"
                     android:textColor="#4C4C4C"
                     android:textSize="20sp"
                     android:textStyle="bold|italic" />
@@ -214,7 +214,7 @@
                     android:layout_height="50dp"
                     android:background="#EBF0F3"
                     android:gravity="center"
-                    android:text="Category"
+                    android:text="카테고리"
                     android:textColor="#4C4C4C"
                     android:textSize="20sp"
                     android:textStyle="bold|italic" />
@@ -245,7 +245,7 @@
                     android:layout_height="50dp"
                     android:background="#EBF0F3"
                     android:gravity="center"
-                    android:text="Period"
+                    android:text="응답 기간"
                     android:textColor="#4C4C4C"
                     android:textSize="20sp"
                     android:textStyle="bold|italic" />
@@ -295,7 +295,7 @@
                     android:layout_height="75dp"
                     android:background="#EBF0F3"
                     android:gravity="center"
-                    android:text="Result\nOpen"
+                    android:text="결과 공개 여부"
                     android:textColor="#4C4C4C"
                     android:textSize="20sp"
                     android:textStyle="bold|italic" />
@@ -339,7 +339,7 @@
                     android:layout_height="75dp"
                     android:background="#EBF0F3"
                     android:gravity="center"
-                    android:text="Content"
+                    android:text="세부 내용"
                     android:textColor="#4C4C4C"
                     android:textSize="20sp"
                     android:textStyle="bold|italic" />

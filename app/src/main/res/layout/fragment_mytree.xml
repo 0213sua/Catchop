@@ -12,6 +12,8 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+
+
     <LinearLayout
         android:layout_width="409dp"
         android:layout_height="match_parent"
@@ -69,62 +71,63 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="350dp"
             android:paddingTop="60dp"
-            android:src="@drawable/tree" />
+            android:src="@drawable/tree2" />
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="50dp"
-            android:paddingTop="50dp">
+            android:layout_height="match_parent"
+            android:background="#785E37"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="bottom"
-                android:paddingLeft="20dp"
-                android:text="앞으로 총  "
+                android:paddingLeft="30dp"
+                android:paddingTop="20dp"
+                android:text="다음 나무까지 "
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="bottom"
-                android:text="3"
-                android:textColor="#FFEB3B"
-                android:textSize="50dp"
-                android:textStyle="bold" />
-
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:gravity="bottom"
-                android:text="  개의 설문에 "
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="3"
+                    android:paddingLeft="200dp"
+                    android:textColor="#FFEB3B"
+                    android:textSize="50dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:paddingTop="15dp"
+                    android:text="  개 남았습니다 :D"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+
+            </LinearLayout>
 
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="right"
-            android:paddingTop="15dp"
-            android:text="더 참여하시면 나무가 더 자라요 :D"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

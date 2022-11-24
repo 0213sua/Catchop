@@ -68,8 +68,8 @@ class MypageFragment : Fragment() {
         binding.MPLogoutBtn.setOnClickListener {
 
             val builder = AlertDialog.Builder(this.requireContext())
-            builder.setTitle("LOG OUT")
-                .setMessage("Do you want logout from Catchop?")
+            builder.setTitle("로그아웃")
+                .setMessage("로그아웃 하시겠습니까?")
                 .setPositiveButton("YES",
                     DialogInterface.OnClickListener { dialog, id ->
                         val intent = Intent(this@MypageFragment.requireContext(),Login::class.java)
@@ -90,8 +90,8 @@ class MypageFragment : Fragment() {
 
         binding.MPDeleteAbtn.setOnClickListener {
             val builder = AlertDialog.Builder(this.requireContext())
-            builder.setTitle("Membership Withdrawal")
-                .setMessage("Do you want withdraw from Catchop?")
+            builder.setTitle("계정 삭제")
+                .setMessage("정말로 케첩의 계정을 삭제하시겠습니까?")
                 .setPositiveButton("YES",
                     DialogInterface.OnClickListener { dialog, id ->
                         val intent = Intent(this@MypageFragment.requireContext(),Login::class.java)
