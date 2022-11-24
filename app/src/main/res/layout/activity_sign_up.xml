@@ -200,7 +200,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
-            android:text="비밀번호가 일치합니다. "
+            android:text="비밀번호가 일치하지 않습니다. "
             android:textColor="#1B1A1A"
            />
 
