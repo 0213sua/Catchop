@@ -5,6 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SignUp">
+    <LinearLayout
+        android:id="@+id/upperBar1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#F74A5E"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <LinearLayout
@@ -28,7 +38,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="Name"
+                android:text="이름"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -55,7 +65,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="Sex"
+                android:text="성별"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -70,14 +80,14 @@
                     android:id="@+id/Sex_male"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:text="Male"
+                    android:text="남자"
                     android:checked="true"/>
 
                 <RadioButton
                     android:id="@+id/Sex_female"
                     android:layout_width="258dp"
                     android:layout_height="wrap_content"
-                    android:text="Female" />
+                    android:text="여자" />
             </RadioGroup>
 
 
@@ -94,7 +104,7 @@
                 android:layout_height="match_parent"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="Birthdate"
+                android:text="생년월일"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -143,7 +153,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="Password"
+                android:text="비밀번호"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -169,7 +179,8 @@
                 android:layout_height="match_parent"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="Password Check"
+                android:text="비밀번호
+                확인"
                 android:textColor="#4C4C4C"
                 android:textSize="18sp"
                 android:textStyle="bold|italic" />
@@ -189,7 +200,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
-            android:text="Password duplicate verification "
+            android:text="비밀번호가 일치합니다. "
             android:textColor="#1B1A1A"
            />
 
@@ -205,7 +216,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="Phone Num"
+                android:text="휴대번호"
                 android:textColor="#4C4C4C"
                 android:textSize="18sp"
                 android:textStyle="bold|italic" />
@@ -231,7 +242,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="Job"
+                android:text="직업"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -258,7 +269,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="50dp"
-        android:text="Sign up !"
+        android:text="회원가입"
         android:backgroundTint="#DA182E"
         android:textSize="16sp"
         style="@style/BtnStyle"

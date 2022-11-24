@@ -6,7 +6,9 @@
     android:id="@+id/home_fragmentpage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FBFAF6"
     tools:context=".HomeFragment">
+
     <LinearLayout
         android:id="@+id/upperBar1"
         android:layout_width="match_parent"
@@ -14,8 +16,9 @@
         android:background="#F74A5E"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout3"

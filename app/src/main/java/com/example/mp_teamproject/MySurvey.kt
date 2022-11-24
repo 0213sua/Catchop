@@ -18,7 +18,7 @@ import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_survey_list_test.*
-import kotlinx.android.synthetic.main.survey_post.view.*
+import kotlinx.android.synthetic.main.item_main.view.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -160,7 +160,7 @@ class MySurvey : AppCompatActivity() {
         //설문지 기간 텍스트 뷰
         val dateText : TextView = itemView.dateText
         // 북마크 이미지뷰
-        val bookmarkView : ImageView = itemView.bookmarkView
+        //val bookmarkView : ImageView = itemView.bookmarkView
     }
     //    override fun onAttach(context: Context) {
 //        super.onAttach(context)
@@ -170,7 +170,7 @@ class MySurvey : AppCompatActivity() {
         // RecyclerView 에서 각 Row(행)에서 그릴 ViewHolder 를 생성할때 불리는 메소드
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHodler {
             return MyViewHodler(
-                LayoutInflater.from(this@MySurvey).inflate(R.layout.survey_post,
+                LayoutInflater.from(this@MySurvey).inflate(R.layout.item_main,
                 parent, false))
         }
 
