@@ -9,16 +9,6 @@
     android:background="#FBFAF6"
     tools:context=".HomeFragment">
 
-    <LinearLayout
-        android:id="@+id/upperBar1"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#F74A5E"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -27,7 +17,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/upperBar1">
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <EditText
