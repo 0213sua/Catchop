@@ -65,6 +65,8 @@ class SelectedCategory : AppCompatActivity() {
         //firebase에서 survey 데이터를 가져온 후 surveys 변수에 저장
 
 
+
+
         FirebaseDatabase.getInstance().getReference("/Surveys")
             .orderByChild("category").equalTo(categoryName).addChildEventListener(object : ChildEventListener {
                 //설문이 추가된 경우

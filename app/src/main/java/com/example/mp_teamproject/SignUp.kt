@@ -42,12 +42,12 @@ class SignUp : AppCompatActivity() {
 
 
 
-        val name = binding.SUNameEditText.text.toString()
-        val email = binding.SUEmailEditText.text.toString()
-        val pw = binding.SUPwEditText.text.toString()
-        val phone = binding.SUPhoneEditText.text.toString()
-
-        val auth = FirebaseAuth.getInstance()
+//        val name = binding.SUNameEditText.text.toString()
+//        val email = binding.SUEmailEditText.text.toString()
+//        val pw = binding.SUPwEditText.text.toString()
+//        val phone = binding.SUPhoneEditText.text.toString()
+//
+//        val auth = FirebaseAuth.getInstance()
 
 
 
@@ -62,27 +62,27 @@ class SignUp : AppCompatActivity() {
                 Toast.makeText(this,"Plz put your phone number", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener }
 
-            auth.createUserWithEmailAndPassword(email,pw)
-                .addOnCompleteListener(this, object: OnCompleteListener<AuthResult> {
-                    override fun onComplete(p0: Task<AuthResult>) {
-                        if (TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(phone) || TextUtils.isEmpty(pw)) {
-                            Toast.makeText(this@SignUp, "비어있습니다", Toast.LENGTH_SHORT).show()
-                        }
-
-                        val firebaseUser: FirebaseUser? = auth.currentUser
-                        val userid = firebaseUser?.uid
-                        val reference = FirebaseDatabase.getInstance().reference.child("Users").child(userid!!)
-                        val hashMap: HashMap<String, Any> = HashMap()
-
-                        hashMap["id"] = userid
-                        hashMap["username"] = name
-                        hashMap["email"] = email
-                        hashMap["pw"] = pw
-                        hashMap["phone"] = phone
-
-
-                    }
-                })
+//            auth.createUserWithEmailAndPassword(email,pw)
+//                .addOnCompleteListener(this, object: OnCompleteListener<AuthResult> {
+//                    override fun onComplete(p0: Task<AuthResult>) {
+//                        if (TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(phone) || TextUtils.isEmpty(pw)) {
+//                            Toast.makeText(this@SignUp, "비어있습니다", Toast.LENGTH_SHORT).show()
+//                        }
+//
+//                        val firebaseUser: FirebaseUser? = auth.currentUser
+//                        val userid = firebaseUser?.uid
+//                        val reference = FirebaseDatabase.getInstance().reference.child("Users").child(userid!!)
+//                        val hashMap: HashMap<String, Any> = HashMap()
+//
+//                        hashMap["id"] = userid
+//                        hashMap["username"] = name
+//                        hashMap["email"] = email
+//                        hashMap["pw"] = pw
+//                        hashMap["phone"] = phone
+//
+//
+//                    }
+//                })
 
 
             createAccount(
