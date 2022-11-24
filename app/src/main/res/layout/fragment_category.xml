@@ -8,46 +8,78 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_gravity="center"
+    android:background="#D5F1EFEF"
     tools:context=".CategoryFragment">
+
     <LinearLayout
+        android:id="@+id/upperBar"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="60dp"
+        android:background="#F74A5E"
         android:orientation="horizontal"
-        android:layout_weight="1.4">
-        <TextView
-            android:layout_gravity="bottom"
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="10dp"
-            android:text="원하는 카테고리를 선택해주세요 ! \n관심있는 카테고리 별로 설문을 보여드릴게요 :)"
-            android:textColor="#3F51B5" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            app:tint="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/arrow" />
+
+        <ImageView
+            android:id="@+id/home"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="280dp"
+            app:tint="#FFF8F8"
+            app:srcCompat="@drawable/ic_baseline_home_24" />
+
+
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/bmjua"
+        android:text="  ✅ 카테고리를 선택해주세요 "
+        android:textSize="20dp"
+        android:paddingTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/upperBar"
+        tools:layout_editor_absoluteX="-9dp"></TextView>
 
     <LinearLayout
         android:id="@+id/linearLayout5"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_weight="1.2"
-        android:background="#CBD1EC"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="70dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:backgroundTint="#FFFFFF"
             android:foregroundTint="#FFFFFF"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:background="@drawable/category_border"
+            android:layout_margin="3dp"
+            android:gravity="center">
 
             <ImageView
                 android:id="@+id/imgv1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_margin="10dp"
                 android:contentDescription="Administration"
                 android:src="@drawable/ch" />
 
@@ -56,26 +88,29 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/bmkiranghaerang"
+                android:textColor="#404040"
+                android:textSize="18dp"
                 android:text="행정관리"
-                android:textColor="@color/black"
-                android:textSize="11dp"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/category_border"
+            android:layout_margin="3dp"
+            android:padding="20dp">
 
             <ImageView
                 android:id="@+id/imgv2"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"
                 android:contentDescription="Technology"
                 android:src="@drawable/technology" />
 
@@ -85,23 +120,27 @@
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:text="과학기술"
-                android:textColor="@color/black"
-                android:textSize="11dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/bmkiranghaerang"
+                android:textColor="#404040"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/category_border"
+            android:layout_margin="3dp"
+            android:padding="20dp">
 
             <ImageView
                 android:id="@+id/imgv3"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_margin="10dp"
                 android:contentDescription="Education"
                 android:src="@drawable/education" />
 
@@ -111,8 +150,10 @@
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:text="교육"
-                android:textColor="@color/black"
-                android:textSize="11dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/bmkiranghaerang"
+                android:textColor="#404040"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -121,24 +162,25 @@
     <LinearLayout
         android:id="@+id/linearLayout7"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.2"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_gravity="center"
         android:orientation="horizontal"
         >
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_margin="3dp"
+            android:background="@drawable/category_border"
+            android:padding="20dp">
 
             <ImageView
                 android:id="@+id/imgv4"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_margin="10dp"
                 android:contentDescription="Agri-Animal-Fish"
                 android:src="@drawable/anim" />
 
@@ -148,24 +190,27 @@
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:text="농축산"
-                android:textColor="@color/black"
-                android:textSize="11dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/bmkiranghaerang"
+                android:textColor="#404040"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_margin="3dp"
+            android:background="@drawable/category_border"
+            android:padding="20dp">
 
             <ImageView
                 android:id="@+id/imgv5"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:contentDescription="Land Managing"
                 android:src="@drawable/management" />
@@ -176,23 +221,27 @@
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:text="국토 관리"
-                android:textColor="@color/black"
-                android:textSize="11dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/bmkiranghaerang"
+                android:textColor="#404040"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_margin="3dp"
+            android:background="@drawable/category_border"
+            android:padding="20dp" >
 
             <ImageView
                 android:id="@+id/imgv6"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_margin="10dp"
                 android:contentDescription="Culture,Tourism"
                 android:src="@drawable/culture" />
 
@@ -202,8 +251,10 @@
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:text="문화 / 여행"
-                android:textColor="@color/black"
-                android:textSize="10dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/bmkiranghaerang"
+                android:textColor="#404040"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -213,25 +264,25 @@
     <LinearLayout
         android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.2"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
         android:orientation="horizontal"
-        android:background="#CBD1EC"
         >
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:layout_margin="3dp"
+            android:background="@drawable/category_border"
+            android:gravity="center">
 
             <ImageView
                 android:id="@+id/imgv7"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_margin="10dp"
                 android:contentDescription="Health"
                 android:src="@drawable/medicine" />
 
@@ -241,24 +292,27 @@
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:text="건강"
-                android:textColor="@color/black"
-                android:textSize="11dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/bmkiranghaerang"
+                android:textColor="#404040"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_margin="3dp"
+            android:background="@drawable/category_border"
+            android:padding="20dp">
 
             <ImageView
                 android:id="@+id/imgv8"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:contentDescription="Food"
                 android:src="@drawable/food" />
@@ -269,23 +323,27 @@
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:text="음식"
-                android:textColor="@color/black"
-                android:textSize="11dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/bmkiranghaerang"
+                android:textColor="#404040"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:layout_margin="3dp"
+            android:background="@drawable/category_border"
+            android:gravity="center">
 
             <ImageView
                 android:id="@+id/imgv9"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_margin="10dp"
                 android:contentDescription="Traffic"
                 android:src="@drawable/logistics" />
 
@@ -295,17 +353,14 @@
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:text="교통"
-                android:textColor="@color/black"
-                android:textSize="11dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/bmkiranghaerang"
+                android:textColor="#404040"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="1"/>
 
 
 
