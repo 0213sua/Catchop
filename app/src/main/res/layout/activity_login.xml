@@ -100,7 +100,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/login2" />
+        android:background="#FFCECA"
+        app:srcCompat="@drawable/catchop" />
 
     <TextView
         android:id="@+id/signUp"

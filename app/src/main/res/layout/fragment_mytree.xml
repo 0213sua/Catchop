@@ -12,24 +12,23 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-
-
-
-
     <LinearLayout
         android:layout_width="409dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:paddingTop="150dp"
             android:paddingLeft="20dp"
+            android:paddingTop="150dp"
             android:text="지금까지 총 "
             android:textColor="@color/white"
             android:textSize="22sp"
@@ -55,11 +54,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
+                android:gravity="bottom"
                 android:text=" 개의 설문에 참여하셨습니다 ! "
                 android:textColor="@color/white"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:gravity="bottom"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.181"
                 app:layout_constraintStart_toEndOf="@+id/num_survey"
@@ -71,21 +70,21 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:src="@drawable/tree"
-            android:paddingTop="60dp"/>
+            android:paddingTop="60dp"
+            android:src="@drawable/tree" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="50dp"
-            android:paddingLeft="50dp">
+            android:paddingLeft="50dp"
+            android:paddingTop="50dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:paddingLeft="20dp"
                 android:gravity="bottom"
+                android:paddingLeft="20dp"
                 android:text="앞으로 총  "
                 android:textColor="#000000"
                 android:textSize="20sp"
@@ -104,11 +103,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
+                android:gravity="bottom"
                 android:text="  개의 설문에 "
                 android:textColor="#000000"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:gravity="bottom" />
+                android:textStyle="bold" />
 
 
         </LinearLayout>

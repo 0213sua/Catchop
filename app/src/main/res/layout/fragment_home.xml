@@ -7,6 +7,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
+    <LinearLayout
+        android:id="@+id/upperBar1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#F74A5E"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -15,7 +24,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/upperBar1">
 
 
         <EditText
@@ -37,11 +46,11 @@
             android:id="@+id/home_search_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_gravity="center_vertical"
-            android:layout_weight="1"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
             android:src="@android:drawable/ic_search_category_default" />
     </LinearLayout>
 
@@ -60,8 +69,9 @@
             android:layout_width="wrap_content"
             android:layout_height="34dp"
             android:layout_gravity="right"
-            android:background="#252D70"
-            android:text="Finished"
+            android:background="#F74A5E"
+            android:text="완료된 설문"
+            android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="10dp"
             tools:layout_editor_absoluteX="137dp"
@@ -73,8 +83,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginEnd="20dp"
-            android:background="#5564E8"
-            android:text="ONGOING"
+            android:background="#DA182E"
+            android:text="진행중인 설문"
+            android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="10dp"
             tools:layout_editor_absoluteY="58dp" />

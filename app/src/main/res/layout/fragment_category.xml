@@ -19,30 +19,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <ImageView
-            android:id="@+id/arrow"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            app:tint="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/arrow" />
-
-        <ImageView
-            android:id="@+id/home"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="280dp"
-            app:tint="#FFF8F8"
-            app:srcCompat="@drawable/ic_baseline_home_24" />
-
-
-    </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/textView11"
