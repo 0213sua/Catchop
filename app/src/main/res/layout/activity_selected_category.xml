@@ -31,10 +31,51 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/sc_linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_gravity="right"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/upperBar">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/sc_fin_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:layout_gravity="right"
+            android:layout_margin="10dp"
+            android:background="#F74A5E"
+            android:elevation="100dp"
+            android:text="완료된 설문"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="137dp"
+            tools:layout_editor_absoluteY="58dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/sc_on_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_marginEnd="20dp"
+            android:background="#DA182E"
+            android:text="진행중인 설문"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteY="58dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/crecyclerView"
+        app:layout_constraintBottom_toTopOf="@+id/sc_recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/upperBar">
@@ -76,7 +117,7 @@
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/crecyclerView"
+        android:id="@+id/sc_recyclerView"
         android:layout_width="409dp"
         android:layout_height="453dp"
         android:layout_marginTop="156dp"
