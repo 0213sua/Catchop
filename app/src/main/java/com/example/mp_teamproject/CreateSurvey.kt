@@ -1,6 +1,8 @@
 package com.example.mp_teamproject
 
 import android.R
+import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
+import java.util.*
 
 //import com.google.firebase.ktx.Firebase
 
@@ -26,6 +29,13 @@ import com.google.firebase.ktx.Firebase
 class CreateSurvey : AppCompatActivity() {
     val binding by lazy{ ActivityCreateSurveyBinding.inflate(layoutInflater)}
     private var auth : FirebaseAuth? = null
+
+    // calendar
+    private var calendar = Calendar.getInstance()
+    private var year = calendar.get(Calendar.YEAR)
+    private var month = calendar.get(Calendar.MONTH)
+    private var day = calendar.get(Calendar.DAY_OF_MONTH)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -168,6 +178,40 @@ class CreateSurvey : AppCompatActivity() {
             Toast.makeText(applicationContext,"Created your survey", Toast.LENGTH_SHORT).show()
             finish()
         }
+
+        // calendar
+        binding.startDate.setOnClickListener {
+            val datePickerDialog = DatePickerDialog(this, {_,year,month, day -> binding.startDate.text = year.toString()+"."+(month+1).toString()+"."+day.toString()}, year, month, day)
+            datePickerDialog.show()
+        }
+        binding.endDate.setOnClickListener {
+            val datePickerDialog = DatePickerDialog(this, {_,year,month, day -> binding.endDate.text = year.toString()+"."+(month+1).toString()+"."+day.toString()}, year, month, day)
+            datePickerDialog.show()
+        }
+
+
+        /*
+        val data = DatePickerDialog.OnDateSetListener { view, year, month, day ->
+            binding.startDate.text = "${year}.${month}.${day}"
+        }
+
+        binding.startDate.setOnClickListener {
+
+            val cal = Calendar.getInstance()
+            val data = DatePickerDialog.OnDateSetListener { view, year, month, day ->
+                binding.startDate.text = "${year}.${month}.${day}"
+
+            }
+            DatePickerDialog(
+                this,
+                data,
+                cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH)
+            ).show()
+        }
+
+         */
     }
 
 }
