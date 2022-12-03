@@ -20,5 +20,6 @@ class SurveyData{
     var endDate=""
     var surveyorInfo =""
     var surveyContent =""
+    var resultOpen = ""
     var uri =""
 }

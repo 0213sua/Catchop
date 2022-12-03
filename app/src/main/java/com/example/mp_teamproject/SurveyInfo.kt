@@ -2,8 +2,10 @@ package com.example.mp_teamproject
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mp_teamproject.databinding.ActivitySurveyInfoBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -15,6 +17,8 @@ import kotlinx.android.synthetic.main.activity_create_survey.*
 import kotlinx.android.synthetic.main.activity_survey_info.*
 import kotlinx.android.synthetic.main.activity_survey_list_test.*
 import kotlinx.android.synthetic.main.survey_post.view.*
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 
 class SurveyInfo : AppCompatActivity() {
@@ -27,8 +31,17 @@ class SurveyInfo : AppCompatActivity() {
     private val databaseReference = firebaseDatabase.getReference("/Surveys")
     private var surveyId = " "
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    val current = LocalDate.now()
+    @RequiresApi(Build.VERSION_CODES.O)
+    val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd")
+    @RequiresApi(Build.VERSION_CODES.O)
+    val today = current.format(formatter)
+    var endDate = ""
 
 
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -66,6 +79,10 @@ class SurveyInfo : AppCompatActivity() {
                             binding.siEdateText.text = survey.endDate
                             binding.siPurposeText.text = survey.purpose
                             binding.siContentText.text = survey.surveyContent
+                            binding.siCateText.text = survey.category
+                            binding.siResultText.text = survey.resultOpen
+
+                            endDate = survey.endDate
 
                             partiUri = survey.uri
                             var strList: List<String> = survey.uri.split("/")
@@ -76,6 +93,13 @@ class SurveyInfo : AppCompatActivity() {
                     }
                 }
             })
+
+        if (today>endDate){
+            binding.siPartiBtn.isEnabled = false //비활성화
+            binding.siStaticBtn.isEnabled = true //활성화
+        } else{
+            binding.siStaticBtn.isEnabled = false //비활성화
+        }
         //participate btn
         binding.siPartiBtn.setOnClickListener {
             databaseReference.child(surveyId).child("surveyorInfo").setValue(userid)
