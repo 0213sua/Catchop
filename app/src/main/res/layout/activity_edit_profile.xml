@@ -246,12 +246,31 @@
                 android:layout_weight="1"
                 android:entries="@array/job" />
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/Image"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="#EBF0F3"
+                android:gravity="center"
+                android:text="Profile\nImage"
+                android:textColor="#4C4C4C"
+                android:textSize="20sp"
+                android:textStyle="bold|italic" />
+
+            <ImageView
+                android:id="@+id/profileImg"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/man" />
 
 
-
-
-
-
+        </LinearLayout>
     </LinearLayout>
 
     <Button
@@ -259,14 +278,14 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="50dp"
         android:backgroundTint="#DA182E"
         android:text="정보 수정하기"
         android:textSize="16sp"
         app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 

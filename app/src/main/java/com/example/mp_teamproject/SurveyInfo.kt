@@ -93,12 +93,14 @@ class SurveyInfo : AppCompatActivity() {
                     Log.d("aa","2 writer id : $writer")
                     Log.d("aa","2 end date : $enddate")
                     Log.d("aa","2 userid : $userid")
-//                    if (writer == userid){
-//                        binding.siDeleteBtn.visibility = View.VISIBLE
-//            //            View.VISIBLE, View.INVISIBLE, View.GONE
-//                    } else{
-//                        binding.siDeleteBtn.visibility = View.GONE
-//                    }
+
+                    // delete 버튼 활성화, 비활성화
+                    if (writer == userid){
+                        binding.siDeleteBtn.visibility = View.VISIBLE
+            //            View.VISIBLE, View.INVISIBLE, View.GONE
+                    } else{
+                        binding.siDeleteBtn.visibility = View.GONE
+                    }
 //                    Log.d("aa","today : $today, enddate : $enddate, today>enddate : ${today>enddate}")
 //                    if (today>enddate){
 //                        binding.siPartiBtn.isEnabled = false //비활성화
@@ -134,7 +136,6 @@ class SurveyInfo : AppCompatActivity() {
 
         //participate btn
         binding.siPartiBtn.setOnClickListener {
-//            databaseReference.child(surveyId).child("surveyorInfo").setValue(userid)
             databaseReference.child(surveyId).child("surveyorInfo").setValue(userid)
             // save implict intent(ACTION_VIEW) & pass uri string(github address)
             Log.d("aa","partiUri : $partiUri")

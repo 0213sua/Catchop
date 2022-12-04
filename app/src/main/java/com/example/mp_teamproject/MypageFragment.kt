@@ -3,6 +3,7 @@ package com.example.mp_teamproject
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -42,6 +43,12 @@ class MypageFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentMypageBinding.inflate(layoutInflater)
+
+        // profile image update
+
+//        val getImg = Uri.parse(arguments?.getString("imgUri"))
+//        Log.d("ee","get Uri : $getImg")
+//        binding.mProfileImg.setImageURI(getImg)
 
         binding.MPSIPBtn.setOnClickListener {
             //내가 만든 설문지 화면으로 넘어감

@@ -3,6 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+<!--    갤러리 권한-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!--카메라 권한 & 카메라 앱 이용-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
 
 
     <application
@@ -115,6 +122,16 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+<!--        for profile image-->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.mp_teamproject.fileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
     </application>
 
 </manifest>
