@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.room.Room
 import com.example.mp_teamproject.databinding.ActivitySurveyInfoBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -28,9 +29,12 @@ class SurveyInfo : AppCompatActivity() {
     private var surveyId = " "
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+
 
         binding.arrow.setOnClickListener {
             val intent = Intent(this,Main::class.java)
@@ -77,7 +81,6 @@ class SurveyInfo : AppCompatActivity() {
             })
         //participate btn
         binding.siPartiBtn.setOnClickListener {
-            databaseReference.child(surveyId).child("surveyorInfo").setValue(userid)
 
             // save implict intent(ACTION_VIEW) & pass uri string(github address)
             val parti = Intent(Intent.ACTION_VIEW, Uri.parse("$partiUri"))
@@ -86,8 +89,8 @@ class SurveyInfo : AppCompatActivity() {
 
         }
 
-        //statistic btn
 
+        //statistic btn
         binding.siStaticBtn.setOnClickListener {
             // save implict intent(ACTION_VIEW) & pass uri string(github address)
             val static = Intent(Intent.ACTION_VIEW, Uri.parse("$staticUri"))
