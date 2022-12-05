@@ -21,6 +21,13 @@ class Main : AppCompatActivity() {
 
         getSupportFragmentManager().beginTransaction().add(R.id.fragments_container, homeFragment).commit()
 
+        if(intent.hasExtra("back")){
+            supportFragmentManager.beginTransaction().apply{
+                replace(R.id.fragments_container,categoryFragment)
+                commit()
+            }
+        }
+
         binding.navigationview.setOnItemSelectedListener {
             //change fragment
             MenuItem -> when(MenuItem.itemId){
