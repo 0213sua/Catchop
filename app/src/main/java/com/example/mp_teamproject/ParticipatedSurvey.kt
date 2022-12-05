@@ -82,7 +82,7 @@ class ParticipatedSurvey : AppCompatActivity() {
 
 
         FirebaseDatabase.getInstance().getReference("/Surveys")
-            .orderByChild("surveyorInfo").equalTo(userid).addChildEventListener(object : ChildEventListener {
+            .orderByChild("participantId").equalTo(userid).addChildEventListener(object : ChildEventListener {
                 override fun onChildAdded(snapshot: DataSnapshot, prevChildKey: String?) {
                     snapshot.let { snapshot ->
                         val survey = snapshot.getValue(SurveyData::class.java)

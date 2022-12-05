@@ -1,6 +1,8 @@
 package com.example.mp_teamproject
 
 import android.R
+import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
+import java.util.*
 
 //import com.google.firebase.ktx.Firebase
 
@@ -26,6 +29,13 @@ import com.google.firebase.ktx.Firebase
 class CreateSurvey : AppCompatActivity() {
     val binding by lazy{ ActivityCreateSurveyBinding.inflate(layoutInflater)}
     private var auth : FirebaseAuth? = null
+
+    // calendar
+    private var calendar = Calendar.getInstance()
+    private var year = calendar.get(Calendar.YEAR)
+    private var month = calendar.get(Calendar.MONTH)
+    private var day = calendar.get(Calendar.DAY_OF_MONTH)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,7 +107,15 @@ class CreateSurvey : AppCompatActivity() {
             }
             override fun onNothingSelected(p0: AdapterView<*>?) {}
         }
+        // 체크 기본값
+        binding.csRg.check(binding.CSYesRadio.id)
 
+//        when(binding.csRg.checkedRadioButtonId) {
+//            binding.CSNoRadio.id -> survey.resultOpen = "NO"
+//            binding.CSYesRadio.id -> survey.resultOpen = "YES"
+////                R.id.radioButton2 -> println("2번")
+////                R.id.radioButton3 -> println("3번")
+//        }
         //// registerBtn 클릭시, 작성된 survey 정보를 firebase에 저장 (+ 작성자 ID)
 
         // registerBtn 클릭된 경우, 이벤트 리스너 설정
@@ -141,6 +159,7 @@ class CreateSurvey : AppCompatActivity() {
 
             // 설문지의 id는 새로 생성된 파이어베이스 참조의 키로 할당
             survey.surveyId = newRef.key.toString() //newRef.key가 아니라..?
+
             // 로그인 정보에서 email 정보 할당
             var auth : FirebaseAuth? = null
             auth = Firebase.auth
@@ -155,10 +174,17 @@ class CreateSurvey : AppCompatActivity() {
 
             survey.startDate = binding.startDate.text.toString()
             survey.endDate = binding.endDate.text.toString()
+
+            //radio btn
+            when(binding.csRg.checkedRadioButtonId){
+                binding.CSNoRadio.id -> survey.resultOpen = "NO"
+                else -> survey.resultOpen = "YES"
+            }
+
             //안되면 이거 hashmap으로 저장해보기
 //            val surveyor = HashMap<Any, Any>()
 //            surveyor["surveyorId"] = userid.toString()
-            survey.surveyorInfo  = userid.toString()//아니 이건.. 어케 받아야함? checkbox정보는 어떻게 받아오는거지?
+            survey.surveyorInfo  = userid.toString()
             Log.d("ITM","SUA, PLEASE STORE,, surveyorInfo $userid")
             survey.surveyContent = binding.contentText.text.toString()
             survey.uri = binding.uriText.text.toString()
@@ -168,6 +194,17 @@ class CreateSurvey : AppCompatActivity() {
             Toast.makeText(applicationContext,"Created your survey", Toast.LENGTH_SHORT).show()
             finish()
         }
+
+        // calendar
+        binding.startDate.setOnClickListener {
+            val datePickerDialog = DatePickerDialog(this, {_,year,month, day -> binding.startDate.text = year.toString()+"."+(month+1).toString()+"."+day.toString()}, year, month, day)
+            datePickerDialog.show()
+        }
+        binding.endDate.setOnClickListener {
+            val datePickerDialog = DatePickerDialog(this, {_,year,month, day -> binding.endDate.text = year.toString()+"."+(month+1).toString()+"."+day.toString()}, year, month, day)
+            datePickerDialog.show()
+        }
+
     }
 
 }
