@@ -1,6 +1,5 @@
 package com.example.mp_teamproject
 
-import com.example.mp_teamproject.R
 import android.Manifest.permission.*
 import android.app.Activity
 import android.content.Intent
@@ -10,22 +9,23 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.mp_teamproject.databinding.ActivityEditProfileBinding
-import java.io.File
-import java.io.FileOutputStream
-import java.io.OutputStream
 import java.text.SimpleDateFormat
+import com.example.mp_teamproject.MypageFragment
+import kotlinx.android.synthetic.main.activity_edit_profile.*
+import java.io.*
 
 
 class EditProfile : AppCompatActivity() {
-    lateinit var binding : ActivityEditProfileBinding
-//    val binding by lazy{ ActivityEditProfileBinding.inflate(layoutInflater)}
+    val binding by lazy{ ActivityEditProfileBinding.inflate(layoutInflater)}
     // Permisisons
     val PERMISSIONS = arrayOf(
         android.Manifest.permission.CAMERA,
@@ -45,9 +45,10 @@ class EditProfile : AppCompatActivity() {
     private var photoUri: Uri? = null
     var imgUri : Uri? = null // 미리보기 사진 uri 저장
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityEditProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //permission check and request
@@ -64,27 +65,28 @@ class EditProfile : AppCompatActivity() {
 
         }
         binding.SignupBtn.setOnClickListener{
+            val intent = Intent(this, Main::class.java)
+            Log.d("ee","imgUri in edit profile: $imgUri")
+            intent.putExtra("imgUri",imgUri.toString())
+            startActivity(intent)
+        }
 
-            //intent로 profileImg눌러서 카메라로 찍고 내부저장소에 저장한 사진 mypage fragment로 넘겨주기
-            //imgUri fragement에 전달
+//        loadFile(profileImg)
 
-            // data를 담을 객체 생성
-            val bundle = Bundle()
-            //데이터 담기
-            bundle.putString("imgUri", imgUri.toString())
-            Log.d("ee","imgUri : ${imgUri.toString()}")
-            //fragement 선언
-            val mypageFragment = MypageFragment()
-            //fragement에 데이터 넘기기
-            mypageFragment.arguments = bundle
-            //fragement 추가 변경 삭제
-            val manager : FragmentManager = supportFragmentManager
-            val transaction : FragmentTransaction = manager.beginTransaction()
-            //mypage fragement 화면 보여주기
-            transaction.replace(R.id.mypage_menu, mypageFragment).commit()
+    }
 
+    fun loadFile(view: View) {
+        val filename = "image"
+        val file = File(filesDir, filename)
+        val files: Array<String> = fileList()
+        for (i in files)
+            Log.d("ee", i)
+        val reader = BufferedReader(FileReader(file))
+        reader.readLines().forEach {
+            Log.d("ee", it)
         }
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == Activity.RESULT_OK){

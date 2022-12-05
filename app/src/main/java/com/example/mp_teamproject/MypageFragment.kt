@@ -17,6 +17,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
+import java.io.BufferedReader
+import java.io.File
+import java.io.FileReader
 
 
 class MypageFragment : Fragment() {
@@ -45,10 +48,17 @@ class MypageFragment : Fragment() {
         binding = FragmentMypageBinding.inflate(layoutInflater)
 
         // profile image update
+        Log.d("ee","This is mypage fragment!")
 
-//        val getImg = Uri.parse(arguments?.getString("imgUri"))
-//        Log.d("ee","get Uri : $getImg")
-//        binding.mProfileImg.setImageURI(getImg)
+        // bundle로 전달받은 값이 있을 때만
+        if(arguments?.getString("passUri") != null){
+            //val getImg = Uri.parse(arguments?.getString("imgUri"))
+            val getImg = arguments?.getString("passUri") // getImg를 리스트로 만들어서 제일 마지막꺼를 가져다가 imageView에 binding해야겠다! 들어갈때마다 reset돼 (string으로 받아도 상관없으면 string list로)
+            Log.d("ee","get Uri : $getImg")
+            val changeImg = Uri.parse(getImg)
+            binding.mProfileImg.setImageURI(changeImg)
+        }
+
 
         binding.MPSIPBtn.setOnClickListener {
             //내가 만든 설문지 화면으로 넘어감
