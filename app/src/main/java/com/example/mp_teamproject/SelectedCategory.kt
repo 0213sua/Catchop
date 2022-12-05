@@ -47,10 +47,13 @@ class SelectedCategory : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     val year_of_today = current.format(yearformatter).toInt()
 
+    val categoryFragment = CategoryFragment()
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
         Log.d("ITM","today:"+today)
         Log.d("ITM","day of today:"+day_of_today)
         Log.d("ITM","month of today:"+month_of_today)
@@ -64,6 +67,12 @@ class SelectedCategory : AppCompatActivity() {
             binding.categoryName.text = intent.getStringExtra("category_name1")
         }else{
             Toast.makeText(this, "Error!", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.arrow.setOnClickListener {
+            val intent = Intent(this, Main::class.java)
+            intent.putExtra("back", "back")
+            startActivity(intent)
         }
 
         binding.floatingBtn2.setOnClickListener {
