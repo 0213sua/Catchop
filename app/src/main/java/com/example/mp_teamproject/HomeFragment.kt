@@ -22,13 +22,7 @@ import java.time.format.DateTimeFormatter
 
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
-    companion object {
-        fun newInstance():HomeFragment{
-            return HomeFragment()
-        }
-    }
-    private val binding by lazy{ FragmentHomeBinding.inflate(layoutInflater)}
-    private lateinit var databaseReference: DatabaseReference
+
     val surveys : MutableList<SurveyData> = mutableListOf()
     @RequiresApi(Build.VERSION_CODES.O)
     val current = LocalDate.now()
@@ -60,11 +54,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
 
-        //리사이클러 뷰에 LayoutManager, Adapter, (ItemDecoration 적용)
+        //Set LayoutManager, Adapter in the linearlayout(ItemDecoration 적용)
         val layoutManager = LinearLayoutManager(activity)
-        // recyclerview의 아이템을 역순으로 정렬
+        // Sort item of recyclerview in reverse order
         layoutManager.reverseLayout = true
-        // recyclerview의 아이템을 쌓는 순서를 끝부터 쌓게 함
+        // Stack the item of recyclerview from the end
         layoutManager.stackFromEnd = true
 
         binding.recyclerView1.layoutManager = layoutManager
@@ -81,7 +75,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
         binding.homeSearchImg.setOnClickListener {
             Log.d("MP","text: "+binding.editSearch.text)
-            (binding.recyclerView1.adapter as onAdapter).search(binding.editSearch.text.toString())
+            surveys.clear()
+            binding.recyclerView1.adapter = SearchAdapter(surveys,binding.editSearch.text.toString())
+            //(binding.recyclerView1.adapter as onAdapter).search(binding.editSearch.text.toString())
         }
 
         surveys.clear()
@@ -90,112 +86,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         return binding.root
     }
 
-    // RecyclerView 의 어댑터 클래스
-    inner class MyAdapter(val surveys: MutableList<SurveyData>): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+    inner class SearchAdapter(val surveys: MutableList<SurveyData>,serachWord: String) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         init{
-            //firebase에서 survey 데이터를 가져온 후 surveys 변수에 저장
             FirebaseDatabase.getInstance().getReference("/Surveys")
-                .orderByChild("startDate").addChildEventListener(object : ChildEventListener {
-                    //설문이 추가된 경우
-                    override fun onChildAdded(snapshot: DataSnapshot, prevChildKey: String?) {
-                        snapshot?.let{snapshot->
-                            //snapshot의 데이터를 survey 객체로 가져옴
-                            val survey = snapshot.getValue(SurveyData::class.java)
-                            survey?.let{
-                                //새 글이 마지막 부분에 추가된 경우
-                                if (prevChildKey == null){
-                                    //글 목록을 저장하는 변수에 post 객체 추가
-                                    surveys.add(it)
-                                    // recyclerview의 adapter에 글이 추가된 것을 알림
-                                    //binding.recyclerView1.adapter?.notifyItemInserted(surveys.size -1)
-                                    notifyItemInserted(surveys.size -1)
-                                }else{
-                                    // 글이 중간에 삽입된 경우 prevChildKey로 한단계 앞의 데이터 위치를 찾은 뒤 데이터를 추가한다.
-                                    val prevIndex = surveys.map {it.surveyId}.indexOf(prevChildKey)
-                                    surveys.add(prevIndex+1,survey)
-                                    //recycler view의 adapter에 글이 추가된 것을 알림
-                                    notifyItemInserted(prevIndex+1)
-                                }
-                            }
-                        }
-                    }
-                    // 설문지가 변경된 경우
-                    override fun onChildChanged(snapshot: DataSnapshot, prevChildKey: String?) {
-                        snapshot?.let { snapshot ->
-                            // snapshop 의 데이터를 Post 객체로 가져옴
-                            val survey = snapshot.getValue(SurveyData::class.java)
-                            survey?.let { survey ->
-                                // 글이 변경된 경우 글의 앞의 데이터 인덱스에 데이터를 변경한다.
-                                val prevIndex = surveys.map { it.surveyId }.indexOf(prevChildKey)
-                                surveys[prevIndex + 1] = survey
-                                notifyItemChanged(prevIndex + 1) //체크
-                            }
-                        }
-                    }
-
-                    override fun onChildRemoved(snapshot: DataSnapshot) {
-                        snapshot?.let {
-                            // snapshot 의 데이터를 surveyData 객체로 가져옴
-                            val survey = snapshot.getValue(SurveyData::class.java)
-                            //
-                            survey?.let { survey ->
-                                // 기존에 저장된 인덱스를 찾아서 해당 인덱스의 데이터를 삭제한다.
-                                val existIndex = surveys.map { it.surveyId }.indexOf(survey.surveyId)
-                                surveys.removeAt(existIndex)
-                                notifyItemRemoved(existIndex) //체크
-                            }
-                        }
-                    }
-                    // 설문지의 순서가 이동한 경우
-                    override fun onChildMoved(snapshot: DataSnapshot, prevChildKey: String?) {
-                        // snapshot
-                        snapshot?.let{
-                            //snapshot의 데이터를 survey 객체로 가져옴
-                            val survey = snapshot.getValue(SurveyData::class.java)
-                            survey?.let{survey->
-                                //기존의 인덱스를 구한다
-                                val existIndex = surveys.map{it.surveyId}.indexOf(survey.surveyId)
-                                //기존의 데이터를 지운다
-                                surveys.removeAt(existIndex)
-                                notifyItemRemoved(existIndex)
-                                //prevChildKey가 없는 경우 맨마지막으로 이동 된 것
-                                if (prevChildKey == null){
-                                    surveys.add(survey)
-                                    notifyItemChanged(surveys.size-1)
-                                }else{
-                                    //prevChildKey 다음 글로 추가
-                                    val prevIndex = surveys.map{it.surveyId}.indexOf(prevChildKey)
-                                    surveys.add(prevIndex + 1, survey)
-                                    notifyItemChanged(prevIndex+1)
-                                }
-                            }
-                        }
-                    }
-                    // 취소된 경우
+                .orderByChild("title").addValueEventListener(object :ValueEventListener {
                     override fun onCancelled(error: DatabaseError) {
-                        //error?.toException()?.printStackTrace()
                     }
-
-
-                })
-
-        }
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-            return MyViewHolder(ItemMainBinding.inflate(LayoutInflater.from(context),parent, false))
-        }
-
-        // RecyclerView 에서 몇개의 행을 그릴지 기준이 되는 메소드
-        override fun getItemCount(): Int {
-            return surveys.size
-        }
-        fun search(serachWord : String) {
-            FirebaseDatabase.getInstance().reference.child("/Surveys").orderByChild("title")
-                //.startAt(serachWord).endAt(serachWord+"\uf8ff")
-                .addValueEventListener(object :ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
-                        //val value = snapshot.getValue<SurveyData>()
-                        Log.d("MP","surveys 초기화")
-                        surveys.clear()
                         for(snapshot in snapshot!!.children){
                             Log.d("MP","snapshot: "+snapshot.value)
                             val survey : SurveyData? = snapshot.getValue(SurveyData::class.java)
@@ -206,12 +103,131 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                             }
                         }
                         notifyDataSetChanged()
-                        //notifyDataSetChanged()를 선언함으로써 변경사항이 저장된다..ㅠㅠㅠ
-                    }
-                    override fun onCancelled(error: DatabaseError) {
                     }
                 })
 
+        }
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchAdapter.SearchViewHolder {
+            return SearchViewHolder(ItemMainBinding.inflate(LayoutInflater.from(context),parent, false))
+        }
+        override fun getItemCount(): Int {
+            return surveys.size
+        }
+        override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+
+            val binding = (holder as SearchAdapter.SearchViewHolder).binding
+            val survey = surveys[position]
+
+            binding.titleText.text = survey.title
+            binding.dateText.text = survey.startDate+" ~ "+survey.endDate
+
+            // 카드가 클릭되는 경우 DetailActivity 를 실행한다.
+            binding.itemRoot.setOnClickListener {
+                // 상세화면을 호출할 Intent 를 생성한다.
+                val intent = Intent(context, SurveyInfo::class.java)
+                // 선택된 카드의 ID 정보를 intent 에 추가한다.
+                intent.putExtra("surveyId", survey.surveyId)
+                // intent 로 상세화면을 시작한다.
+                startActivity(intent)
+            }
+        }
+        inner class SearchViewHolder(val binding: ItemMainBinding): RecyclerView.ViewHolder(binding.root){
+            //설문지 제목 텍스트 뷰
+            val titleText : TextView = binding.titleText
+            //설문지 기간 텍스트 뷰
+            val dateText : TextView = binding.dateText
+            // 북마크 이미지뷰
+            //val bookmarkView : ImageView = itemView.bookmarkView
+        }
+    }
+    // Basic Adapter class
+    inner class MyAdapter(val surveys: MutableList<SurveyData>): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+        init{
+            //Get survey data from firebase
+            FirebaseDatabase.getInstance().getReference("/Surveys")
+                .orderByChild("startDate").addChildEventListener(object : ChildEventListener {
+                    //When survey is added
+                    override fun onChildAdded(snapshot: DataSnapshot, prevChildKey: String?) {
+                        snapshot?.let{snapshot->
+                            //Get snapshot's data to 'survey' instance
+                            val survey = snapshot.getValue(SurveyData::class.java)
+                            survey?.let{
+                                //When a new survey is added at the end of recyclerview
+                                if (prevChildKey == null){
+                                    //survey is added to surveys
+                                    surveys.add(it)
+                                    // Notify that a survey is added to adapter of recyclerview
+                                    notifyItemInserted(surveys.size -1)
+                                }else{
+                                    // When the post is added in the middle, we find the location of data ahead of this using prevChildKey and add it
+                                    val prevIndex = surveys.map {it.surveyId}.indexOf(prevChildKey)
+                                    surveys.add(prevIndex+1,survey)
+                                    //Notify that a survey is added to adapter of recyclerview
+                                    notifyItemInserted(prevIndex+1)
+                                }
+                            }
+                        }
+                    }
+                    // When survey is changed
+                    override fun onChildChanged(snapshot: DataSnapshot, prevChildKey: String?) {
+                        snapshot?.let { snapshot ->
+                            val survey = snapshot.getValue(SurveyData::class.java)
+                            survey?.let { survey ->
+                                // When the survey is changed, change data to index of the data ahead of the post
+                                val prevIndex = surveys.map { it.surveyId }.indexOf(prevChildKey)
+                                surveys[prevIndex + 1] = survey
+                                notifyItemChanged(prevIndex + 1)
+                            }
+                        }
+                    }
+                    //When survey is removed
+                    override fun onChildRemoved(snapshot: DataSnapshot) {
+                        snapshot?.let {
+                            val survey = snapshot.getValue(SurveyData::class.java)
+                            survey?.let { survey ->
+                                // Find existing stored index and Delete the data correspond to the index
+                                val existIndex = surveys.map { it.surveyId }.indexOf(survey.surveyId)
+                                surveys.removeAt(existIndex)
+                                notifyItemRemoved(existIndex)
+                            }
+                        }
+                    }
+                    // When order of survey is changed(moved)
+                    override fun onChildMoved(snapshot: DataSnapshot, prevChildKey: String?) {
+                        snapshot?.let{
+                            val survey = snapshot.getValue(SurveyData::class.java)
+                            survey?.let{survey->
+                                //Find existing index
+                                val existIndex = surveys.map{it.surveyId}.indexOf(survey.surveyId)
+                                //Delete existing index
+                                surveys.removeAt(existIndex)
+                                notifyItemRemoved(existIndex)
+                                //When prevChildKey is null, deal with the survey that was moved to last
+                                if (prevChildKey == null){
+                                    surveys.add(survey)
+                                    notifyItemChanged(surveys.size-1)
+                                }else{
+                                    //add survey next to prevChildKey
+                                    val prevIndex = surveys.map{it.surveyId}.indexOf(prevChildKey)
+                                    surveys.add(prevIndex + 1, survey)
+                                    notifyItemChanged(prevIndex+1)
+                                }
+                            }
+                        }
+                    }
+                    // When change is cancelled
+                    override fun onCancelled(error: DatabaseError) {
+                        //error?.toException()?.printStackTrace()
+                    }
+                })
+
+        }
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+            return MyViewHolder(ItemMainBinding.inflate(LayoutInflater.from(context),parent, false))
+        }
+
+        override fun getItemCount(): Int {
+            return surveys.size
         }
 
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -248,12 +264,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     }
     @RequiresApi(Build.VERSION_CODES.O)
-    // 저장된 endDate의 값보다 현재날짜가 작거나 같을때
+    // When stored value of endDate >= currentDate
     inner class onAdapter(val surveys: MutableList<SurveyData>): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         init{
             //firebase에서 survey 데이터를 가져온 후 surveys 변수에 저장
             FirebaseDatabase.getInstance().getReference("/Surveys")
-                .orderByChild("endDate").startAfter(today).addChildEventListener(object : ChildEventListener {
+                .orderByChild("endDate").startAt(today).addChildEventListener(object : ChildEventListener {
                     //설문이 추가된 경우
                     override fun onChildAdded(snapshot: DataSnapshot, prevChildKey: String?) {
                         snapshot?.let{snapshot->
@@ -405,13 +421,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
 
     }
-    // 저장된 endDate의 값보다 현재날짜가 클 때
+    // When stored value of endDate < currentDate 현재날짜가 클 때
     @RequiresApi(Build.VERSION_CODES.O)
     inner class finAdapter(val surveys: MutableList<SurveyData>): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         init{
             //firebase에서 survey 데이터를 가져온 후 surveys 변수에 저장
             FirebaseDatabase.getInstance().getReference("/Surveys")
-                .orderByChild("endDate").endAt(today).addChildEventListener(object : ChildEventListener {
+                .orderByChild("endDate").endBefore(today).addChildEventListener(object : ChildEventListener {
                     //설문이 추가된 경우
                     override fun onChildAdded(snapshot: DataSnapshot, prevChildKey: String?) {
                         snapshot?.let{snapshot->
