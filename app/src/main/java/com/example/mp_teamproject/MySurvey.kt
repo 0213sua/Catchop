@@ -160,7 +160,7 @@ class MySurvey : AppCompatActivity() {
         //설문지 기간 텍스트 뷰
         val dateText : TextView = itemView.dateText
         // 북마크 이미지뷰
-        //val bookmarkView : ImageView = itemView.bookmarkView
+        //fval bookmarkView : ImageView = itemView.bookmarkView
     }
     //    override fun onAttach(context: Context) {
 //        super.onAttach(context)

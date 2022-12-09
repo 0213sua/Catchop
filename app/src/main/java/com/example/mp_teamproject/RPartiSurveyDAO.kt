@@ -9,14 +9,14 @@ import androidx.room.Update
 @Dao
 interface RPartiSurveyDAO {
     @Insert
-    fun insertSurveyID(partiSurveyID:RPartiSurvey)
+    fun insert(sid:RPartiSurvey)
 
     @Update
-    fun updateSurveyID(partiSurveyID:RPartiSurvey)
+    fun update(sid:RPartiSurvey)
 
     @Delete
-    fun deleteSurveyID(partiSurveyID:RPartiSurvey)
+    fun delete(sid:RPartiSurvey)
 
-    @Query("SELECT * FROM RPartiSurvey")
+    @Query("SELECT * FROM tb_survey")
     fun getAll():List<RPartiSurvey>
 }

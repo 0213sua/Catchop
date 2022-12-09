@@ -36,6 +36,7 @@ class SurveyInfo : AppCompatActivity() {
     private var enddate = ""
     private var surveyId = " "
     private var writer = ""
+    private var surveyorId = ""
 
     @RequiresApi(Build.VERSION_CODES.O)
     val current = LocalDate.now()
@@ -54,11 +55,12 @@ class SurveyInfo : AppCompatActivity() {
             startActivity(intent)
         }
 
-        surveyId = intent.getStringExtra("surveyId").toString()
+        // intent 로 상세화면을 시작한다.
+        startActivity(intent)
 
         auth = FirebaseAuth.getInstance()
         val userid = auth!!.currentUser?.uid
-
+        val surveyorID = ""
         FirebaseDatabase.getInstance().getReference("/Surveys/$surveyId")
             .addValueEventListener(object:ValueEventListener{
 
@@ -132,8 +134,37 @@ class SurveyInfo : AppCompatActivity() {
         //today>enddate , return setOnClickListener
         binding.siPartiBtn.setOnClickListener {
             Log.d("aa","today : $today, enddate : $enddate, today>enddate : ${today>enddate}")
-            databaseReference.child(surveyId).child("surveyorInfo").setValue(userid)
+
+            firebaseDatabase.getReference("/Surveys").child(surveyId).addValueEventListener(object :ValueEventListener{
+                override fun onCancelled(error: DatabaseError) {
+                }
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    snapshot?.let { snapshot ->
+                        val survey = snapshot.getValue(SurveyData::class.java)
+                        val origin = survey?.surveyorInfo
+                        Log.d("ITM","현재 저장되어 있는 값"+origin)
+
+
+                        if(!(survey!!.surveyorInfo.contains(userid.toString()))){
+                            val change = origin + "," + userid.toString()
+                            Log.d("ITM","다시 설정한 값"+change)
+                            snapshot.child("surveyorInfo").ref.setValue(change)
+
+                        }
+
+                    }
+
+                }
+
+            })
+           // firebaseDatabase.getReference("/Surveys").child(surveyId).child("surveyorInfo").setValue(surveyorId)
+
+            //.setValue(',' + userid.toString())
+
             // save implict intent(ACTION_VIEW) & pass uri string(github address)
+
+            Log.d("ITM","surveyorInfo변경")
             Log.d("aa","partiUri : $partiUri")
             if(today>enddate){
                 Toast.makeText(applicationContext, "Suvey is ended :(", Toast.LENGTH_SHORT).show()
@@ -144,6 +175,7 @@ class SurveyInfo : AppCompatActivity() {
                 startActivity(parti)
             }
         }
+
 
         //statistic btn
         binding.siStaticBtn.setOnClickListener {
