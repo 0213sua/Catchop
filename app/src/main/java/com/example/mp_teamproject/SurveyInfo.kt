@@ -76,8 +76,8 @@ class SurveyInfo : AppCompatActivity() {
                             binding.siInstText.text = survey.institution
                             binding.siSdateText.text = survey.startDate
 
-                            enddate = survey.endDate
-                            binding.siEdateText.text = enddate
+//                            enddate = survey.endDate
+                            binding.siEdateText.text = survey.endDate
 
                             binding.siPurposeText.text = survey.purpose
                             binding.siContentText.text = survey.surveyContent
@@ -102,8 +102,17 @@ class SurveyInfo : AppCompatActivity() {
                 }
             })
 
-//        값이 안받아와짐
-        Log.d("aa","today : $today, enddate : $enddate, today>enddate : ${today>enddate}")
+        FirebaseDatabase.getInstance().getReference("/Surveys/$surveyId/endDate")
+            .addValueEventListener(object:ValueEventListener{
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+                // data 읽기
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    enddate = snapshot.getValue() as String
+                    Log.d("ITM", "Value is: $enddate")
+                }
+            })
 
 //        if (today>enddate){
 //            binding.siPartiBtn.isEnabled = false //비활성화
@@ -122,30 +131,32 @@ class SurveyInfo : AppCompatActivity() {
         //participate btn
         //today>enddate , return setOnClickListener
         binding.siPartiBtn.setOnClickListener {
+            Log.d("aa","today : $today, enddate : $enddate, today>enddate : ${today>enddate}")
             databaseReference.child(surveyId).child("surveyorInfo").setValue(userid)
             // save implict intent(ACTION_VIEW) & pass uri string(github address)
             Log.d("aa","partiUri : $partiUri")
-//            if(){
-//                Toast.makeText(applicationContext, "It is ended survey", Toast.LENGTH_SHORT).show()
-//                return@setOnClickListener
-//            }
-//            else{
-//                val parti = Intent(Intent.ACTION_VIEW, Uri.parse("$partiUri"))
-//                startActivity(parti)
-//            }
+            if(today>enddate){
+                Toast.makeText(applicationContext, "Suvey is ended :(", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            else{
+                val parti = Intent(Intent.ACTION_VIEW, Uri.parse("$partiUri"))
+                startActivity(parti)
+            }
         }
 
         //statistic btn
         binding.siStaticBtn.setOnClickListener {
+            Log.d("aa","today : $today, enddate : $enddate, today<enddate : ${today<enddate}")
             // save implict intent(ACTION_VIEW) & pass uri string(github address)
             Log.d("aa","staticUri : $staticUri")
-//            if(){
-//                Toast.makeText(applicationContext, "It is ended survey", Toast.LENGTH_SHORT).show()
-//                return@setOnClickListener
-//            }else{
-//                val static = Intent(Intent.ACTION_VIEW, Uri.parse("$staticUri"))
-//                startActivity(static)
-//            }
+            if(today<enddate){
+                Toast.makeText(applicationContext, "Survey is not ended :(", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }else{
+                val static = Intent(Intent.ACTION_VIEW, Uri.parse("$staticUri"))
+                startActivity(static)
+            }
         }
     }
 }

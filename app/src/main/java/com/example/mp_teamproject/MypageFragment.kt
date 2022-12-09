@@ -76,7 +76,6 @@ class MypageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentMypageBinding.inflate(layoutInflater)
 
         //save preference with getted intent
         val getImg = arguments?.getString("passUri")
