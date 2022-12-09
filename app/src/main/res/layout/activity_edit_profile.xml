@@ -70,10 +70,9 @@
 
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/EP_Name_editText"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="김마요"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
@@ -163,12 +162,11 @@
                 android:textStyle="bold|italic" />
 
             <EditText
-                android:id="@+id/editTextTextPersonEmail"
+                android:id="@+id/EP_Email_editText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:text="mayo1125@gmail.com"
                 android:inputType="textEmailAddress" />
         </LinearLayout>
 
@@ -189,12 +187,11 @@
                 android:textStyle="bold|italic" />
 
             <EditText
-                android:id="@+id/editTextTextPersonPassword"
+                android:id="@+id/EP_Password_editText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:text="mayokim1125"
                 android:inputType="textPassword" />
         </LinearLayout>
 
@@ -216,12 +213,11 @@
                 android:textStyle="bold|italic" />
 
             <EditText
-                android:id="@+id/editTextTextPersonPhone"
+                android:id="@+id/EP_Phone_editText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:text="010-2568-3498"
                 android:inputType="phone" />
         </LinearLayout>
 

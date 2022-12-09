@@ -2,7 +2,6 @@ package com.example.mp_teamproject
 
 import android.Manifest.permission.*
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -36,12 +35,16 @@ class EditProfile : AppCompatActivity() {
     val PERMISSIONS_REQUEST = 100
 
     // Request Code
-//    private val BUTTON1 = 100 // 카메라 앱으로 사진찍고 imageView에 미리보기
-    private val BUTTON2 = 200 // 내부 저장소에 저장하기
+    private val BUTTON1 = 100 // 카메라 앱으로 사진찍고 imageView에 미리보기
+    private val BUTTON2 = 200
+    private val BUTTON3 = 300 // 카메라 앱으로 사진찍고 원본사진 내부 저장소에 저장하기
+    private val BUTTON4 = 400 // 사진찍고 외부 저장소의 앱 디렉토리에 저장하기
+    private val BUTTON5 = 500
 
     // 원본 사진이 저장되는 Uri
     private var photoUri: Uri? = null
     var imgUri : Uri? = null // 미리보기 사진 uri 저장
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,16 +53,6 @@ class EditProfile : AppCompatActivity() {
 
         //permission check and request
         checkPermissions(PERMISSIONS,PERMISSIONS_REQUEST)
-
-        // load preference
-        Log.d("ee", "load preference!")
-        val sharedPref = getPreferences(Context.MODE_PRIVATE)
-        val tmp = sharedPref?.getString("ImgUri","null")
-        Log.d("ee","tmp : $tmp")
-        if(tmp != null){
-            val changeImg = Uri.parse(tmp)
-            binding.profileImg.setImageURI(changeImg)
-        }
 
         binding.profileImg.setOnClickListener{
 
@@ -72,25 +65,37 @@ class EditProfile : AppCompatActivity() {
 
         }
         binding.SignupBtn.setOnClickListener{
-            val sharedPref = getPreferences(Context.MODE_PRIVATE)
-            with (sharedPref.edit()) {
-                putString("ImgUri",imgUri.toString())
-                apply()
-            }
-            Toast.makeText(this,"preference saved",Toast.LENGTH_SHORT).show()
-            Log.d("ee","save preference : ${imgUri.toString()}")
-
             val intent = Intent(this, Main::class.java)
-            intent.putExtra("myprofile",imgUri.toString())
+            Log.d("ee","imgUri in edit profile: $imgUri")
+            intent.putExtra("imgUri",imgUri.toString())
             startActivity(intent)
         }
 
+//        loadFile(profileImg)
+
+    }
+
+    fun loadFile(view: View) {
+        val filename = "image"
+        val file = File(filesDir, filename)
+        val files: Array<String> = fileList()
+        for (i in files)
+            Log.d("ee", i)
+        val reader = BufferedReader(FileReader(file))
+        reader.readLines().forEach {
+            Log.d("ee", it)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == Activity.RESULT_OK){
             when(requestCode) {
+                BUTTON1 -> {
+//                    미리보기 사진 intent.extra.get("data")에 저장
+                    val imageBitmap = data?.extras?.get("data") as Bitmap
+                    binding.profileImg.setImageBitmap(imageBitmap)
+                }
                 // 미리보기 사진 내부 저장소에 저장
                 // 내부저장소 위치 : data/data/com.example.mp_teamproject/files/image
                 BUTTON2 -> {
@@ -100,6 +105,9 @@ class EditProfile : AppCompatActivity() {
 
                 }
 
+                BUTTON3 -> {
+
+                }
             }
         }
     }

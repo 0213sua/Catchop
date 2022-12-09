@@ -12,11 +12,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.example.mp_teamproject.databinding.ActivitySignUpBinding
 import com.example.mp_teamproject.databinding.FragmentMypageBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import java.io.BufferedReader
 import java.io.File
@@ -25,7 +29,8 @@ import java.io.FileReader
 
 class MypageFragment : Fragment() {
     private var auth : FirebaseAuth? = null
-    lateinit var binding: FragmentMypageBinding
+    private val binding by lazy{ FragmentMypageBinding.inflate(layoutInflater)}
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +39,31 @@ class MypageFragment : Fragment() {
 
 
         val userid = auth!!.currentUser?.uid
+        val reference = FirebaseDatabase.getInstance().reference.child("Users").child(userid!!).child("username")
+        Log.d("ITM","HIHIHI reference !! $reference")
+
+
+
+        reference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val value = dataSnapshot.getValue()
+                binding.MPNickNameTxt.text = value.toString()
+                Log.d("ITM", "Value is: $value")
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("ITM", "Failed to read value.", error.toException())
+            }
+        })
+
+
+
+        Log.d("ITM","아임 수아수 $reference")
+
+
         //val reference = FirebaseDatabase.getInstance().reference.child("Users").child(userid!!)
         Log.d("ITM","THIS ! $userid ")
     }
@@ -72,6 +102,10 @@ class MypageFragment : Fragment() {
 
         binding.MPSIPBtn.setOnClickListener {
             //내가 만든 설문지 화면으로 넘어감
+//            val userid = auth!!.currentUser?.uid
+//            val reference = FirebaseDatabase.getInstance().reference.child("Users").child(userid!!).child("name")
+//            Log.d("ITM","아임 수아수 $reference")
+
             val intent = Intent(this@MypageFragment.requireContext(),MySurvey::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)

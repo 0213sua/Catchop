@@ -37,12 +37,23 @@
                 app:srcCompat="@drawable/man" />
 
             <TextView
-                android:id="@+id/NickNameTxt"
+                android:id="@+id/MP_NickNameTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:gravity="center"
-                android:text="김마요님, 안녕하세요 🤗"
+                android:text="이름"
+                android:fontFamily="@font/bmjua"
+                android:textAlignment="center"
+                android:textColor="#B8185D"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/HITxt"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="님, 안녕하세요 🤗"
                 android:fontFamily="@font/bmjua"
                 android:textAlignment="center"
                 android:textColor="#B8185D"

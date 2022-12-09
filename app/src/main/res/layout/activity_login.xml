@@ -95,6 +95,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LI_PwEditText" />
 
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/btn_googleSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUp"></com.google.android.gms.common.SignInButton>
+
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="129dp"
@@ -120,19 +129,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LoginBtn" />
 
+
     <TextView
         android:id="@+id/LI_SignUp_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="168dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="168dp"
-        android:text="회원가입"
         android:fontFamily="@font/bmjua"
+        android:text="회원가입"
         android:textColor="#F74A5E"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.833"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signUp" />
 
@@ -141,7 +151,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="177dp"
         android:fontFamily="cursive"
         android:text="by Catchop"
@@ -149,8 +159,9 @@
         android:textSize="20sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.363"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LI_SignUp_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_googleSignIn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
