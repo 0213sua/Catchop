@@ -72,7 +72,6 @@ class MypageFragment : Fragment() {
 
         binding.MPSIPBtn.setOnClickListener {
             //내가 만든 설문지 화면으로 넘어감
-
             val intent = Intent(this@MypageFragment.requireContext(),MySurvey::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
