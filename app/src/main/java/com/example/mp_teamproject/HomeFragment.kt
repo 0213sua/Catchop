@@ -80,7 +80,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             binding.recyclerView1.adapter = onAdapter(surveys)
         }
         binding.homeSearchImg.setOnClickListener {
-
             Log.d("MP","text: "+binding.editSearch.text)
             (binding.recyclerView1.adapter as onAdapter).search(binding.editSearch.text.toString())
         }
@@ -88,9 +87,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         surveys.clear()
         binding.recyclerView1.adapter = MyAdapter(surveys)
 
-
         return binding.root
-
     }
 
     // RecyclerView 의 어댑터 클래스
@@ -351,7 +348,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
         fun search(serachWord : String) {
             FirebaseDatabase.getInstance().reference.child("/Surveys").orderByChild("title")
-            //.startAt(serachWord).endAt(serachWord+"\uf8ff")
+                //.startAt(serachWord).endAt(serachWord+"\uf8ff")
                 .addValueEventListener(object :ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
                         //val value = snapshot.getValue<SurveyData>()

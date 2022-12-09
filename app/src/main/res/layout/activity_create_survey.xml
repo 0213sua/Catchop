@@ -28,14 +28,6 @@
             app:srcCompat="@drawable/arrow"
             app:tint="@color/white" />
 
-        <ImageView
-            android:id="@+id/home"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="280dp"
-            app:srcCompat="@drawable/ic_baseline_home_24"
-            app:tint="#FFF8F8" />
 
 
     </LinearLayout>
@@ -47,7 +39,7 @@
         android:layout_height="50dp"
         android:backgroundTint="#DA182E"
         android:gravity="center"
-        android:text="설문지 등록하기"
+        android:text="Register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -78,7 +70,7 @@
                     android:layout_height="50dp"
                     android:background="#EDF3F6"
                     android:gravity="center"
-                    android:text="제목"
+                    android:text="Title"
                     android:textColor="#4C4C4C"
                     android:textSize="20sp"
                     android:textStyle="bold|italic" />
@@ -110,7 +102,7 @@
                     android:layout_height="50dp"
                     android:background="#EBF0F3"
                     android:gravity="center"
-                    android:text="작성자"
+                    android:text="Writer"
                     android:textColor="#4C4C4C"
                     android:textSize="20sp"
                     android:textStyle="bold|italic" />
@@ -150,7 +142,7 @@
                     android:layout_height="50dp"
                     android:background="#EBF0F3"
                     android:gravity="center"
-                    android:text="기관"
+                    android:text="Institution"
                     android:textColor="#4C4C4C"
                     android:textSize="20sp"
                     android:textStyle="bold|italic" />
@@ -182,7 +174,7 @@
                     android:layout_height="50dp"
                     android:background="#EBF0F3"
                     android:gravity="center"
-                    android:text="목적"
+                    android:text="Purpose"
                     android:textColor="#4C4C4C"
                     android:textSize="20sp"
                     android:textStyle="bold|italic" />
@@ -214,7 +206,7 @@
                     android:layout_height="50dp"
                     android:background="#EBF0F3"
                     android:gravity="center"
-                    android:text="카테고리"
+                    android:text="Category"
                     android:textColor="#4C4C4C"
                     android:textSize="20sp"
                     android:textStyle="bold|italic" />
@@ -245,7 +237,7 @@
                     android:layout_height="50dp"
                     android:background="#EBF0F3"
                     android:gravity="center"
-                    android:text="응답 기간"
+                    android:text="Period"
                     android:textColor="#4C4C4C"
                     android:textSize="20sp"
                     android:textStyle="bold|italic" />
@@ -296,7 +288,7 @@
                     android:layout_height="75dp"
                     android:background="#EBF0F3"
                     android:gravity="center"
-                    android:text="결과 공개 여부"
+                    android:text="Result Open"
                     android:textColor="#4C4C4C"
                     android:textSize="20sp"
                     android:textStyle="bold|italic" />
@@ -341,7 +333,7 @@
                     android:layout_height="75dp"
                     android:background="#EBF0F3"
                     android:gravity="center"
-                    android:text="세부 내용"
+                    android:text="Details"
                     android:textColor="#4C4C4C"
                     android:textSize="20sp"
                     android:textStyle="bold|italic" />
@@ -396,7 +388,7 @@
         android:id="@+id/cs_addBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="구글폼 생성하러 가기"
+        android:text="Go to create Google Forms"
         android:textColor="@color/black"
         android:backgroundTint="#EBF0F3"
         app:layout_constraintEnd_toEndOf="parent"

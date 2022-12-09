@@ -42,12 +42,11 @@ class EditProfile : AppCompatActivity() {
     val PERMISSIONS_REQUEST = 100
 
     // Request Code
-//    private val BUTTON1 = 100 // 카메라 앱으로 사진찍고 imageView에 미리보기
-    private val BUTTON2 = 200 // 내부 저장소에 저장하기
+    private val BUTTON2 = 200 // Save into internal storage
 
-    // 원본 사진이 저장되는 Uri
+    // Uri storing original photo
     private var photoUri: Uri? = null
-    var imgUri : Uri? = null // 미리보기 사진 uri 저장
+    var imgUri : Uri? = null // Store preview photo uri
 
 
 
@@ -68,6 +67,11 @@ class EditProfile : AppCompatActivity() {
         val phone_ref = FirebaseDatabase.getInstance().reference.child("Users").child(userid!!).child("phone")
         val job_ref = FirebaseDatabase.getInstance().reference.child("Users").child(userid!!).child("job")
 
+        binding.edArrow.setOnClickListener {
+            val intent = Intent(this,Main::class.java)
+            intent.putExtra("ed_back", "ed_back")
+            startActivity(intent)
+        }
 
         name_ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -185,7 +189,7 @@ class EditProfile : AppCompatActivity() {
 
         binding.profileImg.setOnClickListener{
 
-            //resolve activity : implict intent 호출 대상앱이 기기에 존재하는지 확인
+            //resolve activity : Call implict intent, check whether the called app exist on the device
             val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             takePictureIntent.resolveActivity(packageManager)?.also {
 //                startActivityForResult(takePictureIntent, BUTTON1)
@@ -213,8 +217,8 @@ class EditProfile : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == Activity.RESULT_OK){
             when(requestCode) {
-                // 미리보기 사진 내부 저장소에 저장
-                // 내부저장소 위치 : data/data/com.example.mp_teamproject/files/image
+                // Save preview photos to internal storage
+                // path of internal storage: data/data/com.example.mp_teamproject/files/image
                 BUTTON2 -> {
                     val imageBitmap = data?.extras?.get("data") as Bitmap
                     saveBitmapAsJPGFile(imageBitmap)
@@ -232,7 +236,7 @@ class EditProfile : AppCompatActivity() {
 
         return "${filename}.jpg"
     }
-    //Bitmap 데이터를 bitmap file로 저장, 경로 = 내부저장소
+    //Store Bitmap data as bitmap file, path = internal storage
     private fun saveBitmapAsJPGFile(bitmap: Bitmap) {
         val path = File(filesDir, "image")
         if(!path.exists()){
@@ -255,8 +259,8 @@ class EditProfile : AppCompatActivity() {
         }
     }
 
-    //권한 확인하기 : ContextCompat.CheckSelfPermission()
-    //권한 요청하기 : ActivityCompat.requestPermission()
+    //Check permission : ContextCompat.CheckSelfPermission()
+    //Request permission : ActivityCompat.requestPermission()
     private fun checkPermissions(permissions: Array<String>, permissionsRequest: Int): Boolean {
         val permissionList : MutableList<String> = mutableListOf()
         for(permission in permissions){
@@ -271,7 +275,7 @@ class EditProfile : AppCompatActivity() {
         }
         return true
     }
-    //권한요청 결과 확인
+    //Check permission request result
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -280,7 +284,7 @@ class EditProfile : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         for(result in grantResults){
             if(result != PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(this, "권한 승인 부탁드립니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please approve permission.", Toast.LENGTH_SHORT).show()
                 finish()
             }
         }

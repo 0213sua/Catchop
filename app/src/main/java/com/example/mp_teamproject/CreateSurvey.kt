@@ -23,7 +23,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 import java.util.*
 
-//import com.google.firebase.ktx.Firebase
 
 
 class CreateSurvey : AppCompatActivity() {
@@ -51,8 +50,7 @@ class CreateSurvey : AppCompatActivity() {
         val newRef = FirebaseDatabase.getInstance().getReference("Surveys").push()
 
         // spinner
-//        val myList = listOf("","Administration","Technology","Education","Logistics","Land managing","Agri-Animal-Fish","Culture & Tourism","Health & Medical","Food")
-        val myList = listOf("","행정관리","과학기술","교육","농축산","국토관리","문화/여행","건강","음식","교통")
+        val myList = listOf("","Administration","Technology","Education","Logistics","Land managing","Agri-Animal-Fish","Culture & Tourism","Health","Food")
         //provide views for an AdapterView
         val myAdapter = ArrayAdapter<String>(this, R.layout.simple_list_item_1, myList)
 
@@ -71,37 +69,34 @@ class CreateSurvey : AppCompatActivity() {
                     survey.category = ""
                 }
                 if(p2==1){
-//                    survey.category = "Administration"
-                    survey.category = "행정관리"
+                    survey.category = "Administration"
                 }
                 if(p2==2){
-//                    survey.category = "Technology"
-                    survey.category = "과학기술"
+                    survey.category = "Technology"
                 }
                 if(p2==3){
-//                    survey.category = "Education"
-                    survey.category = "교육"
+                    survey.category = "Education"
                 }
                 if(p2==4){
 //                    survey.category = "Traffic"
-                    survey.category = "농축산"
+                    survey.category = "Agri-Animal-Fish"
                 }
                 if(p2==5){
 //                    survey.category = "Land Managing"
-                    survey.category = "국토관리"
+                    survey.category = "Land managing"
                 }
                 if(p2==6){
 //                    survey.category = "Agriculture/Livestock/Fish"
-                    survey.category = "문화/여행"
+                    survey.category = "Culture & Tourism"
                 }
                 if(p2==7){
-                    survey.category = "건강"
+                    survey.category = "Health"
                 }
                 if(p2==8){
-                    survey.category = "음식"
+                    survey.category = "Food"
                 }
                 if(p2==9){
-                    survey.category = "교통"
+                    survey.category = "Logistics"
                 }
 
             }

@@ -47,24 +47,14 @@ class MySurvey : AppCompatActivity() {
         userid = auth!!.currentUser?.uid.toString()
 
         val layoutManager = LinearLayoutManager(this@MySurvey)
-        // recyclerview의 아이템을 역순으로 정렬
+        // Sort items in recyclerview in reverse order
         layoutManager.reverseLayout = true
 
-        // recyclerview의 아이템을 쌓는 순서를 끝부터 쌓게 함
+        // Stack items from end of the recyclerview
         layoutManager.stackFromEnd = true
 
         binding.MrecyclerView.layoutManager = layoutManager
         binding.MrecyclerView.adapter = MyAdapter()
-//        binding.finBtn.setOnClickListener{
-//            surveys.clear()
-//            binding.recyclerView1.adapter = finAdapter(surveys)
-//
-//        }
-//
-//        binding.onBtn.setOnClickListener{
-//            surveys.clear()
-//            binding.recyclerView1.adapter = onAdapter(surveys)
-//        }
 
         binding.arrow.setOnClickListener {
             finish()
@@ -79,11 +69,11 @@ class MySurvey : AppCompatActivity() {
                     snapshot.let { snapshot ->
                         val survey = snapshot.getValue(SurveyData::class.java)
                         survey?.let{
-                            //새 글이 마지막 부분에 추가된 경우
+                            //When a new article is added to the end of recyclerview
                             if (prevChildKey == null){
-                                //글 목록을 저장하는 변수에 post 객체 추가
+                                //Add the post instance to surveys
                                 surveys.add(it)
-                                // recyclerview의 adapter에 글이 추가된 것을 알림
+                                // Notify that the addition of writing to the adapter in recyclerview
                                 binding.MrecyclerView.adapter?.notifyItemInserted(surveys.size -1)
                             }else{
                                 // 글이 중간에 삽입된 경우 prevChildKey로 한단계 앞의 데이터 위치를 찾은 뒤 데이터를 추가한다.

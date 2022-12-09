@@ -62,13 +62,13 @@ class Login : AppCompatActivity() {
                 ?.addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(
-                            baseContext, "로그인에 성공 하였습니다.",
+                            baseContext, "Login succeeded.",
                             Toast.LENGTH_SHORT
                         ).show()
                         moveMainPage(auth?.currentUser)
                     } else {
                         Toast.makeText(
-                            baseContext, "로그인에 실패 하였습니다.",
+                            baseContext, "Login failed.",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
@@ -112,15 +112,15 @@ class Login : AppCompatActivity() {
     private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
         Log.d("LoginActivity", "firebaseAuthWithGoogle:" + acct.id!!)
 
-        //Google SignInAccount 객체에서 ID 토큰을 가져와서 Firebase Auth로 교환하고 Firebase에 인증
+        //Get id token from Google SignInAccount instance and change to Firebase Auth and Authenticate to Firebase
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
         firebaseAuth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    Log.d("ITM", "firebaseAuthWithGoogle 성공", task.exception)
+                    Log.d("ITM", "firebaseAuthWithGoogle Success", task.exception)
                     moveMainPage(firebaseAuth?.currentUser)
                 } else {
-                    Log.d("ITM", "firebaseAuthWithGoogle 실패", task.exception)
+                    Log.d("ITM", "firebaseAuthWithGoogle Fail", task.exception)
 
                 }
             }

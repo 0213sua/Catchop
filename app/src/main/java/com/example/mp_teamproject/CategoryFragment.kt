@@ -9,9 +9,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.mp_teamproject.databinding.FragmentCategoryBinding
-//import com.google.firebase.auth.FirebaseAuth
-//import com.google.firebase.auth.ktx.auth
-//import com.google.firebase.ktx.Firebase
 
 class CategoryFragment : Fragment() {
     lateinit var binding: FragmentCategoryBinding
@@ -86,11 +83,5 @@ class CategoryFragment : Fragment() {
 
         return binding.root
 
-    }
-
-    companion object {
-        fun newInstance():CategoryFragment{
-            return CategoryFragment()
-        }
     }
 }
