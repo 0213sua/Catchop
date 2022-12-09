@@ -34,7 +34,6 @@ class SurveyInfo : AppCompatActivity() {
     private var enddate = ""
     private var surveyId = " "
     private var writer = ""
-    private var surveyorId = ""
 
     @RequiresApi(Build.VERSION_CODES.O)
     val current = LocalDate.now()
@@ -53,12 +52,11 @@ class SurveyInfo : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // intent 로 상세화면을 시작한다.
-        startActivity(intent)
+        surveyId = intent.getStringExtra("surveyId").toString()
 
         auth = FirebaseAuth.getInstance()
         val userid = auth!!.currentUser?.uid
-        val surveyorID = ""
+
         FirebaseDatabase.getInstance().getReference("/Surveys/$surveyId")
             .addValueEventListener(object:ValueEventListener{
 
@@ -114,30 +112,9 @@ class SurveyInfo : AppCompatActivity() {
                 }
             })
 
-        FirebaseDatabase.getInstance().getReference("/Surveys/$surveyId/surveyorInfo")
-            .addValueEventListener(object:ValueEventListener{
-
-                override fun onCancelled(error: DatabaseError) {
-                }
-                // data 읽기
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    surveyorId = snapshot.getValue() as String
-                    Log.d("ITM", "surveyorID : $surveyorId")
-                }
-            })
-
-
-
-        binding.siDeleteBtn.setOnClickListener{
-            val dataRef = firebaseDatabase.getReference("/Surveys/$surveyId")
-            dataRef.removeValue()
-        }
-
         //participate btn
         //today>enddate , return setOnClickListener
         binding.siPartiBtn.setOnClickListener {
-
-            Log.d("aa","today : $today, enddate : $enddate, today>enddate : ${today>enddate}")
 
             firebaseDatabase.getReference("/Surveys").child(surveyId).addValueEventListener(object :ValueEventListener{
                 override fun onCancelled(error: DatabaseError) {
@@ -162,33 +139,27 @@ class SurveyInfo : AppCompatActivity() {
                 }
 
             })
-           // firebaseDatabase.getReference("/Surveys").child(surveyId).child("surveyorInfo").setValue(surveyorId)
 
-            //.setValue(',' + userid.toString())
 
+            Log.d("aa","today : $today, enddate : $enddate, today>enddate : ${today>enddate}")
+            databaseReference.child(surveyId).child("surveyorInfo").setValue(userid)
             // save implict intent(ACTION_VIEW) & pass uri string(github address)
-
-            Log.d("ITM","surveyorInfo변경")
             Log.d("aa","partiUri : $partiUri")
             if(today>enddate){
-                Toast.makeText(applicationContext, "Suvey is ended :(", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Survey is ended :(", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             else{
-                surveyorId
-
-//                val database = Firebase.database("https://....firebasedatabase.app")
-//                val myRef = database.getReference("message")
-//                myRef.setValue(binding.etInput.text.toString())  // 데이터 1개가 계속 수정되는 방식
-
-
-
                 val parti = Intent(Intent.ACTION_VIEW, Uri.parse("$partiUri"))
                 startActivity(parti)
             }
         }
-
-
+        binding.siDeleteBtn.setOnClickListener{
+            val dataRef = firebaseDatabase.getReference("/Surveys/$surveyId")
+            Log.d("ITM","dataRef: $dataRef")
+            dataRef.removeValue()
+            Toast.makeText(applicationContext, "Survey is deleted!", Toast.LENGTH_SHORT).show()
+        }
         //statistic btn
         binding.siStaticBtn.setOnClickListener {
             Log.d("aa","today : $today, enddate : $enddate, today<enddate : ${today<enddate}")
