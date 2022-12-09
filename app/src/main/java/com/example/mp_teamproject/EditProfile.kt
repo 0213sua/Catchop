@@ -21,11 +21,17 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.mp_teamproject.databinding.ActivityEditProfileBinding
 import java.text.SimpleDateFormat
 import com.example.mp_teamproject.MypageFragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import java.io.*
 
 
 class EditProfile : AppCompatActivity() {
+    private var auth : FirebaseAuth? = null
     val binding by lazy{ ActivityEditProfileBinding.inflate(layoutInflater)}
     // Permisisons
     val PERMISSIONS = arrayOf(
@@ -44,12 +50,128 @@ class EditProfile : AppCompatActivity() {
     var imgUri : Uri? = null // 미리보기 사진 uri 저장
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         //permission check and request
         checkPermissions(PERMISSIONS,PERMISSIONS_REQUEST)
+
+        auth = FirebaseAuth.getInstance()
+        val userid = auth!!.currentUser?.uid
+        val name_ref = FirebaseDatabase.getInstance().reference.child("Users").child(userid!!).child("username")
+        val sex_ref = FirebaseDatabase.getInstance().reference.child("Users").child(userid!!).child("sex")
+        val birth_ref = FirebaseDatabase.getInstance().reference.child("Users").child(userid!!).child("birth")
+        val email_ref = FirebaseDatabase.getInstance().reference.child("Users").child(userid!!).child("email")
+        val pw_ref = FirebaseDatabase.getInstance().reference.child("Users").child(userid!!).child("pw")
+        val phone_ref = FirebaseDatabase.getInstance().reference.child("Users").child(userid!!).child("phone")
+        val job_ref = FirebaseDatabase.getInstance().reference.child("Users").child(userid!!).child("job")
+
+
+        name_ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val name = dataSnapshot.getValue()
+                binding.EPNameEditText.setText(name.toString())
+                Log.d("ITM", "Value is: $name")
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("ITM", "Failed to read value.", error.toException())
+            }
+        })
+
+        sex_ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val sex = dataSnapshot.getValue()
+                binding.EPSexEditText.setText(sex.toString())
+                Log.d("ITM", "Value is: $sex")
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("ITM", "Failed to read value.", error.toException())
+            }
+        })
+
+        birth_ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val birth = dataSnapshot.getValue()
+                binding.EPBirthEditText.setText(birth.toString())
+                Log.d("ITM", "Value is: $birth")
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("ITM", "Failed to read value.", error.toException())
+            }
+        })
+
+        email_ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val email = dataSnapshot.getValue()
+                binding.EPEmailEditText.setText(email.toString())
+                Log.d("ITM", "Value is: $email")
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("ITM", "Failed to read value.", error.toException())
+            }
+        })
+
+        pw_ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val pw = dataSnapshot.getValue()
+                binding.EPPasswordEditText.setText(pw.toString())
+                Log.d("ITM", "Value is: $pw")
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("ITM", "Failed to read value.", error.toException())
+            }
+        })
+        phone_ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val phone = dataSnapshot.getValue()
+                binding.EPPhoneEditText.setText(phone.toString())
+                Log.d("ITM", "Value is: $phone")
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("ITM", "Failed to read value.", error.toException())
+            }
+        })
+
+        job_ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val job = dataSnapshot.getValue()
+                binding.EPJobEditText.setText(job.toString())
+                Log.d("ITM", "Value is: $job")
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("ITM", "Failed to read value.", error.toException())
+            }
+        })
 
         // load preference
         Log.d("ee", "load preference!")

@@ -7,6 +7,8 @@ import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
@@ -20,12 +22,16 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.activity_edit_profile.*
 
 
 class SignUp : AppCompatActivity() {
     private var auth : FirebaseAuth? = null
     private val binding by lazy{ ActivitySignUpBinding.inflate(layoutInflater)}
     //var hashMap = HashMap<String,Any> ()
+
+    var sex : String = ""
+    var job : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,15 +45,54 @@ class SignUp : AppCompatActivity() {
         actionBar?.setDisplayShowHomeEnabled(true)
 
 
+        binding.SUJobSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                if(p2==0){
+                    job = ""
+                }
+                if(p2==1){
+                    job= "학생"
+                }
+                if(p2==2){
+                    job= "대학생"
+                }
+                if(p2==3){
+                    job= "대학원생"
+                }
+                if(p2==4){
+                    job= "교수"
+                }
+                if(p2==5){
+                    job= "인턴"
+                }
+                if(p2==6){
+                    job= "직장인"
+                }
+                if(p2==7){
+                    job= "프리랜서"
+                }
+                if(p2==8){
+                    job= "기타"
+                }
+            }
+            override fun onNothingSelected(p0: AdapterView<*>?) {}
+        }
+
 
 
         binding.SUSignupBtn.setOnClickListener {
 
+            when(binding.SUSexRadio.checkedRadioButtonId){
+                binding.SexMale.id -> sex = "male"
+                else -> sex = "female"
+            }
+
             val name = binding.SUNameEditText.text.toString().trim()
+            val birth = binding.SUBirthdateEditText.text.toString().trim()
             val email = binding.SUEmailEditText.text.toString().trim()
             val password = binding.SUPwEditText.text.toString().trim()
             val phone = binding.SUPhoneEditText.text.toString().trim()
-            createUser(name,email,password,phone)
+            createUser(name,sex,birth,email,password,phone,job)
 
 
 
@@ -78,7 +123,7 @@ class SignUp : AppCompatActivity() {
 
     }
 
-    fun createUser(name : String, email : String, password : String, phone : String) {
+    fun createUser(name : String,sex : String, birth:String, email : String, password : String, phone : String, job : String) {
         auth = FirebaseAuth.getInstance()
 
 
@@ -98,9 +143,12 @@ class SignUp : AppCompatActivity() {
 
                         hashMap["id"] = userid
                         hashMap["username"] = name
+                        hashMap["sex"] = sex
+                        hashMap["birth"] = birth
                         hashMap["email"] = email
                         hashMap["pw"] = password
                         hashMap["phone"] = phone
+                        hashMap["job"] = job
                         reference.setValue(hashMap)
 
                         Toast.makeText(this, "계정 생성 완료.",Toast.LENGTH_SHORT).show()

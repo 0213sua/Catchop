@@ -93,6 +93,7 @@ class ParticipatedSurvey : AppCompatActivity() {
                                 binding.PrecyclerView.adapter?.notifyItemInserted(prevIndex+1)
                             }
                         }
+
                     }
                 }
                 // 설문지가 변경된 경우
