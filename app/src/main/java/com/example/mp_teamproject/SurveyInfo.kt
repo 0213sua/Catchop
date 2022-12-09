@@ -4,8 +4,10 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mp_teamproject.databinding.ActivitySurveyInfoBinding
@@ -30,10 +32,10 @@ class SurveyInfo : AppCompatActivity() {
     val surveys: MutableList<SurveyData> = mutableListOf()
     private val firebaseDatabase = FirebaseDatabase.getInstance()
     private val databaseReference = firebaseDatabase.getReference("/Surveys")
-    private var surveyId = " "
-    private var enddate = ""
-    private var writer = ""
 
+    private var enddate = ""
+    private var surveyId = " "
+    private var writer = ""
 
     @RequiresApi(Build.VERSION_CODES.O)
     val current = LocalDate.now()
@@ -41,8 +43,6 @@ class SurveyInfo : AppCompatActivity() {
     val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd")
     @RequiresApi(Build.VERSION_CODES.O)
     val today = current.format(formatter)
-
-
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,62 +67,53 @@ class SurveyInfo : AppCompatActivity() {
                 // data 읽기
                 override fun onDataChange(snapshot: DataSnapshot) {
 
-                    snapshot?.let{
+                    snapshot?.let {
                         val survey = it.getValue(SurveyData::class.java)
+//                        var enddate = ""
 
-                        survey?.let{
+                        survey?.let {
                             binding.siTitleText.text = survey.title
                             binding.siInstText.text = survey.institution
                             binding.siSdateText.text = survey.startDate
+
+//                            enddate = survey.endDate
                             binding.siEdateText.text = survey.endDate
+
                             binding.siPurposeText.text = survey.purpose
                             binding.siContentText.text = survey.surveyContent
                             binding.siCateText.text = survey.category
                             binding.siResultText.text = survey.resultOpen
 
-                            enddate = survey.endDate
-                            writer = survey.writerId
-                            Log.d("aa","1 writer id : $writer")
-                            Log.d("aa","1 end date : $enddate")
 
+                            writer = survey.writerId
                             partiUri = survey.uri
                             var strList: List<String> = survey.uri.split("/")
-                            staticUri = "https://docs.google.com/forms/d/e/"+strList[6]+"/viewanalytics"
+                            staticUri =
+                                "https://docs.google.com/forms/d/e/" + strList[6] + "/viewanalytics"
                         }
                     }
-                    Log.d("aa","2 writer id : $writer")
-                    Log.d("aa","2 end date : $enddate")
-                    Log.d("aa","2 userid : $userid")
-
                     // delete 버튼 활성화, 비활성화
-                    if (writer == userid){
+                    if (writer == userid) {
                         binding.siDeleteBtn.visibility = View.VISIBLE
-            //            View.VISIBLE, View.INVISIBLE, View.GONE
-                    } else{
+                        //            View.VISIBLE, View.INVISIBLE, View.GONE
+                    } else {
                         binding.siDeleteBtn.visibility = View.GONE
                     }
-//                    Log.d("aa","today : $today, enddate : $enddate, today>enddate : ${today>enddate}")
-//                    if (today>enddate){
-//                        binding.siPartiBtn.isEnabled = false //비활성화
-//                        binding.siStaticBtn.isEnabled = true //활성화
-//                    } else{
-//                        binding.siPartiBtn.isEnabled = true //활성화
-//                        binding.siStaticBtn.isEnabled = false //비활성화
-//                    }
-
-                    }
+                }
             })
 
-//        값이 안받아와짐
-        Log.d("aa","wirter ID : $writer, userid : $userid")
-        Log.d("aa","today : $today, endDate : $enddate")
+        FirebaseDatabase.getInstance().getReference("/Surveys/$surveyId/endDate")
+            .addValueEventListener(object:ValueEventListener{
 
-//        if (writer == userid){
-//            binding.siDeleteBtn.visibility = View.VISIBLE
-////            View.VISIBLE, View.INVISIBLE, View.GONE
-//        } else{
-//            binding.siDeleteBtn.visibility = View.GONE
-//        }
+                override fun onCancelled(error: DatabaseError) {
+                }
+                // data 읽기
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    enddate = snapshot.getValue() as String
+                    Log.d("ITM", "Value is: $enddate")
+                }
+            })
+
 //        if (today>enddate){
 //            binding.siPartiBtn.isEnabled = false //비활성화
 //            binding.siStaticBtn.isEnabled = true //활성화
@@ -132,23 +123,40 @@ class SurveyInfo : AppCompatActivity() {
 //        }
 
 
-
+        binding.siDeleteBtn.setOnClickListener{
+            val dataRef = firebaseDatabase.getReference("/Surveys/$surveyId")
+            dataRef.removeValue()
+        }
 
         //participate btn
+        //today>enddate , return setOnClickListener
         binding.siPartiBtn.setOnClickListener {
+            Log.d("aa","today : $today, enddate : $enddate, today>enddate : ${today>enddate}")
             databaseReference.child(surveyId).child("surveyorInfo").setValue(userid)
             // save implict intent(ACTION_VIEW) & pass uri string(github address)
             Log.d("aa","partiUri : $partiUri")
-            val parti = Intent(Intent.ACTION_VIEW, Uri.parse("$partiUri"))
-            startActivity(parti)
+            if(today>enddate){
+                Toast.makeText(applicationContext, "Suvey is ended :(", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            else{
+                val parti = Intent(Intent.ACTION_VIEW, Uri.parse("$partiUri"))
+                startActivity(parti)
+            }
         }
 
         //statistic btn
         binding.siStaticBtn.setOnClickListener {
+            Log.d("aa","today : $today, enddate : $enddate, today<enddate : ${today<enddate}")
             // save implict intent(ACTION_VIEW) & pass uri string(github address)
             Log.d("aa","staticUri : $staticUri")
-            val static = Intent(Intent.ACTION_VIEW, Uri.parse("$staticUri"))
-            startActivity(static)
+            if(today<enddate){
+                Toast.makeText(applicationContext, "Survey is not ended :(", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }else{
+                val static = Intent(Intent.ACTION_VIEW, Uri.parse("$staticUri"))
+                startActivity(static)
+            }
         }
     }
 }

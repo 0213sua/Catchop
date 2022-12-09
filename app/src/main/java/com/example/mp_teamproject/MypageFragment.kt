@@ -76,7 +76,6 @@ class MypageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        //binding = FragmentMypageBinding.inflate(layoutInflater)
 
         //save preference with getted intent
         val getImg = arguments?.getString("passUri")
@@ -130,16 +129,16 @@ class MypageFragment : Fragment() {
             val builder = AlertDialog.Builder(this.requireContext())
             builder.setTitle("로그아웃")
                 .setMessage("로그아웃 하시겠습니까?")
-                .setPositiveButton("네",
+                .setPositiveButton("YES",
                     DialogInterface.OnClickListener { dialog, id ->
                         val intent = Intent(this@MypageFragment.requireContext(),Login::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                         startActivity(intent)
                         auth?.signOut()
-                        Toast.makeText( this.context, "로그아웃 되었습니다. ", Toast.LENGTH_SHORT
+                        Toast.makeText( this.context, "Logout Success !", Toast.LENGTH_SHORT
                         ).show()
                     })
-                .setNegativeButton("아니오",
+                .setNegativeButton("NO",
                     DialogInterface.OnClickListener { dialog, id ->
 
                     })
@@ -152,16 +151,16 @@ class MypageFragment : Fragment() {
             val builder = AlertDialog.Builder(this.requireContext())
             builder.setTitle("계정 삭제")
                 .setMessage("정말로 케첩의 계정을 삭제하시겠습니까?")
-                .setPositiveButton("네",
+                .setPositiveButton("YES",
                     DialogInterface.OnClickListener { dialog, id ->
                         val intent = Intent(this@MypageFragment.requireContext(),Login::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                         startActivity(intent)
                         auth?.currentUser?.delete()
-                        Toast.makeText( this.context, "계정이 삭제되었습니다.", Toast.LENGTH_SHORT
+                        Toast.makeText( this.context, "Withdraw Success !", Toast.LENGTH_SHORT
                         ).show()
                     })
-                .setNegativeButton("아니오",
+                .setNegativeButton("NO",
                     DialogInterface.OnClickListener { dialog, id ->
                     })
             // show dialog
