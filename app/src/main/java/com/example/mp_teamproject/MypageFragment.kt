@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.mp_teamproject.databinding.FragmentMypageBinding
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
@@ -47,18 +48,27 @@ class MypageFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentMypageBinding.inflate(layoutInflater)
 
-        // profile image update
-        Log.d("ee","This is mypage fragment!")
-
-        // bundle로 전달받은 값이 있을 때만
-        if(arguments?.getString("passUri") != null){
-            //val getImg = Uri.parse(arguments?.getString("imgUri"))
-            val getImg = arguments?.getString("passUri") // getImg를 리스트로 만들어서 제일 마지막꺼를 가져다가 imageView에 binding해야겠다! 들어갈때마다 reset돼 (string으로 받아도 상관없으면 string list로)
-            Log.d("ee","get Uri : $getImg")
-            val changeImg = Uri.parse(getImg)
-            binding.mProfileImg.setImageURI(changeImg)
+        //save preference with getted intent
+        val getImg = arguments?.getString("passUri")
+        if (getImg !=null){
+            val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
+            if (sharedPref != null) {
+                with (sharedPref.edit()) {
+                    putString("ImgUri",getImg)
+                    apply()
+                }
+            }
         }
 
+        Log.d("ee", "load preference!")
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
+        val tmp = sharedPref?.getString("ImgUri","null")
+        Log.d("ee","tmp : $tmp")
+
+        if(tmp != null){
+            val changeImg = Uri.parse(tmp)
+            binding.mProfileImg.setImageURI(changeImg)
+        }
 
         binding.MPSIPBtn.setOnClickListener {
             //내가 만든 설문지 화면으로 넘어감
@@ -128,7 +138,4 @@ class MypageFragment : Fragment() {
 
         return binding.root
     }
-
-
-
 }
