@@ -36,6 +36,7 @@ class SurveyInfo : AppCompatActivity() {
     private var enddate = ""
     private var surveyId = " "
     private var writer = ""
+    private var surveyorId = ""
 
     @RequiresApi(Build.VERSION_CODES.O)
     val current = LocalDate.now()
@@ -114,13 +115,18 @@ class SurveyInfo : AppCompatActivity() {
                 }
             })
 
-//        if (today>enddate){
-//            binding.siPartiBtn.isEnabled = false //비활성화
-//            binding.siStaticBtn.isEnabled = true //활성화
-//        } else{
-//            binding.siPartiBtn.isEnabled = true //활성화
-//            binding.siStaticBtn.isEnabled = false //비활성화
-//        }
+        FirebaseDatabase.getInstance().getReference("/Surveys/$surveyId/surveyorInfo")
+            .addValueEventListener(object:ValueEventListener{
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+                // data 읽기
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    surveyorId = snapshot.getValue() as String
+                    Log.d("ITM", "surveyorID : $surveyorId")
+                }
+            })
+
 
 
         binding.siDeleteBtn.setOnClickListener{
@@ -131,6 +137,7 @@ class SurveyInfo : AppCompatActivity() {
         //participate btn
         //today>enddate , return setOnClickListener
         binding.siPartiBtn.setOnClickListener {
+
             Log.d("aa","today : $today, enddate : $enddate, today>enddate : ${today>enddate}")
             databaseReference.child(surveyId).child("surveyorInfo").setValue(userid)
             // save implict intent(ACTION_VIEW) & pass uri string(github address)
@@ -140,6 +147,14 @@ class SurveyInfo : AppCompatActivity() {
                 return@setOnClickListener
             }
             else{
+                surveyorId
+
+//                val database = Firebase.database("https://....firebasedatabase.app")
+//                val myRef = database.getReference("message")
+//                myRef.setValue(binding.etInput.text.toString())  // 데이터 1개가 계속 수정되는 방식
+
+
+
                 val parti = Intent(Intent.ACTION_VIEW, Uri.parse("$partiUri"))
                 startActivity(parti)
             }
