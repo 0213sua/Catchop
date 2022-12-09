@@ -15,7 +15,6 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mp_teamproject.databinding.ActivitySelectedCategoryBinding
-import com.example.mp_teamproject.databinding.ActivitySurveyListTestBinding
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_selected_category.*
 import kotlinx.android.synthetic.main.item_main.view.*

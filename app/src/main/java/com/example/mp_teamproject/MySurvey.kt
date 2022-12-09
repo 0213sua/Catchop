@@ -17,7 +17,6 @@ import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_survey_list_test.*
 import kotlinx.android.synthetic.main.item_main.view.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -54,8 +53,8 @@ class MySurvey : AppCompatActivity() {
         // recyclerview의 아이템을 쌓는 순서를 끝부터 쌓게 함
         layoutManager.stackFromEnd = true
 
-        binding.recyclerView1.layoutManager = layoutManager
-        binding.recyclerView1.adapter = MyAdapter()
+        binding.MrecyclerView.layoutManager = layoutManager
+        binding.MrecyclerView.adapter = MyAdapter()
 //        binding.finBtn.setOnClickListener{
 //            surveys.clear()
 //            binding.recyclerView1.adapter = finAdapter(surveys)
@@ -85,13 +84,13 @@ class MySurvey : AppCompatActivity() {
                                 //글 목록을 저장하는 변수에 post 객체 추가
                                 surveys.add(it)
                                 // recyclerview의 adapter에 글이 추가된 것을 알림
-                                binding.recyclerView1.adapter?.notifyItemInserted(surveys.size -1)
+                                binding.MrecyclerView.adapter?.notifyItemInserted(surveys.size -1)
                             }else{
                                 // 글이 중간에 삽입된 경우 prevChildKey로 한단계 앞의 데이터 위치를 찾은 뒤 데이터를 추가한다.
                                 val prevIndex = surveys.map {it.surveyId}.indexOf(prevChildKey)
                                 surveys.add(prevIndex+1,survey)
                                 //recycler view의 adapter에 글이 추가된 것을 알림
-                                binding.recyclerView1.adapter?.notifyItemInserted(prevIndex+1)
+                                binding.MrecyclerView.adapter?.notifyItemInserted(prevIndex+1)
                             }
                         }
 
@@ -106,7 +105,7 @@ class MySurvey : AppCompatActivity() {
                             // 글이 변경된 경우 글의 앞의 데이터 인덱스에 데이터를 변경한다.
                             val prevIndex = surveys.map { it.surveyId }.indexOf(prevChildKey)
                             surveys[prevIndex + 1] = survey
-                            recyclerView.adapter?.notifyItemChanged(prevIndex + 1)
+                            binding.MrecyclerView.adapter?.notifyItemChanged(prevIndex + 1)
                         }
                     }
                 }
@@ -119,7 +118,7 @@ class MySurvey : AppCompatActivity() {
                             // 기존에 저장된 인덱스를 찾아서 해당 인덱스의 데이터를 삭제한다.
                             val existIndex = surveys.map { it.surveyId }.indexOf(survey.surveyId)
                             surveys.removeAt(existIndex)
-                            recyclerView.adapter?.notifyItemRemoved(existIndex)
+                            binding.MrecyclerView.adapter?.notifyItemRemoved(existIndex)
                         }
                     }
                 }
@@ -134,16 +133,16 @@ class MySurvey : AppCompatActivity() {
                             val existIndex = surveys.map{it.surveyId}.indexOf(survey.surveyId)
                             //기존의 데이터를 지운다
                             surveys.removeAt(existIndex)
-                            binding.recyclerView1.adapter?.notifyItemRemoved(existIndex)
+                            binding.MrecyclerView.adapter?.notifyItemRemoved(existIndex)
                             //prevChildKey가 없는 경우 맨마지막으로 이동 된 것
                             if (prevChildKey == null){
                                 surveys.add(survey)
-                                binding.recyclerView1.adapter?.notifyItemChanged(surveys.size-1)
+                                binding.MrecyclerView.adapter?.notifyItemChanged(surveys.size-1)
                             }else{
                                 //prevChildKey 다음 글로 추가
                                 val prevIndex = surveys.map{it.surveyId}.indexOf(prevChildKey)
                                 surveys.add(prevIndex + 1, survey)
-                                binding.recyclerView1.adapter?.notifyItemChanged(prevIndex+1)
+                                binding.MrecyclerView.adapter?.notifyItemChanged(prevIndex+1)
                             }
                         }
                     }

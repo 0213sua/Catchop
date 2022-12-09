@@ -18,8 +18,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_create_survey.*
 import kotlinx.android.synthetic.main.activity_survey_info.*
-import kotlinx.android.synthetic.main.activity_survey_list_test.*
-import kotlinx.android.synthetic.main.survey_post.view.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 

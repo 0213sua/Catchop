@@ -20,7 +20,6 @@ import com.example.mp_teamproject.databinding.FragmentHomeBinding
 import com.example.mp_teamproject.databinding.ItemMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_survey_list_test.*
 import kotlinx.android.synthetic.main.item_main.view.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
