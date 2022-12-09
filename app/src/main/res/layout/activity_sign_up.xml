@@ -101,7 +101,7 @@
             <TextView
                 android:id="@+id/Birthdate"
                 android:layout_width="100dp"
-                android:layout_height="match_parent"
+                android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
                 android:text="생년월일"
@@ -109,12 +109,16 @@
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
 
-            <DatePicker
-                android:id="@+id/SU_birthdateSpinner"
-                android:datePickerMode="spinner"
-                android:calendarViewShown="false"
+            <EditText
+                android:id="@+id/SU_birthdateEditText"
                 android:layout_width="match_parent"
-                android:layout_height="150dp" />
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:textColor="#4C4C4C"
+                android:textSize="20sp"
+                android:inputType="date"/>
+
+
         </LinearLayout>
 
         <LinearLayout
