@@ -12,10 +12,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.example.mp_teamproject.databinding.ActivitySignUpBinding
 import com.example.mp_teamproject.databinding.FragmentMypageBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import java.io.BufferedReader
 import java.io.File
@@ -24,7 +28,8 @@ import java.io.FileReader
 
 class MypageFragment : Fragment() {
     private var auth : FirebaseAuth? = null
-    lateinit var binding: FragmentMypageBinding
+    private val binding by lazy{ FragmentMypageBinding.inflate(layoutInflater)}
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +38,31 @@ class MypageFragment : Fragment() {
 
 
         val userid = auth!!.currentUser?.uid
+        val reference = FirebaseDatabase.getInstance().reference.child("Users").child(userid!!).child("username")
+        Log.d("ITM","HIHIHI reference !! $reference")
+
+
+
+        reference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val value = dataSnapshot.getValue()
+                binding.MPNickNameTxt.text = value.toString()
+                Log.d("ITM", "Value is: $value")
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("ITM", "Failed to read value.", error.toException())
+            }
+        })
+
+
+
+        Log.d("ITM","아임 수아수 $reference")
+
+
         //val reference = FirebaseDatabase.getInstance().reference.child("Users").child(userid!!)
         Log.d("ITM","THIS ! $userid ")
     }
@@ -45,7 +75,7 @@ class MypageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentMypageBinding.inflate(layoutInflater)
+        //binding = FragmentMypageBinding.inflate(layoutInflater)
 
         // profile image update
         Log.d("ee","This is mypage fragment!")
@@ -62,6 +92,9 @@ class MypageFragment : Fragment() {
 
         binding.MPSIPBtn.setOnClickListener {
             //내가 만든 설문지 화면으로 넘어감
+//            val userid = auth!!.currentUser?.uid
+//            val reference = FirebaseDatabase.getInstance().reference.child("Users").child(userid!!).child("name")
+//            Log.d("ITM","아임 수아수 $reference")
 
             val intent = Intent(this@MypageFragment.requireContext(),MySurvey::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -87,16 +120,16 @@ class MypageFragment : Fragment() {
             val builder = AlertDialog.Builder(this.requireContext())
             builder.setTitle("로그아웃")
                 .setMessage("로그아웃 하시겠습니까?")
-                .setPositiveButton("YES",
+                .setPositiveButton("네",
                     DialogInterface.OnClickListener { dialog, id ->
                         val intent = Intent(this@MypageFragment.requireContext(),Login::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                         startActivity(intent)
                         auth?.signOut()
-                        Toast.makeText( this.context, "Logout Success !", Toast.LENGTH_SHORT
+                        Toast.makeText( this.context, "로그아웃 되었습니다. ", Toast.LENGTH_SHORT
                         ).show()
                     })
-                .setNegativeButton("NO",
+                .setNegativeButton("아니오",
                     DialogInterface.OnClickListener { dialog, id ->
 
                     })
@@ -109,16 +142,16 @@ class MypageFragment : Fragment() {
             val builder = AlertDialog.Builder(this.requireContext())
             builder.setTitle("계정 삭제")
                 .setMessage("정말로 케첩의 계정을 삭제하시겠습니까?")
-                .setPositiveButton("YES",
+                .setPositiveButton("네",
                     DialogInterface.OnClickListener { dialog, id ->
                         val intent = Intent(this@MypageFragment.requireContext(),Login::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                         startActivity(intent)
                         auth?.currentUser?.delete()
-                        Toast.makeText( this.context, "Withdraw Success !", Toast.LENGTH_SHORT
+                        Toast.makeText( this.context, "계정이 삭제되었습니다.", Toast.LENGTH_SHORT
                         ).show()
                     })
-                .setNegativeButton("NO",
+                .setNegativeButton("아니오",
                     DialogInterface.OnClickListener { dialog, id ->
                     })
             // show dialog
