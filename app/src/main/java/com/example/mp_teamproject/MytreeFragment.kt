@@ -36,8 +36,6 @@ class MytreeFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         val userid = auth!!.currentUser?.uid
 
-        //var num_of_survey:Int = 1
-
         FirebaseDatabase.getInstance().getReference("/Surveys")
             .addValueEventListener(object : ValueEventListener {
                 override fun onCancelled(error: DatabaseError) {
@@ -76,9 +74,4 @@ class MytreeFragment : Fragment() {
         return binding.root
     }
 
-    companion object {
-        fun newInstance():MytreeFragment{
-            return MytreeFragment()
-        }
-    }
 }

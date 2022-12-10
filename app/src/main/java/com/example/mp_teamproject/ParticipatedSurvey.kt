@@ -58,13 +58,11 @@ class ParticipatedSurvey : AppCompatActivity() {
         surveys.clear()
 
         binding.arrow.setOnClickListener {
-            val intent = Intent(this@ParticipatedSurvey,MypageFragment::class.java)
-            startActivity(intent)
+//            val intent = Intent(this@ParticipatedSurvey,MypageFragment::class.java)
+//            startActivity(intent)
+            finish()
         }
-        binding.home.setOnClickListener {
-            val intent = Intent(this@ParticipatedSurvey,HomeFragment::class.java)
-            startActivity(intent)
-        }
+
         binding.PrecyclerView.adapter = MyAdapter()
 
         FirebaseDatabase.getInstance().getReference("/Surveys")
@@ -184,7 +182,7 @@ class ParticipatedSurvey : AppCompatActivity() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHodler {
             return MyViewHodler(
                 LayoutInflater.from(this@ParticipatedSurvey).inflate(R.layout.item_main,
-                parent, false))
+                    parent, false))
         }
 
         // RecyclerView 에서 몇개의 행을 그릴지 기준이 되는 메소드
@@ -212,5 +210,4 @@ class ParticipatedSurvey : AppCompatActivity() {
         }
     }
 }
-
 

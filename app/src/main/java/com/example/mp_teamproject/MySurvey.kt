@@ -58,10 +58,7 @@ class MySurvey : AppCompatActivity() {
         binding.arrow.setOnClickListener {
             finish()
         }
-        binding.home.setOnClickListener {
-            val intent = Intent(this@MySurvey,HomeFragment::class.java)
-            startActivity(intent)
-        }
+
         FirebaseDatabase.getInstance().getReference("/Surveys")
             .orderByChild("writerId").equalTo(userid).addChildEventListener(object : ChildEventListener {
                 override fun onChildAdded(snapshot: DataSnapshot, prevChildKey: String?) {
@@ -149,12 +146,12 @@ class MySurvey : AppCompatActivity() {
 
     }
 
-// RecyclerView 의 어댑터 클래스
+    // RecyclerView 의 어댑터 클래스
     inner class MyAdapter : RecyclerView.Adapter<MyViewHodler>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHodler {
             return MyViewHodler(
                 LayoutInflater.from(this@MySurvey).inflate(R.layout.item_main,
-                parent, false))
+                    parent, false))
         }
 
         override fun getItemCount(): Int {
@@ -183,5 +180,4 @@ class MySurvey : AppCompatActivity() {
 
 
 }
-
 

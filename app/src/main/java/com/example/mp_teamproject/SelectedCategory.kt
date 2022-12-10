@@ -216,39 +216,39 @@ class SelectedCategory : AppCompatActivity() {
         fun onButton(categoryName: String) {
             FirebaseDatabase.getInstance().reference.child("/Surveys").orderByChild("category").equalTo(categoryName)
                 .addValueEventListener(object :ValueEventListener{
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    //val value = snapshot.getValue<SurveyData>()
-                    Log.d("진행","surveys 초기화")
-                    surveys.clear()
-                    for(snapshot in snapshot!!.children){
-                        val survey : SurveyData? = snapshot.getValue(SurveyData::class.java)
-                        val enddate = survey?.endDate.toString().split('.')
-                        val e_year = enddate[0].toInt()
-                        val e_month = enddate[1].toInt()
-                        val e_day = enddate[2].toInt()
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        //val value = snapshot.getValue<SurveyData>()
+                        Log.d("진행","surveys 초기화")
+                        surveys.clear()
+                        for(snapshot in snapshot!!.children){
+                            val survey : SurveyData? = snapshot.getValue(SurveyData::class.java)
+                            val enddate = survey?.endDate.toString().split('.')
+                            val e_year = enddate[0].toInt()
+                            val e_month = enddate[1].toInt()
+                            val e_day = enddate[2].toInt()
 
-                        Log.d("진행","snapshot.title: "+enddate)
-                        if(e_year >= year_of_today){
-                            if(e_year > year_of_today){
-                                surveys.add(survey!!)
-                            }else{  //end year과 금년이 같은 경우
-                                if(e_month >= month_of_today){
-                                    if(e_month > month_of_today){
-                                        surveys.add(survey!!)
-                                    }else{  // end month와 corrent month가 같은 경우
-                                        if(e_day >= day_of_today){
+                            Log.d("진행","snapshot.title: "+enddate)
+                            if(e_year >= year_of_today){
+                                if(e_year > year_of_today){
+                                    surveys.add(survey!!)
+                                }else{  //end year과 금년이 같은 경우
+                                    if(e_month >= month_of_today){
+                                        if(e_month > month_of_today){
                                             surveys.add(survey!!)
+                                        }else{  // end month와 corrent month가 같은 경우
+                                            if(e_day >= day_of_today){
+                                                surveys.add(survey!!)
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
+                        notifyDataSetChanged()
                     }
-                    notifyDataSetChanged()
-                }
-                override fun onCancelled(error: DatabaseError) {
-                }
-            })
+                    override fun onCancelled(error: DatabaseError) {
+                    }
+                })
         }
         fun finButton(categoryName: String) {
             FirebaseDatabase.getInstance().reference.child("/Surveys").orderByChild("category").equalTo(categoryName)

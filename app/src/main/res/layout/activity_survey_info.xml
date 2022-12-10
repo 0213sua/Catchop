@@ -27,14 +27,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/arrow" />
 
-        <ImageView
-            android:id="@+id/home"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="280dp"
-            app:tint="#FFF8F8"
-            app:srcCompat="@drawable/ic_baseline_home_24" />
 
 
     </LinearLayout>
@@ -46,7 +38,7 @@
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="108dp"
         android:backgroundTint="#DA182E"
-        android:text="설문 통계 보기"
+        android:text="Statistics"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -58,7 +50,7 @@
         android:layout_marginStart="52dp"
         android:layout_marginBottom="108dp"
         android:backgroundTint="#DA182E"
-        android:text="설문에 참여하기"
+        android:text="Participate"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -67,8 +59,8 @@
         android:id="@+id/si_deleteBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="#DA182E"
         android:text="delete"
         android:textSize="15sp"
@@ -96,7 +88,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="제목"
+                android:text="Title"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -148,7 +140,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="기관"
+                android:text="Institution"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -174,7 +166,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="응답 기간"
+                android:text="Period"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -243,7 +235,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="목적"
+                android:text="Purpose"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -270,7 +262,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="설문 내용"
+                android:text="Details"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
