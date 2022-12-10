@@ -68,9 +68,10 @@ class EditProfile : AppCompatActivity() {
         val job_ref = FirebaseDatabase.getInstance().reference.child("Users").child(userid!!).child("job")
 
         binding.edArrow.setOnClickListener {
-            val intent = Intent(this,Main::class.java)
-            intent.putExtra("ed_back", "ed_back")
-            startActivity(intent)
+//            val intent = Intent(this,Main::class.java)
+//            intent.putExtra("ed_back", "ed_back")
+//            startActivity(intent)
+            finish()
         }
 
         name_ref.addValueEventListener(object : ValueEventListener {
