@@ -51,28 +51,28 @@ class SignUp : AppCompatActivity() {
                     job = ""
                 }
                 if(p2==1){
-                    job= "학생"
+                    job= "Student"
                 }
                 if(p2==2){
-                    job= "대학생"
+                    job= "Undergraduate"
                 }
                 if(p2==3){
-                    job= "대학원생"
+                    job= "Graduate student"
                 }
                 if(p2==4){
-                    job= "교수"
+                    job= "Professor"
                 }
                 if(p2==5){
-                    job= "인턴"
+                    job= "Intern"
                 }
                 if(p2==6){
-                    job= "직장인"
+                    job= "Worker"
                 }
                 if(p2==7){
-                    job= "프리랜서"
+                    job= "Freelance"
                 }
                 if(p2==8){
-                    job= "기타"
+                    job= "Ect"
                 }
             }
             override fun onNothingSelected(p0: AdapterView<*>?) {}

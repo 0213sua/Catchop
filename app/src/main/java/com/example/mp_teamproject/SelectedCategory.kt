@@ -69,9 +69,10 @@ class SelectedCategory : AppCompatActivity() {
         }
 
         binding.arrow.setOnClickListener {
-            val intent = Intent(this, Main::class.java)
-            intent.putExtra("back", "back")
-            startActivity(intent)
+            finish()
+//            val intent = Intent(this, Main::class.java)
+//            intent.putExtra("back", "back")
+//            startActivity(intent)
         }
 
         binding.floatingBtn2.setOnClickListener {
