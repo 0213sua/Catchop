@@ -59,11 +59,6 @@ class MypageFragment : Fragment() {
             }
         })
 
-
-
-        Log.d("ITM","I'm suasu $reference")
-
-
         //val reference = FirebaseDatabase.getInstance().reference.child("Users").child(userid!!)
         Log.d("ITM","THIS ! $userid ")
     }
@@ -100,7 +95,6 @@ class MypageFragment : Fragment() {
         }
 
         binding.MPSIPBtn.setOnClickListener {
-            //Convert to MySurvey
 
             val intent = Intent(this@MypageFragment.requireContext(),MySurvey::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -108,7 +102,6 @@ class MypageFragment : Fragment() {
 
         }
         binding.MPSIABtn.setOnClickListener {
-            //Convert to ParticipatedSurvey
             val intent = Intent(this@MypageFragment.requireContext(),ParticipatedSurvey::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
@@ -124,8 +117,8 @@ class MypageFragment : Fragment() {
         binding.MPLogoutBtn.setOnClickListener {
 
             val builder = AlertDialog.Builder(this.requireContext())
-            builder.setTitle("Logout")
-                .setMessage("Do you want to log out?")
+            builder.setTitle("LOGOUT")
+                .setMessage("Do you want to logout?")
                 .setPositiveButton("YES",
                     DialogInterface.OnClickListener { dialog, id ->
                         val intent = Intent(this@MypageFragment.requireContext(),Login::class.java)
@@ -146,8 +139,8 @@ class MypageFragment : Fragment() {
 
         binding.MPDeleteAbtn.setOnClickListener {
             val builder = AlertDialog.Builder(this.requireContext())
-            builder.setTitle("Delete account")
-                .setMessage("Do you want to delete your catchop account?")
+            builder.setTitle("Delete Account")
+                .setMessage("Do you want to delete your account?")
                 .setPositiveButton("YES",
                     DialogInterface.OnClickListener { dialog, id ->
                         val intent = Intent(this@MypageFragment.requireContext(),Login::class.java)

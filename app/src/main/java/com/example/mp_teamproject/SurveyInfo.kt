@@ -64,6 +64,7 @@ class SurveyInfo : AppCompatActivity() {
 
                 override fun onCancelled(error: DatabaseError) {
                 }
+                // data 읽기
                 override fun onDataChange(snapshot: DataSnapshot) {
 
                     snapshot?.let {
@@ -73,7 +74,9 @@ class SurveyInfo : AppCompatActivity() {
                             binding.siTitleText.text = survey.title
                             binding.siInstText.text = survey.institution
                             binding.siSdateText.text = survey.startDate
+
                             binding.siEdateText.text = survey.endDate
+
                             binding.siPurposeText.text = survey.purpose
                             binding.siContentText.text = survey.surveyContent
                             binding.siCateText.text = survey.category
@@ -87,7 +90,7 @@ class SurveyInfo : AppCompatActivity() {
                                 "https://docs.google.com/forms/d/e/" + strList[6] + "/viewanalytics"
                         }
                     }
-                    // Active delete btn or Inactive delete btn
+                    // delete 버튼 활성화, 비활성화
                     if (writer == userid) {
                         binding.siDeleteBtn.visibility = View.VISIBLE
                     } else {
@@ -101,6 +104,7 @@ class SurveyInfo : AppCompatActivity() {
 
                 override fun onCancelled(error: DatabaseError) {
                 }
+                // data 읽기
                 override fun onDataChange(snapshot: DataSnapshot) {
                     enddate = snapshot.getValue() as String
                     Log.d("ITM", "Value is: $enddate")
@@ -112,14 +116,13 @@ class SurveyInfo : AppCompatActivity() {
 
                 override fun onCancelled(error: DatabaseError) {
                 }
+                // data 읽기
                 override fun onDataChange(snapshot: DataSnapshot) {
                     stOpen = snapshot.getValue() as String
                     Log.d("ITM", "stopen: $stOpen")
                 }
             })
 
-        //participate btn
-        //If today > enddate ,then return setOnClickListener
         binding.siPartiBtn.setOnClickListener {
 
             firebaseDatabase.getReference("/Surveys").child(surveyId).addValueEventListener(object :ValueEventListener{
@@ -171,7 +174,7 @@ class SurveyInfo : AppCompatActivity() {
             Log.d("aa","today : $today, enddate : $enddate, today<enddate : ${today<enddate}")
             // save implict intent(ACTION_VIEW) & pass uri string(github address)
             Log.d("aa","staticUri : $staticUri")
-            if(today<enddate || stOpen=="NO"){
+            if(today<=enddate || stOpen=="NO"){
                 Toast.makeText(applicationContext, "Survey is not open :(", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
