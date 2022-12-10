@@ -60,6 +60,9 @@ class CreateSurvey : AppCompatActivity() {
             val add = Intent(Intent.ACTION_VIEW, Uri.parse("https://docs.google.com/forms/u/0/?tgif=d"))
             startActivity(add)
         }
+        binding.arrow.setOnClickListener {
+            finish()
+        }
 
         // connect myAdapter to the Spinner
         binding.categorySpinner.adapter = myAdapter

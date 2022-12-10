@@ -58,13 +58,11 @@ class ParticipatedSurvey : AppCompatActivity() {
         surveys.clear()
 
         binding.arrow.setOnClickListener {
-            val intent = Intent(this@ParticipatedSurvey,MypageFragment::class.java)
-            startActivity(intent)
+//            val intent = Intent(this@ParticipatedSurvey,MypageFragment::class.java)
+//            startActivity(intent)
+            finish()
         }
-        binding.home.setOnClickListener {
-            val intent = Intent(this@ParticipatedSurvey,HomeFragment::class.java)
-            startActivity(intent)
-        }
+
         binding.PrecyclerView.adapter = MyAdapter()
 
         FirebaseDatabase.getInstance().getReference("/Surveys")

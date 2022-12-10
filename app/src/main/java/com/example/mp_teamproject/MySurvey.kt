@@ -58,10 +58,7 @@ class MySurvey : AppCompatActivity() {
         binding.arrow.setOnClickListener {
             finish()
         }
-        binding.home.setOnClickListener {
-            val intent = Intent(this@MySurvey,HomeFragment::class.java)
-            startActivity(intent)
-        }
+
         FirebaseDatabase.getInstance().getReference("/Surveys")
             .orderByChild("writerId").equalTo(userid).addChildEventListener(object : ChildEventListener {
                 override fun onChildAdded(snapshot: DataSnapshot, prevChildKey: String?) {

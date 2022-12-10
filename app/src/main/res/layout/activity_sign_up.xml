@@ -38,7 +38,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="이름"
+                android:text="Name"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -65,7 +65,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="성별"
+                android:text="Sex"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -80,14 +80,14 @@
                     android:id="@+id/Sex_male"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:text="남자"
+                    android:text="Male"
                     android:checked="true"/>
 
                 <RadioButton
                     android:id="@+id/Sex_female"
                     android:layout_width="258dp"
                     android:layout_height="wrap_content"
-                    android:text="여자" />
+                    android:text="Female" />
             </RadioGroup>
 
 
@@ -104,7 +104,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="생년월일"
+                android:text="Birth"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -157,7 +157,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="비밀번호"
+                android:text="Password"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -183,8 +183,7 @@
                 android:layout_height="match_parent"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="비밀번호
-                확인"
+                android:text="Check Password"
                 android:textColor="#4C4C4C"
                 android:textSize="18sp"
                 android:textStyle="bold|italic" />
@@ -204,9 +203,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
-            android:text="비밀번호가 일치하지 않습니다. "
+            android:text="Password doesn't match .. :( "
             android:textColor="#1B1A1A"
-           />
+            />
 
 
         <LinearLayout
@@ -220,7 +219,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="휴대번호"
+                android:text="Phone"
                 android:textColor="#4C4C4C"
                 android:textSize="18sp"
                 android:textStyle="bold|italic" />
@@ -246,7 +245,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="직업"
+                android:text="Job"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -273,7 +272,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="50dp"
-        android:text="회원가입"
+        android:text="sign up"
         android:backgroundTint="#DA182E"
         android:textSize="16sp"
         style="@style/BtnStyle"
