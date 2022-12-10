@@ -50,8 +50,9 @@ class SurveyInfo : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.arrow.setOnClickListener {
-            val intent = Intent(this,Main::class.java)
-            startActivity(intent)
+//            val intent = Intent(this,Main::class.java)
+//            startActivity(intent)
+            finish()
         }
 
         surveyId = intent.getStringExtra("surveyId").toString()
