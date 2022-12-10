@@ -20,7 +20,7 @@
 
 
         <ImageView
-            android:id="@+id/arrow"
+            android:id="@+id/ed_arrow"
             android:layout_width="50dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
@@ -29,14 +29,6 @@
             app:srcCompat="@drawable/arrow"
             app:tint="@color/white" />
 
-        <ImageView
-            android:id="@+id/home"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="280dp"
-            app:srcCompat="@drawable/ic_baseline_home_24"
-            app:tint="#FFF8F8" />
 
 
     </LinearLayout>
@@ -62,11 +54,10 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="이름"
+                android:text="Name"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
-            <!--                android:background="@drawable/line"-->
 
 
             <EditText
@@ -90,7 +81,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="성별"
+                android:text="Sex"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -117,7 +108,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="생년월일"
+                android:text="Birthdate"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -170,7 +161,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="비밀번호"
+                android:text="Password"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -196,7 +187,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="전화번호"
+                android:text="PhoneNumber"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -221,7 +212,7 @@
                 android:layout_height="50dp"
                 android:background="#EBF0F3"
                 android:gravity="center"
-                android:text="직업"
+                android:text="Job"
                 android:textColor="#4C4C4C"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
@@ -270,7 +261,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="50dp"
         android:backgroundTint="#DA182E"
-        android:text="정보 수정하기"
+        android:text="Edit profile"
         android:textSize="16sp"
         app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
