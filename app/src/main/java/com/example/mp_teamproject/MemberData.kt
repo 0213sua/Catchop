@@ -2,10 +2,9 @@ package com.example.mp_teamproject
 
 class MemberData {
 
-    //Survey
+    //suvey id
     var userId = ""
 
-    // User attributes
     var name = ""
     var sex = ""
     var birthdate =""

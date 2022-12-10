@@ -62,13 +62,13 @@ class Login : AppCompatActivity() {
                 ?.addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(
-                            baseContext, "Login succeeded.",
+                            baseContext, "Login Success!",
                             Toast.LENGTH_SHORT
                         ).show()
                         moveMainPage(auth?.currentUser)
                     } else {
                         Toast.makeText(
-                            baseContext, "Login failed.",
+                            baseContext, "Try again :(",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
@@ -79,7 +79,6 @@ class Login : AppCompatActivity() {
     fun moveMainPage(user: FirebaseUser?) {
         if (user!= null) {
             val intent = Intent(this,Main::class.java)
-            //val intent = Intent(this,SurveyListTest::class.java)
             startActivity(intent)
             finish()
         }
@@ -112,19 +111,19 @@ class Login : AppCompatActivity() {
     private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
         Log.d("LoginActivity", "firebaseAuthWithGoogle:" + acct.id!!)
 
-        //Get id token from Google SignInAccount instance and change to Firebase Auth and Authenticate to Firebase
+        //Google SignInAccount 객체에서 ID 토큰을 가져와서 Firebase Auth로 교환하고 Firebase에 인증
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
         firebaseAuth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    Log.d("ITM", "firebaseAuthWithGoogle Success", task.exception)
+                    Log.d("ITM", "firebaseAuthWithGoogle sucess", task.exception)
                     moveMainPage(firebaseAuth?.currentUser)
                 } else {
-                    Log.d("ITM", "firebaseAuthWithGoogle Fail", task.exception)
+                    Log.d("ITM", "firebaseAuthWithGoogle failed", task.exception)
 
                 }
             }
-    }// fi
+    }
 
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent

@@ -26,12 +26,6 @@ class Main : AppCompatActivity() {
                 commit()
             }
         }
-        if(intent.hasExtra("ed_back")){
-            supportFragmentManager.beginTransaction().apply{
-                replace(R.id.fragments_container,myPageFragment)
-                commit()
-            }
-        }
 
         binding.navigationview.setOnItemSelectedListener {
             //change fragment
@@ -46,17 +40,16 @@ class Main : AppCompatActivity() {
 
         if(intent.hasExtra("myprofile")){
 
-            // Create instance to store the data
+            // create object ot store data
             val uriString = intent.getStringExtra("myprofile")
             Log.d("ee","main imgUri : $uriString")
 
             val bundle = Bundle()
-            //Put Uri to bundle
-
+            //store uri in bundle
             bundle.putString("passUri",uriString)
             Log.d("ee","passUri : $uriString")
 
-            //Send data to fragement
+            //pass data to fragement
             myPageFragment.arguments = bundle
             supportFragmentManager.beginTransaction().apply{
                 replace(R.id.fragments_container,myPageFragment)

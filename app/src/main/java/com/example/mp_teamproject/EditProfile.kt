@@ -44,9 +44,7 @@ class EditProfile : AppCompatActivity() {
     // Request Code
     private val BUTTON2 = 200 // Save into internal storage
 
-    // Uri storing original photo
-    private var photoUri: Uri? = null
-    var imgUri : Uri? = null // Store preview photo uri
+    var imgUri : Uri? = null
 
 
 
@@ -193,7 +191,6 @@ class EditProfile : AppCompatActivity() {
             //resolve activity : Call implict intent, check whether the called app exist on the device
             val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             takePictureIntent.resolveActivity(packageManager)?.also {
-//                startActivityForResult(takePictureIntent, BUTTON1)
                 startActivityForResult(takePictureIntent, BUTTON2)
             }
 
