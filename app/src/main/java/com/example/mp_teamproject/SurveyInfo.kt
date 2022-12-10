@@ -176,7 +176,7 @@ class SurveyInfo : AppCompatActivity() {
             // save implict intent(ACTION_VIEW) & pass uri string(github address)
             Log.d("aa","staticUri : $staticUri")
             if(today<=enddate || stOpen=="NO"){
-                Toast.makeText(applicationContext, "Survey is not open :(", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Statistics is not opened :(", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             else{
