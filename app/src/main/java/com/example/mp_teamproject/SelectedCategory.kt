@@ -211,7 +211,6 @@ class SelectedCategory : AppCompatActivity() {
         override fun getItemCount(): Int {
             return surveys.size
         }
-        //진행 중 버튼
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun onButton(categoryName: String) {

@@ -151,21 +151,18 @@ class SignUp : AppCompatActivity() {
                         hashMap["job"] = job
                         reference.setValue(hashMap)
 
-                        Toast.makeText(this, "계정 생성 완료.",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Registration Success :)",Toast.LENGTH_SHORT).show()
                         finish() // 가입창 종료
                     } else {
                         Toast.makeText(
-                            this, "계정 생성 실패",
+                            this, "Registration Failed :(",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
                 }
         } else {
-            Toast.makeText(this, "Member registration Failed !", Toast.LENGTH_SHORT).show() }
+            Toast.makeText(this, "Registration Failed :(", Toast.LENGTH_SHORT).show() }
     }
-
-
-
 
 }
 

@@ -62,13 +62,13 @@ class Login : AppCompatActivity() {
                 ?.addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(
-                            baseContext, "로그인에 성공 하였습니다.",
+                            baseContext, "Login Success!",
                             Toast.LENGTH_SHORT
                         ).show()
                         moveMainPage(auth?.currentUser)
                     } else {
                         Toast.makeText(
-                            baseContext, "로그인에 실패 하였습니다.",
+                            baseContext, "Try again :(",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
@@ -79,7 +79,6 @@ class Login : AppCompatActivity() {
     fun moveMainPage(user: FirebaseUser?) {
         if (user!= null) {
             val intent = Intent(this,Main::class.java)
-            //val intent = Intent(this,SurveyListTest::class.java)
             startActivity(intent)
             finish()
         }
@@ -117,14 +116,14 @@ class Login : AppCompatActivity() {
         firebaseAuth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    Log.d("ITM", "firebaseAuthWithGoogle 성공", task.exception)
+                    Log.d("ITM", "firebaseAuthWithGoogle sucess", task.exception)
                     moveMainPage(firebaseAuth?.currentUser)
                 } else {
-                    Log.d("ITM", "firebaseAuthWithGoogle 실패", task.exception)
+                    Log.d("ITM", "firebaseAuthWithGoogle failed", task.exception)
 
                 }
             }
-    }// fi
+    }
 
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent

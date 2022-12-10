@@ -59,11 +59,6 @@ class MypageFragment : Fragment() {
             }
         })
 
-
-
-        Log.d("ITM","아임 수아수 $reference")
-
-
         //val reference = FirebaseDatabase.getInstance().reference.child("Users").child(userid!!)
         Log.d("ITM","THIS ! $userid ")
     }
@@ -100,10 +95,6 @@ class MypageFragment : Fragment() {
         }
 
         binding.MPSIPBtn.setOnClickListener {
-            //내가 만든 설문지 화면으로 넘어감
-//            val userid = auth!!.currentUser?.uid
-//            val reference = FirebaseDatabase.getInstance().reference.child("Users").child(userid!!).child("name")
-//            Log.d("ITM","아임 수아수 $reference")
 
             val intent = Intent(this@MypageFragment.requireContext(),MySurvey::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -111,7 +102,6 @@ class MypageFragment : Fragment() {
 
         }
         binding.MPSIABtn.setOnClickListener {
-            //내가 참여한 설문지 화면
             val intent = Intent(this@MypageFragment.requireContext(),ParticipatedSurvey::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
@@ -127,8 +117,8 @@ class MypageFragment : Fragment() {
         binding.MPLogoutBtn.setOnClickListener {
 
             val builder = AlertDialog.Builder(this.requireContext())
-            builder.setTitle("로그아웃")
-                .setMessage("로그아웃 하시겠습니까?")
+            builder.setTitle("LOGOUT")
+                .setMessage("Do you want to logout?")
                 .setPositiveButton("YES",
                     DialogInterface.OnClickListener { dialog, id ->
                         val intent = Intent(this@MypageFragment.requireContext(),Login::class.java)
@@ -149,8 +139,8 @@ class MypageFragment : Fragment() {
 
         binding.MPDeleteAbtn.setOnClickListener {
             val builder = AlertDialog.Builder(this.requireContext())
-            builder.setTitle("계정 삭제")
-                .setMessage("정말로 케첩의 계정을 삭제하시겠습니까?")
+            builder.setTitle("Delete Account")
+                .setMessage("Do you want to delete your account?")
                 .setPositiveButton("YES",
                     DialogInterface.OnClickListener { dialog, id ->
                         val intent = Intent(this@MypageFragment.requireContext(),Login::class.java)

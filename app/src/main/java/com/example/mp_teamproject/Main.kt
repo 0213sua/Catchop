@@ -16,7 +16,6 @@ class Main : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         getSupportFragmentManager().beginTransaction().add(R.id.fragments_container, homeFragment).commit()
@@ -38,39 +37,19 @@ class Main : AppCompatActivity() {
         }
             true
         }
-//        if(intent.hasExtra("imgUri")){
-//
-//            // data를 담을 객체 생성
-//            val uriString = intent.getStringExtra("imgUri")
-//            Log.d("ee","main imgUri : $uriString")
-////            var passUri = Uri.parse(uriString)
-//            val bundle = Bundle()
-//            //Uri bundle에 담기
-////            bundle.putParcelable("passUri", passUri)
-//            bundle.putString("passUri",uriString)
-//            Log.d("ee","passUri : $uriString")
-//
-//            //fragement에 데이터 넘기기
-//            myPageFragment.arguments = bundle
-//            Log.d("ee","bundle : $bundle")
-//            supportFragmentManager.beginTransaction().apply{
-//                replace(R.id.fragments_container,myPageFragment)
-//                commit()
-//            }
-//        }
+
         if(intent.hasExtra("myprofile")){
 
-            // data를 담을 객체 생성
+            // create object ot store data
             val uriString = intent.getStringExtra("myprofile")
             Log.d("ee","main imgUri : $uriString")
-//            var passUri = Uri.parse(uriString)
+
             val bundle = Bundle()
-            //Uri bundle에 담기
-//            bundle.putParcelable("passUri", passUri)
+            //store uri in bundle
             bundle.putString("passUri",uriString)
             Log.d("ee","passUri : $uriString")
 
-            //fragement에 데이터 넘기기
+            //pass data to fragement
             myPageFragment.arguments = bundle
             supportFragmentManager.beginTransaction().apply{
                 replace(R.id.fragments_container,myPageFragment)

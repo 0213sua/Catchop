@@ -34,63 +34,51 @@ class CategoryFragment : Fragment() {
 
         binding.imgv1.setOnClickListener {
             val intent = Intent(this@CategoryFragment.requireContext(),SelectedCategory::class.java)
-//            intent.putExtra("category_name1", "Administration")
-            intent.putExtra("category_name1", "행정관리")
+            intent.putExtra("category_name1", "Administration")
             startActivity(intent)
         }
         binding.imgv2.setOnClickListener {
             val intent = Intent(this@CategoryFragment.requireContext(),SelectedCategory::class.java)
-//            intent.putExtra("category_name1", "Technology")
-            intent.putExtra("category_name1", "과학기술")
+            intent.putExtra("category_name1", "Technology")
             startActivity(intent)
         }
         binding.imgv3.setOnClickListener {
             val intent = Intent(this@CategoryFragment.requireContext(),SelectedCategory::class.java)
-//            intent.putExtra("category_name1", "Education")
-            intent.putExtra("category_name1", "교육")
+            intent.putExtra("category_name1", "Education")
             startActivity(intent)
         }
         binding.imgv4.setOnClickListener {
             val intent = Intent(this@CategoryFragment.requireContext(),SelectedCategory::class.java)
-//            intent.putExtra("category_name1", "Agri-Animal-Fish")
-            intent.putExtra("category_name1", "농축산")
+            intent.putExtra("category_name1", "Agri-Animal-Fish")
             startActivity(intent)
         }
         binding.imgv5.setOnClickListener {
             val intent = Intent(this@CategoryFragment.requireContext(),SelectedCategory::class.java)
-//            intent.putExtra("category_name1", "Land managing")
-            intent.putExtra("category_name1", "국토관리")
+            intent.putExtra("category_name1", "Land managing")
             startActivity(intent)
         }
         binding.imgv6.setOnClickListener {
             val intent = Intent(this@CategoryFragment.requireContext(),SelectedCategory::class.java)
-//            intent.putExtra("category_name1", "Culture & Tourism")
-            intent.putExtra("category_name1", "문화/여행")
+            intent.putExtra("category_name1", "Culture & Tourism")
             startActivity(intent)
         }
         binding.imgv7.setOnClickListener {
             val intent = Intent(this@CategoryFragment.requireContext(),SelectedCategory::class.java)
-            intent.putExtra("category_name1", "건강")
+            intent.putExtra("category_name1", "Health")
             startActivity(intent)
         }
         binding.imgv8.setOnClickListener {
             val intent = Intent(this@CategoryFragment.requireContext(),SelectedCategory::class.java)
-            intent.putExtra("category_name1", "음식")
+            intent.putExtra("category_name1", "Food")
             startActivity(intent)
         }
         binding.imgv9.setOnClickListener {
             val intent = Intent(this@CategoryFragment.requireContext(),SelectedCategory::class.java)
-            intent.putExtra("category_name1", "교통")
+            intent.putExtra("category_name1", "Logistics")
             startActivity(intent)
         }
 
         return binding.root
 
-    }
-
-    companion object {
-        fun newInstance():CategoryFragment{
-            return CategoryFragment()
-        }
     }
 }

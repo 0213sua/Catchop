@@ -2,11 +2,9 @@ package com.example.mp_teamproject
 
 class MemberData {
 
-    //설문지 id
+    //suvey id
     var userId = ""
 
-
-    //
     var name = ""
     var sex = ""
     var birthdate =""

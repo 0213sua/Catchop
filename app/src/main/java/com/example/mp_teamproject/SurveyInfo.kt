@@ -27,6 +27,7 @@ class SurveyInfo : AppCompatActivity() {
     private var auth : FirebaseAuth? = null
     var partiUri =""
     var staticUri = ""
+    var stOpen = ""
     val surveys: MutableList<SurveyData> = mutableListOf()
     private val firebaseDatabase = FirebaseDatabase.getInstance()
     private val databaseReference = firebaseDatabase.getReference("/Surveys")
@@ -34,6 +35,7 @@ class SurveyInfo : AppCompatActivity() {
     private var enddate = ""
     private var surveyId = " "
     private var writer = ""
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     val current = LocalDate.now()
@@ -67,14 +69,12 @@ class SurveyInfo : AppCompatActivity() {
 
                     snapshot?.let {
                         val survey = it.getValue(SurveyData::class.java)
-//                        var enddate = ""
 
                         survey?.let {
                             binding.siTitleText.text = survey.title
                             binding.siInstText.text = survey.institution
                             binding.siSdateText.text = survey.startDate
 
-//                            enddate = survey.endDate
                             binding.siEdateText.text = survey.endDate
 
                             binding.siPurposeText.text = survey.purpose
@@ -93,7 +93,6 @@ class SurveyInfo : AppCompatActivity() {
                     // delete 버튼 활성화, 비활성화
                     if (writer == userid) {
                         binding.siDeleteBtn.visibility = View.VISIBLE
-                        //            View.VISIBLE, View.INVISIBLE, View.GONE
                     } else {
                         binding.siDeleteBtn.visibility = View.GONE
                     }
@@ -112,8 +111,18 @@ class SurveyInfo : AppCompatActivity() {
                 }
             })
 
-        //participate btn
-        //today>enddate , return setOnClickListener
+        FirebaseDatabase.getInstance().getReference("/Surveys/$surveyId/resultOpen")
+            .addValueEventListener(object:ValueEventListener{
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+                // data 읽기
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    stOpen = snapshot.getValue() as String
+                    Log.d("ITM", "stopen: $stOpen")
+                }
+            })
+
         binding.siPartiBtn.setOnClickListener {
 
             firebaseDatabase.getReference("/Surveys").child(surveyId).addValueEventListener(object :ValueEventListener{
@@ -158,17 +167,18 @@ class SurveyInfo : AppCompatActivity() {
             val dataRef = firebaseDatabase.getReference("/Surveys/$surveyId")
             Log.d("ITM","dataRef: $dataRef")
             dataRef.removeValue()
-            Toast.makeText(applicationContext, "Survey is deleted!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Survey is deleted!", Toast.LENGTH_LONG).show()
         }
         //statistic btn
         binding.siStaticBtn.setOnClickListener {
             Log.d("aa","today : $today, enddate : $enddate, today<enddate : ${today<enddate}")
             // save implict intent(ACTION_VIEW) & pass uri string(github address)
             Log.d("aa","staticUri : $staticUri")
-            if(today<enddate){
-                Toast.makeText(applicationContext, "Survey is not ended :(", Toast.LENGTH_SHORT).show()
+            if(today<=enddate || stOpen=="NO"){
+                Toast.makeText(applicationContext, "Survey is not open :(", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
-            }else{
+            }
+            else{
                 val static = Intent(Intent.ACTION_VIEW, Uri.parse("$staticUri"))
                 startActivity(static)
             }

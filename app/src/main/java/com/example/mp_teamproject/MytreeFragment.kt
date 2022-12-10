@@ -66,11 +66,6 @@ class MytreeFragment : Fragment() {
 
         Log.d("ITM", "최종 num 확인" + num)
 
-//
-//        Log.d("ITM", "바뀌기 전 참여개수 확인" + binding.numSurvey.text)
-//        binding.numSurvey.text = num.toString()
-//        Log.d("ITM", "바뀐 참여개수 확인" + binding.numSurvey.text)
-//        binding.lnum.text = (10-num).toString()
 
         if(num < 10){
             binding.imageView.setImageResource(R.drawable.mini_tree)
